@@ -1,0 +1,157 @@
+/* groupHome */
+
+#container{
+position: relative;
+width: 375px;
+height: 812px;
+
+background: #F9F9F9;
+}
+
+/* header */
+#header{
+position: absolute;
+width: 375px;
+height: 96px;
+left: 0px;
+top: 3px;
+
+background: #FFFFFF;
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
+text-align: center;
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 150px;
+
+color: #363636;
+}
+
+#main{
+    position: absolute;
+    width: 330px;
+    height: 600px;
+    left: 25px;
+    right: 5px;
+    top: 130px;
+}
+
+#searchBox{
+    position: absolute;
+    left: 5px;
+
+    width: 318px;
+    height: 48px;
+}
+
+#search{
+    position: absolute;
+    width: 270px;
+    height: 38px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.25);
+    border-radius: 20px;
+}
+
+input{
+    border-color: #FFFFFF;
+    position: absolute;
+    left: 5px;
+
+    width: 250px;
+    height: 35px;
+
+    border: 0px;
+    outline: none;
+}
+
+#searchIcon{
+    position: absolute;
+
+
+    left: 300px;
+    top: 8px;
+}
+
+#myGroupBar{
+    position: absolute;
+    width: 318px;
+    height: 45px;
+
+    left: 5px;
+    top: 50px;
+
+    /* 나의그룹 글씨 위치,색깔,크기 수정 */
+
+}
+
+#createButton{
+position: absolute;
+left: 260px;
+top: 10px;
+
+background: #F3F3F3;
+border: 0.5px solid #ACACAC;
+box-shadow: 0px 1px 3px rgba(154, 154, 154, 0.25);
+border-radius: 30px;
+}
+
+#myGroupBox{
+    position: absolute;
+    top: 100px;
+    left: 2px;
+
+    width: 320px;
+    height: 310px;
+}
+
+#budgetBucketIcon{
+    z-index: 5;
+    position: absolute;
+    left: 20px;
+    top: 5px;
+}
+
+#myGroup{
+    margin: 5px;
+
+    width: 320px;
+    height: 50px;
+
+    background: #EFF4F4;
+    border: 0.5px solid #3DAA9D;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+
+    text-align : center;
+}
+
+#peopleNum{
+position:absolute;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 500;
+font-size: 5px;
+line-height: 17px;
+/* identical to box height */
+
+color: #646464;
+}
+
+
+
+
+#footer{
+position: absolute;
+left: 0%;
+right: 0%;
+top: 92%;
+bottom: 0%;
+
+background: #FFFFFF;
+border-radius: 25px 25px 0px 0px;
+}
