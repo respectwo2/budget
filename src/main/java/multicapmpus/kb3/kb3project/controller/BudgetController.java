@@ -23,7 +23,7 @@ import multicapmpus.kb3.kb3project.service.BudgetService;
 public class BudgetController {
 	
 	@Autowired private BudgetService budgetService;
-	//버찌 등록 페이지
+	//踰꾩컡 �벑濡� �럹�씠吏�
 	@GetMapping("/budget/budget_register")
 	public String budgetRegisterForm(Model model) {
 		return "budget/budget_register";
@@ -32,8 +32,8 @@ public class BudgetController {
 	private String createBudget(Model model) {
 		return "budget/create"; 
 	}
-	//버찌 등록 받은 값 post 로 전송 후 insert
-	@PostMapping("/budget/create")//POST 방식으로 전송 
+	//踰꾩컡 �벑濡� 諛쏆� 媛� post 濡� �쟾�넚 �썑 insert
+	@PostMapping("/budget/create")//POST 諛⑹떇�쑝濡� �쟾�넚 
 	public String createBudgetPost(@RequestParam("title") String bd_name,
 			@RequestParam("start_date") String bd_start,
 			@RequestParam("end_date") String bd_end,
@@ -54,7 +54,7 @@ public class BudgetController {
 		
 		return"redirect:/budget/budget_list"; 
 	}
-	//유저 별 등록한 버찌 리스트 보여주기 
+	//�쑀�� 蹂� �벑濡앺븳 踰꾩컡 由ъ뒪�듃 蹂댁뿬二쇨린 
 	@GetMapping("/budget/budget_list") 
 	public String budgetList(HttpSession session, Model model) { 
 		int user_No=(int)session.getAttribute("user_no");
@@ -63,7 +63,7 @@ public class BudgetController {
 		return "budget/budget_list"; 
 	}
 	
-	//세션 임의 설정해둔것
+	//�꽭�뀡 �엫�쓽 �꽕�젙�빐�몦寃�
 	@GetMapping("/budget/main")
 	public String main(HttpSession session, Model model) {
 		int user_No=1;
@@ -74,7 +74,7 @@ public class BudgetController {
 		return "redirect:/budget/budget_list";
 		
 	}
-	//버찌 기간 별 소비 내역  리스트 보여주기
+	//踰꾩컡 湲곌컙 蹂� �냼鍮� �궡�뿭  由ъ뒪�듃 蹂댁뿬二쇨린
 	@GetMapping("/budget/budget_detail{bd_no}")
 	public String budgetDetailList(@PathVariable("bd_no") int bd_No, HttpSession session, Model model) {
 		int user_No=(int) session.getAttribute("user_no");
