@@ -77,4 +77,7 @@ MAXVALUE 9999999999 --최대값
 NOCYCLE --순한하지않음
 NOCACHE; --메모리에 시퀀스값 미리할당
 
+-- 그룹 생성
+insert into bgroup (g_no, g_name, g_maxpeople, g_content, g_tag, g_leader, g_requiredtag)
+    values (g_no_seq.nextval, '그룹가입테스트그룹명', 15, '그룹가입테스트다테스트다', '추가로내가작성한태그', 2, '취준생');
 

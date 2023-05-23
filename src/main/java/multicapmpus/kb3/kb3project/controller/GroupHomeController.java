@@ -67,16 +67,11 @@ import java.util.List;
         }
 
         /*
-        그룹 정보 페이지
+        그룹 만들기 페이지
          */
-        @GetMapping("/group/info")
-        public String info(@RequestParam("groupNo") int groupNo, Model model) {
-
-            GroupWithLeaderName groupInfo = groupService.getGroupByGroupNo(groupNo);
-            System.out.println("groupInfo=" + groupInfo);
-            model.addAttribute("groupInfo", groupInfo);
-
-            return "group/info";
+        @GetMapping("group/join")
+        public String register() {
+            return "bgroup/register";
         }
 
 

@@ -53,4 +53,10 @@ public class GroupServiceImpl implements GroupService {
         GroupWithLeaderName group = groupMapper.selectByGroupNo(groupNo);
         return group;
     }
+
+    @Override
+    public int joinGroup(int userNo, int groupNo) {
+        int result = groupMapper.insertUserGroup(userNo, groupNo);
+        return result;
+    }
 }

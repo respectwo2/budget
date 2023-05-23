@@ -47,8 +47,8 @@
                 location.href="group/search?q=" + searchValue;
             }
 
-            function goGroupCreationPage() {
-                location.href="";  //그룹만들기 페이지로 이동
+            function goToGroupCreationPage() {
+                location.href="group/join";  //그룹만들기 페이지로 이동
             }
 
             function goToGroupFeed(gNo) {

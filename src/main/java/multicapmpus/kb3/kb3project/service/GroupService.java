@@ -17,4 +17,6 @@ public interface GroupService {
     public List<Bgroup> getBySearchValue(String searchValue);  //검색어로 그룹 조회
 
     public GroupWithLeaderName getGroupByGroupNo(int groupNo);  //groupNo으로 그룹정보 조회
+
+    public int joinGroup(int userNo, int groupNo);  //userNo를 groupNo에 가입
 }

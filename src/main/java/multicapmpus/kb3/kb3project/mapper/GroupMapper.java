@@ -3,6 +3,7 @@ package multicapmpus.kb3.kb3project.mapper;
 import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.Bgroup;
 import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -41,9 +42,18 @@ public interface GroupMapper {
     /*
     groupNo으로 그룹정보 가져오기
      */
-    @Select("SELECT g.*, u.user_name FROM Bgroup g " +
+    @Select("SELECT g.*, u.user_name as g_leaderName FROM Bgroup g " +
             "JOIN Buser u ON g.g_leader = u.user_no WHERE g.g_no = #{groupNo}")
     public GroupWithLeaderName selectByGroupNo(@Param("groupNo") int groupNo);
+
+    /*
+    user_no와 groupNo를 등록
+     */
+    @Insert("insert into user_group (usergroup, user_no, g_no) " +
+            "values (usergroup_no_seq.nextval, #{userNo}, #{groupNo})")
+    public int insertUserGroup(@Param("userNo") int userNo, @Param("groupNo") int groupNo);
+
+
 
 
 //    /*

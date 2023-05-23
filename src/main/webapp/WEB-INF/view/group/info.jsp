@@ -8,18 +8,30 @@
     </head>
 
     <body>
-        그룹명: ${groupInfo.g_name}
-        필수태그: ${groupInfo.g_requiredTag}
-        추가태그: ${groupInfo.g_tag}
-        그룹리더: ${groupInfo.g_leaderName}
+        그룹명: ${groupInfo.g_name}<br>
+        필수태그: ${groupInfo.g_requiredTag}<br>
+        추가태그: ${groupInfo.g_tag}<br>
+        그룹리더: ${groupInfo.g_leaderName}<br>
         <hr>
         그룹설명: ${groupInfo.g_content}
-        <div id="groupJoinButton" onclick="groupJoin()">가입하기</div>
-
+        <div id="groupJoinButton" onclick="groupJoin(${groupInfo.g_no})">가입하기</div>
 
         <script>
-            function goToSearchPage(searchInput) {
-                 // 그룹가입하기로 post하고 그룹홈으로 이동하기
+            function groupJoin(gNo) {
+
+                var groupNo = gNo;
+                var form = document.createElement("form");
+                form.method = "POST";
+                form.action = "/group/join";
+
+                var input = document.createElement("input");
+                input.type = "hidden";
+                input.name = "groupNo";
+                input.value = groupNo;
+                form.appendChild(input);
+
+                document.body.appendChild(form);
+                form.submit();
             }
         </script>
     </body>
