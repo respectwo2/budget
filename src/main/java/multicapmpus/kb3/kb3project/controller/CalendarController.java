@@ -22,34 +22,9 @@ public class CalendarController {
 	private ConsumeService consumeService;
 	
 	
-	@GetMapping("/calendar")
-	public String calendar(Model model) {
-		LocalDate now = LocalDate.now();
-		model.addAttribute("now", now);
-		
-		LocalDate pick = LocalDate.now();
-		String strPick = pick.format(DateTimeFormatter.ofPattern("yyyy-MM"));
-		model.addAttribute("pick", pick);
-		
-		LocalDate start = LocalDate.of(pick.getYear(), pick.getMonthValue(), 1);
-		String strStart = start.format(DateTimeFormatter.ofPattern("yyyy-MM"));
-		String strStartDay = start.format(DateTimeFormatter.ofPattern("yyyy-MM-DD"));
-		model.addAttribute("start", start);
-		
-	
-		// (수정)유저 번호 받아오기 
-		List <Consume> consumes = consumeService.getMonthConsume(1, strStart);
-		int [] arr = consumeService.getSum(consumes);
-		model.addAttribute("arr", arr);
-		
-		List <Consume> dayConsumes = consumeService.getDayConsume(1, strStartDay);
-		model.addAttribute("dayConsumes", dayConsumes);
-
-		return "calendar";
-	}
-	
 	@GetMapping("/MyCalendar")
-	public String Mycalendar(@RequestParam("year") int year, @RequestParam("month") int month, Model model) {
+	public String Mycalendar(@RequestParam("year") int year, @RequestParam("month") int month, @RequestParam("day") int day, Model model) {
+		// 푸터나, 로그인 이후 오늘 날짜로 연결 할 것
 		LocalDate now = LocalDate.now();
 		model.addAttribute("now", now);
 		
@@ -57,10 +32,17 @@ public class CalendarController {
 		String strStart = start.format(DateTimeFormatter.ofPattern("yyyy-MM"));
 		model.addAttribute("start", start);
 		
+		LocalDate pick = LocalDate.of(year, month, day);
+		String strPickDay = pick.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		model.addAttribute("pick", pick);
+		
+		// (수정)유저 번호 받아오기
 		List <Consume> consumes = consumeService.getMonthConsume(1, strStart);
 		int [] arr = consumeService.getSum(consumes);
 		model.addAttribute("arr", arr);
 		
+		List <Consume> dayConsumes = consumeService.getDayConsume(1, strPickDay);
+		model.addAttribute("dayConsumes", dayConsumes);
 		
 		return "MyCalendar";
 	}
