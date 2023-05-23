@@ -23,8 +23,8 @@ public class Bgroup {
     private int g_no;
     private String g_name;
     private int g_maxpeople;
+    private String g_requiredTag;
     private String g_tag;
-    private int g_requiredTag;
     private int g_leader;
     private String g_date;
     private String g_content;

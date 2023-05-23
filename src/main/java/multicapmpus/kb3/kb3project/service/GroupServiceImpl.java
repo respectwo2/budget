@@ -3,6 +3,7 @@ package multicapmpus.kb3.kb3project.service;
 import lombok.extern.slf4j.Slf4j;
 import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.Bgroup;
+import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
 import multicapmpus.kb3.kb3project.mapper.GroupMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,8 +40,17 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public List<Bgroup> getGroupsByGtag(int gRequiredTag) {
+    public List<Bgroup> getGroupsByGtag(String gRequiredTag) {
         List<Bgroup> groupsByRequiredtag = groupMapper.selectByGtag(gRequiredTag);
         return groupsByRequiredtag;
+    }
+
+    /*
+    그룹 정보 페이지
+     */
+    @Override
+    public GroupWithLeaderName getGroupByGroupNo(int groupNo) {
+        GroupWithLeaderName group = groupMapper.selectByGroupNo(groupNo);
+        return group;
     }
 }

@@ -3,6 +3,7 @@ package multicapmpus.kb3.kb3project.controller;
 import lombok.extern.slf4j.Slf4j;
 import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.Bgroup;
+import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
 import multicapmpus.kb3.kb3project.service.GroupMissionService;
 import multicapmpus.kb3.kb3project.service.GroupService;
@@ -69,12 +70,16 @@ import java.util.List;
         그룹 정보 페이지
          */
         @GetMapping("/group/info")
-        public String info(@RequestParam("groupNo") int gNo, Model model) {
+        public String info(@RequestParam("groupNo") int groupNo, Model model) {
 
+            GroupWithLeaderName groupInfo = groupService.getGroupByGroupNo(groupNo);
+            System.out.println("groupInfo=" + groupInfo);
+            model.addAttribute("groupInfo", groupInfo);
 
-
-            return "bgroup/info";
+            return "group/info";
         }
+
+
 
 
         /*

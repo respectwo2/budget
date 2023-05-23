@@ -9,12 +9,12 @@
 
     <body>
         <c:forEach items="${groupsBySearch}" var="group" >
-            <div onclick="goToGroupInfoPage(${group.g_no})">그룹명: ${group.g_name}, 작성한 태그: ${group.g_tag}</div>
+            <div onclick="goToGroupInfoPage(${group.g_no})">그룹명: ${group.g_name}, 필수태그: ${group.g_requiredTag}, 작성한 태그: ${group.g_tag}</div>
         </c:forEach>
 
         <script>
             function goToGroupInfoPage(groupNo) {
-                location.href = "group/info?groupNo=" + groupNo;  // 그룹정보 페이지로 이동
+                location.href = "/group/info?groupNo=" + groupNo;  // 그룹정보 페이지로 이동
             }
         </script>
     </body>

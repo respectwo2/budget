@@ -2,6 +2,7 @@ package multicapmpus.kb3.kb3project.mapper;
 
 import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.Bgroup;
+import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -35,7 +36,14 @@ public interface GroupMapper {
         g_tag로 그룹 가져오기
      */
     @Select("SELECT * FROM Bgroup WHERE g_requiredTag = #{gRequiredTag}")
-    public List<Bgroup> selectByGtag(@Param("gRequiredTag") int gRequiredTag);
+    public List<Bgroup> selectByGtag(@Param("gRequiredTag") String gRequiredTag);
+
+    /*
+    groupNo으로 그룹정보 가져오기
+     */
+    @Select("SELECT g.*, u.user_name FROM Bgroup g " +
+            "JOIN Buser u ON g.g_leader = u.user_no WHERE g.g_no = #{groupNo}")
+    public GroupWithLeaderName selectByGroupNo(@Param("groupNo") int groupNo);
 
 
 //    /*
