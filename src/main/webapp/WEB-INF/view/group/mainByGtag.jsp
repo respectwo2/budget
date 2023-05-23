@@ -33,14 +33,11 @@
 
         <div>
             <c:forEach items="${groupList}" var="group">
-                <b onclick="goToGroupInfoPage(${group.g_no})">${group.g_name}</b>&nbsp;&nbsp;&nbsp; <small>#${group.g_tag}</small>
-                <br><br>
+
             </c:forEach>
         </div>
 
     <script>
-
-        //검색된 그룹 보여주는 페이지로 이동하기
         function goToSearchPage(searchInput) {
             var searchTmp = document.getElementById(searchInput);
             var searchValue = searchTmp.value;
@@ -48,26 +45,17 @@
             location.href = "group/search?q=" + searchValue;
         }
 
-        //그룹만들기 페이지로 이동
         function goToGroupCreationPage() {
-             location.href = "group/join";
+             location.href = "group/join";  //그룹만들기 페이지로 이동
         }
 
-        //그룹g_no의 피드로 이동
         function goToGroupFeed(gNo) {
-             location.href = "group/feed?groupNo=" + gNo;
+             location.href = "group/feed?groupNo=" + gNo;  //그룹g_no의 피드로 이동
         }
 
-        //그룹정보 페이지로 이동
-        function goToGroupInfoPage(groupNo) {
-            location.href = "/group/info?groupNo=" + groupNo;
-        }
-
-        //태그로 그룹 조회해서 그룹메인 보여주기
         function showGroupsByTag(tag) {
-            location.href = "group/list?tag=" + tag;
+            location.href = "group/list?tag=" + tag;  //태그로 그룹 조회해서 그룹메인 보여주기
         }
-
     </script>
     </body>
 </html>

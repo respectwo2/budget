@@ -7,6 +7,7 @@ import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
 import multicapmpus.kb3.kb3project.service.GroupMissionService;
 import multicapmpus.kb3.kb3project.service.GroupService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,9 +45,16 @@ import java.util.List;
 //        int userNo = (int) session.getAttribute("user_no");
             int userNo = 1;
 
+            // 회원이 가입한 그룹들
             List<Bgroup> userBgroups = groupService.getGroupsByUserNo(userNo);
             System.out.println("userGroups=" + userBgroups);
             model.addAttribute("userGroups", userBgroups);
+
+            // 현재 등록된 그룹들
+            List<Bgroup> groupList = groupService.getGroupList();
+            System.out.println("groups=" + groupList);
+            model.addAttribute("groupList", groupList);
+
             return "group/main";  //group/main으로 리다이렉트
         }
 
@@ -55,21 +63,41 @@ import java.util.List;
          */
         @GetMapping("/group/search")
         public String main(@RequestParam("q") String searchValue, Model model, HttpServletRequest request) {
-            // 세션에 담긴 회원no가져오기
-//        HttpSession session = request.getSession();
-//        int userNo = (int) session.getAttribute("user_no");
 
-            List<Bgroup> groupsBySearches = groupService.getBySearchValue(searchValue);
-            System.out.println("groupsBySearch=" + groupsBySearches);
-            model.addAttribute("groupsBySearch", groupsBySearches);
+            List<Bgroup> groupsBySearch = groupService.getBySearchValue(searchValue);
+            System.out.println("groupsBySearch=" + groupsBySearch);
+            model.addAttribute("groupsBySearch", groupsBySearch);
 
             return "group/search";
         }
 
         /*
+        g_requiredTag로 그룹 조회하기
+         */
+        @GetMapping("/group/list")
+        public String showGroupsByGTag(@Param("tag=") String selectedTag, Model model, HttpServletRequest request) {
+            // 세션에 담긴 회원no가져오기
+//        HttpSession session = request.getSession();
+//        int userNo = (int) session.getAttribute("user_no");
+            int userNo = 1;
+
+            // 회원이 가입한 그룹들
+            List<Bgroup> userBgroups = groupService.getGroupsByUserNo(userNo);
+            System.out.println("userGroups=" + userBgroups);
+            model.addAttribute("userGroups", userBgroups);
+            List<Bgroup> groupsByGtag = groupService.getGroupsByGtag(selectedTag);
+
+            model.addAttribute("selectedTag", selectedTag);
+
+            return "group/mainByGtag";
+        }
+
+
+
+        /*
         그룹 만들기 페이지
          */
-        @GetMapping("group/join")
+        @GetMapping("/group/join")
         public String register() {
             return "bgroup/register";
         }
