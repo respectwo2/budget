@@ -15,9 +15,17 @@
         <br><br>
 
         <c:forEach items="${userGroups}" var="userGroup" >
-            <div id="myGroup" onclick="goToGroupFeed(${userGroup.g_no})">${userGroup.g_name}<small id="peopleNum">인원수</small>
+            <div id="myGroup" onclick="goToGroupFeed(${userGroup.g_no})">${userGroup.g_name}&nbsp;&nbsp;&nbsp;
+                <small id="peopleNum">현재인원/${userGroup.g_maxpeople}명</small>&nbsp;&nbsp;&nbsp;
+                <b>#${userGroup.g_tag}</b>
+            </div>
+            <br><br><br>
         </c:forEach>
 
+        <span id="청소년">#청소년</span>
+        <span id="대학생">#대학생</span>
+        <span id="취준생">#취준생</span>
+        <span id="직장인">#직장인</span>
 
     <script>
         function goToSearchPage(searchInput) {
@@ -33,6 +41,10 @@
 
         function goToGroupFeed(gNo) {
              location.href="group/feed?groupNo=" + gNo;  //그룹g_no의 피드로 이동
+        }
+
+        function showGroupsByTag() {
+
         }
     </script>
     </body>
