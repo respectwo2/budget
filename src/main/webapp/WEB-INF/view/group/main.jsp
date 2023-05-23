@@ -15,8 +15,8 @@
             <div id="main">
 
                 <div id="searchBox">
-                    <div id="search"><form><input type="search" id="searchInput"></div></form>
-                    <img id="searchIcon" onclick="showSearchedGroups(searchInput)" src="img/돋보기.svg">
+                    <div id="search"><form><input type="search" id="searchInput"></form></div>
+                    <img id="searchIcon" onclick="goToSearchPage('searchInput')" src="img/돋보기.svg">
                 </div>
 
                 <div id="myGroupBar"> 나의 그룹
@@ -30,7 +30,7 @@
                     </c:forEach>
                 </div>
 
-                <div id>
+
 
             </div>
 
@@ -38,10 +38,11 @@
 
             </div>
         </div>
+
         <script>
-            function showSearchedGroups(searchValue) {
-                // var searchInput = document.getElementById("searchInput");
-                // var searchValue = searchInput.value;
+            function goToSearchPage(searchInput) {
+                var searchTmp = document.getElementById(searchInput);
+                var searchValue = searchTmp.value;
 
                 location.href="group/search?q=" + searchValue;
             }

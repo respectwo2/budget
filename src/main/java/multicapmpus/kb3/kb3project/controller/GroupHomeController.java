@@ -50,7 +50,7 @@ import java.util.List;
         }
 
         /*
-        그룹 메인 화면 - 검색
+        검색된 그룹
          */
         @GetMapping("/group/search")
         public String main(@RequestParam("q") String searchValue, Model model, HttpServletRequest request) {
@@ -62,13 +62,25 @@ import java.util.List;
             System.out.println("groupsBySearch=" + groupsBySearches);
             model.addAttribute("groupsBySearch", groupsBySearches);
 
-            int userNo = 1;
-
-            List<Bgroup> userBgroups = groupService.getGroupsByUserNo(userNo);
-            System.out.println("userGroups=" + userBgroups);
-            model.addAttribute("userGroups", userBgroups);
             return "group/search";
         }
+
+        /*
+        그룹 정보 페이지
+         */
+        @GetMapping("/group/info")
+        public String info(@RequestParam("groupNo") int gNo, Model model) {
+
+
+
+            return "bgroup/info";
+        }
+
+        /*
+        그룹 정보 화면
+         */
+
+
 
         /*
         test
