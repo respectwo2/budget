@@ -22,7 +22,7 @@
     	var dataArray=[
     		['Category', 'Money']
     		<c:forEach items="${consumeList}" var="c">
-    			,['${c.c_categoryId}', ${c.c_money}]
+    			,['${c.c_categoryid}', ${c.c_money}]
     		</c:forEach>
     	];
     	var data = google.visualization.arrayToDataTable(dataArray);
@@ -38,7 +38,7 @@
     </script>
 	<c:forEach items="${consumeList}" var="c">
       <p>${c.c_money}</p>
-      <p>${c.c_categoryId}</p>
+      <p>${c.c_categoryid}</p>
    </c:forEach>
   
 </body>
