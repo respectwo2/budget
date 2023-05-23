@@ -8,21 +8,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>calendar</title>
+<title>MyCalendar</title>
 <link href="${path}/resources/css/calendar.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="box">
 			<div class="month">
-			
 				<p class="year">${ start.getYear() }<span style="font-size: 14px">년</span></p>
 				<button style="margin-right: 60px" onclick="prev(${start.getYear()}, ${start.getMonthValue()})">
 					<img alt="" src="${path}/resources/icon/Polygon1.svg">
 				</button>
 
 				<span style="font-size: 24px;">${ start.getMonthValue() }</span>월
-				<button style="margin-left: 60px">
+				<button style="margin-left: 60px" onclick="next(${start.getYear()}, ${start.getMonthValue()})">
 					<img alt="" src="${path}/resources/icon/Polygon2.svg">
 				</button>
 				<div class="total">${arr[0]}</div>
@@ -39,17 +38,18 @@
 				<div class="w" style="color: #3269F5;">토</div>	
 			</div>
 			<div class="day">
-				<c:forEach var="i" begin="1" end="${s}" step="1">
-					<button class="blankbtn">
-						<div class="btn"><p>　</p></div>
-					</button>
-				</c:forEach>
-				
+				<c:if test="${s != 7}">
+					<c:forEach var="i" begin="1" end="${s}" step="1">
+						<button class="blankbtn">
+							<div class="btn"><p>　</p></div>
+						</button>
+					</c:forEach>
+				</c:if>
 				<c:forEach var="k" begin="1" end="${e}" step="1">
-					<button class="daybtn">
+					<button class="daybtn" onclick="viewEvent('${start.getYear()}-${start.getMonthValue()}-${k}')">
 						<div class="btn">
 							<c:choose>
-								<c:when test="${k == pick.getDayOfMonth()}">
+								<c:when test="${k == start.getDayOfMonth()}">
 									<span class="pick">${k}</span>
 								</c:when>							
 								<c:when test="${k == now.getDayOfMonth()}">
@@ -73,10 +73,6 @@
 			</div>
 		</div>
 	</div>
-
-	<c:forEach items="${dayConsumes}" var="consume" >
-		${consume}
-	</c:forEach>
 	
 	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript"> 
@@ -88,7 +84,18 @@
 				year -= 1
 			}
 			
-			link = "/MyCalendar?year="+year+"&&month="+month
+			link = "/buser/MyCalendar?year="+year+"&&month="+month
+			location.href = link;
+		}
+		
+		function next(y, m){
+			let month = m + 1; let year = y
+			if (month == 13){
+				month = 1 
+				year += 1
+			}
+			
+			link = "/buser/MyCalendar?year="+year+"&&month="+month
 			location.href = link;
 		}
 	
@@ -111,7 +118,10 @@
 				}	
 			})
 		} */
-		
+	    function viewEvent(day) {
+		    
+	        location.href = "/consume/list/" + day;
+	    }
     </script> 
 </body>
 </html>

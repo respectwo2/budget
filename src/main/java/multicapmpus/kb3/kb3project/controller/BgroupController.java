@@ -24,7 +24,9 @@ public class BgroupController {
 	@GetMapping("/bgroup/main")
 	public String main(HttpSession session, Model model) {
 	    int userNo = 1; 
+	    int gNo = 2;
 	    session.setAttribute("user_no", userNo);
+	    session.setAttribute("g_no", gNo);
 	    model.addAttribute("user_no", userNo);
 	    
 	    return "redirect:/bgroup/list";
@@ -35,11 +37,11 @@ public class BgroupController {
 	    // 세션에서 user_no 가져오기
 	    int userNo = (int) session.getAttribute("user_no");
 
-	    // bgroup 테이블에서 g_name 목록 조회
+
 	    List<String> gNames = bgroupservice.getGNamesByUserNo(userNo);
 	    List<Integer> gNos = bgroupservice.getGNosByUserNo(userNo);
 
-	    // 모델에 g_names와 g_nos 추가
+
 	    model.addAttribute("names", gNames);
 	    model.addAttribute("nos", gNos);
 
@@ -72,4 +74,7 @@ public class BgroupController {
 	    model.addAttribute("leader", g_leader);
 
 	    return "bgroup/info";
-	}}
+	}
+	
+	
+}
