@@ -1,11 +1,5 @@
 package multicapmpus.kb3.kb3project.entity;
 
-<<<<<<< HEAD
-=======
-import java.util.Date;
-
-
-
 public class Budget {
 	private int bd_no;
 	private String bd_name;

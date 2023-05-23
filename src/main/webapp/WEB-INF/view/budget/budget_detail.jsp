@@ -10,10 +10,6 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
- 	<div id="piechart" style="width: 900px; height: 500px;"></div>
-	<h1>마이버찌 디테일 페이지</h1>
-	
-	<h3>나의 지출</h3>
 	<script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
@@ -36,10 +32,13 @@
         chart.draw(data, options);
       }
     </script>
+	<h1>마이버찌 디테일 페이지</h1>
+	<h3>나의 지출</h3>
 	<c:forEach items="${consumeList}" var="c">
       <p>${c.c_money}</p>
       <p>${c.c_categoryid}</p>
-   </c:forEach>
+    </c:forEach>
+ 	<div id="piechart" style="width: 900px; height: 500px;"></div>
   
 </body>
 </html>
