@@ -81,12 +81,19 @@ import java.util.List;
 //        int userNo = (int) session.getAttribute("user_no");
             int userNo = 1;
 
+            System.out.println("selectedTag=" + selectedTag);
+
             // 회원이 가입한 그룹들
             List<Bgroup> userBgroups = groupService.getGroupsByUserNo(userNo);
             System.out.println("userGroups=" + userBgroups);
             model.addAttribute("userGroups", userBgroups);
-            List<Bgroup> groupsByGtag = groupService.getGroupsByGtag(selectedTag);
 
+            // 선택된 태그의 그룹들
+            List<Bgroup> groupsByGtag = groupService.getGroupsByGtag(selectedTag);
+            System.out.println("groupsByGtag=" + groupsByGtag);
+            model.addAttribute("groupsByGtag", groupsByGtag);
+
+            // 선택된 태그 model에 담아주기
             model.addAttribute("selectedTag", selectedTag);
 
             return "group/mainByGtag";

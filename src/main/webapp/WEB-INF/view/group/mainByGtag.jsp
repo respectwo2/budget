@@ -32,8 +32,9 @@
         <br>
 
         <div>
-            <c:forEach items="${groupList}" var="group">
-
+            <c:forEach items="${groupsByGtag}" var="group">
+                <b onclick="goToGroupInfoPage(${group.g_no})">${group.g_name}</b>&nbsp;&nbsp;&nbsp; <small>#${group.g_tag}</small>
+                <br><br>
             </c:forEach>
         </div>
 
