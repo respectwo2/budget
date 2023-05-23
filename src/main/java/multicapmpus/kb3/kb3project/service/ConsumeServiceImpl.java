@@ -42,6 +42,40 @@ public class ConsumeServiceImpl implements ConsumeService {
 		return arr;
 	}
 
+//	@Override
+//	public List<Consume> getGroupDayConsume(long g_no, String date) {
+//		return mapper.getGroupDayConsume(g_no, date);
+//		
+//	}
+
+	@Override
+	public List<String> getUserNicknames(long g_no, String date) {
+		// TODO Auto-generated method stub
+		return mapper.getUserNicknames(g_no, date);
+	}
+
+	@Override
+	public List<Integer> getTotalMoneyList(long g_no, String date) {
+		// TODO Auto-generated method stub
+		return mapper.getTotalMoneyList(g_no, date);
+	}
+
+	@Override
+	public List<Consume> getGroupDayConsume(long g_no, String date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Consume> getMemberMonthConsume(long g_no, String date) {
+		return mapper.getMemberMonthConsume(g_no, date);
+	}
+
+	@Override
+	public List<Consume> getMemberDayConsume(long g_no, String date) {
+		return mapper.getMemberDayConsume(g_no, date);
+	}
+
 
 
 }

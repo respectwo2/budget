@@ -46,7 +46,7 @@
 				</c:forEach>
 				
 				<c:forEach var="k" begin="1" end="${e}" step="1">
-					<button class="daybtn">
+					<button class="daybtn" onclick="viewEvent('${start.getYear()}-${start.getMonthValue()}-${k}')">
 						<div class="btn">
 							<c:choose>
 								<c:when test="${k == pick.getDayOfMonth()}">
@@ -88,7 +88,7 @@
 				year -= 1
 			}
 			
-			link = "/MyCalendar?year="+year+"&&month="+month
+			link = "/buser/MyCalendar?year="+year+"&&month="+month
 			location.href = link;
 		}
 	
@@ -111,6 +111,12 @@
 				}	
 			})
 		} */
+	    function viewEvent(day) {
+	    
+	        location.href = "/consume/list/" + day;
+	    }
+		
+		
 		
     </script> 
 </body>
