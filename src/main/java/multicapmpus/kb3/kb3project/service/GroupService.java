@@ -9,7 +9,7 @@ public interface GroupService {
 
     public List<Bgroup> getGroupsByUserNo(int userNo);  //회원의 모든 그룹 조회
 
-    public List<Bgroup> getGroupsByGtag(String gTag);  //태그로 그룹 조회하기
+    public List<Bgroup> getGroupsByGtag(int gRequiredTag);  //태그로 그룹 조회하기
 
     public List<Bgroup> getGroupList();  //모든 그룹 조회
 

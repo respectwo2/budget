@@ -39,8 +39,8 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public List<Bgroup> getGroupsByGtag(String gTag) {
-        List<Bgroup> groupsByGtag = groupMapper.selectByGtag(gTag);
-        return groupsByGtag;
+    public List<Bgroup> getGroupsByGtag(int gRequiredTag) {
+        List<Bgroup> groupsByRequiredtag = groupMapper.selectByGtag(gRequiredTag);
+        return groupsByRequiredtag;
     }
 }

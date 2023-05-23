@@ -34,8 +34,8 @@ public interface GroupMapper {
     /*
         g_tag로 그룹 가져오기
      */
-    @Select("SELECT * FROM Bgroup WHERE g_tag = #{gTag}")
-    public List<Bgroup> selectByGtag(@Param("gTag") String gTag);
+    @Select("SELECT * FROM Bgroup WHERE g_requiredTag = #{gRequiredTag}")
+    public List<Bgroup> selectByGtag(@Param("gRequiredTag") int gRequiredTag);
 
 
 //    /*
