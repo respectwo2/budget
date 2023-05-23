@@ -3,6 +3,7 @@ package multicapmpus.kb3.kb3project.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -11,7 +12,7 @@ public class Bcomment {
     private int cmn_no;
     private int user_no;
     private int c_no;
-    private Date cmn_date;
+    private LocalDate cmn_date;
     private String cmn_content;
 }
 

@@ -3,6 +3,8 @@ package multicapmpus.kb3.kb3project.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 /*
 -- 소비
 CREATE TABLE Consume (
@@ -21,12 +23,23 @@ c_image	NVARCHAR2(200)		NULL  -- 이미지
 public class Consume {
     private int c_no;
     private int user_no;
-    private String c_date;
+    private LocalDate c_date;
     private int c_money;
-    private int c_categoryId;
+    private int c_categoryid;
     private String c_content;
     private String c_image;
     private int c_like;
 }
+
+/*
+ private int c_no;
+	private int user_no;
+	private int c_money;
+	private int c_categoryid;
+	private LocalDate c_date;
+	private String c_image;
+	private String c_content;
+	private int c_like;
+ */
 
 

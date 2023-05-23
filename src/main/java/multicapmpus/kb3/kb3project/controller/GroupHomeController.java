@@ -76,11 +76,6 @@ import java.util.List;
             return "bgroup/info";
         }
 
-        /*
-        그룹 정보 화면
-         */
-
-
 
         /*
         test

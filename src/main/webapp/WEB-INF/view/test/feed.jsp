@@ -11,12 +11,9 @@
 미션: ${groupMissionBanner}
 
 <c:forEach items="${consumes}" var="consume">
-<fmt:parseDate var="dateString" value="${consume.c_date}" pattern="yyyy-MM-dd HH:mm:SS" />
-<fmt:formatDate var="date" value="${dateString}" pattern="yyyy년MM월dd일"/>
-
 <tr>
 	<td>${consume.user_name}</td>
-    <td>${date}</td>
+    <td>${consume.c_date}</td>
 	<td>${consume.c_money}</td>
 	<td>${consume.categoryId}
 	<td>${consume.c_content}
