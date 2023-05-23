@@ -19,13 +19,13 @@ public class MainController {
 	public String root(HttpSession session) {
 		Integer user_no = (Integer) session.getAttribute("user_no");
 		if (user_no != null)
-			return "home";
+			return "home/home";
 		else
 			return "redirect:/Buser/login";
 	}
 
 	@GetMapping("/home")
 	public String aaa() {
-		return "home";
+		return "home/home";
 	}
 }
