@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="multicapmpus.kb3.kb3project.mapper.BudgetMapper">
+    <insert id="save">
+        INSERT INTO BUDGET(bd_no, bd_name, bd_goal, bd_content, bd_start, bd_end, bd_goalnow, user_no) VALUES(BD_NO_SEQ.NEXTVAL, #{budget.bd_name}, #{budget.bd_goal}, #{budget.bd_content}, #{budget.bd_start}, #{budget.bd_end},#{budget.bd_goalnow},#{budget.user_no})  
+    </insert>
+   <select id="findbudgetAll" resultType="multicapmpus.kb3.kb3project.entity.BudgetList">
+      select bd_no, bd_name, bd_goal, bd_goal-bd_goalnow as bd_goalleft, bd_end-bd_start as bd_dateleft from budget where user_no=#{user_no} order by bd_no DESC
+    </select>
+    <select id="findbudgetC" resultType="multicapmpus.kb3.kb3project.entity.Consume">
+    	select sum(c.c_money) as c_money, c.c_categoryid as c_categoryid from consume c, budget b where c.user_no=#{user_no} and b.bd_no=#{bd_no} and c.c_date between b.bd_start and b.bd_end group by c_categoryid
+    </select>
+    <update id="goalnowUpdate">
+    	UPDATE budget b SET b.bd_goalnow = b.bd_goalnow + (SELECT SUM(c.c_money) FROM consume c WHERE c.user_no=#{user_no} and c.c_date BETWEEN b.bd_start AND b.bd_end);
+    </update>
+</mapper>
