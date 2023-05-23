@@ -2,9 +2,12 @@ package multicapmpus.kb3.kb3project.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -25,11 +28,16 @@ public class ConsumeController {
 		  }
 	  
 	
-	@GetMapping("/consume/list")
-	public String list(Model model) {
-		List<Consume> csmList=this.csmMapper.getAll();
-        model.addAttribute("csmList", csmList);
-
-		return "consume/list";
-	}
+	  @GetMapping("/consume/grouplist/{date}")
+	  public String grouplist(@PathVariable("date") String date, HttpServletRequest request, Model model) {
+	      
+		  int gNo = (int) request.getSession().getAttribute("g_no");
+		  
+	      List<Integer> totalmoney = csmMapper.getTotalMoneyList(gNo, date);
+	      List<String> usernick = csmMapper.getUserNicknames(gNo, date);
+	      model.addAttribute("membercs", totalmoney);
+	      model.addAttribute("member",usernick);
+	      
+	      return "consume/grouplist";
+	  }
 }

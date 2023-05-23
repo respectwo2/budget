@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MyCalendar</title>
+<title>GroupCalendar</title>
 <link href="${path}/resources/css/calendar.css" rel="stylesheet">
 </head>
 <body>
@@ -46,7 +46,7 @@
 					</c:forEach>
 				</c:if>
 				<c:forEach var="k" begin="1" end="${e}" step="1">
-					<button class="daybtn" onclick="viewEvent('${start.getYear()}-${start.getMonthValue()}-${k}')">
+<button class="daybtn" onclick="viewEvent('${start.getYear()}-${String.format('%02d', start.getMonthValue())}-${String.format('%02d', k)}')">
 						<div class="btn">
 							<c:choose>
 								<c:when test="${k == start.getDayOfMonth()}">
@@ -84,7 +84,7 @@
 				year -= 1
 			}
 			
-			link = "/buser/MyCalendar?year="+year+"&&month="+month
+			link = "/bgroup/GroupCalendar?year="+year+"&&month="+month
 			location.href = link;
 		}
 		
@@ -95,7 +95,7 @@
 				year += 1
 			}
 			
-			link = "/buser/MyCalendar?year="+year+"&&month="+month
+			link = "/bgroup/GroupCalendar?year="+year+"&&month="+month
 			location.href = link;
 		}
 	
@@ -120,7 +120,7 @@
 		} */
 	    function viewEvent(day) {
 		    
-	        location.href = "/consume/list/" + day;
+	        location.href = "/consume/grouplist/" + day;
 	    }
     </script> 
 </body>
