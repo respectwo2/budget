@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=yes;">
     </head>
     <body>
-        <span><form><input type="search" id="searchInput"></form></div>
+        <span><form><input type="search" id="searchInput"></form></span>
         <img id="searchIcon" onclick="goToSearchPage('searchInput')" src="img/돋보기.svg">
         <hr>
 
@@ -24,10 +24,10 @@
         <br><br>
 
         <div>
-            <span id="청소년" onclick="showGroupsByTag('청소년')">#청소년&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span id="대학생" onclick="showGroupsByTag('대학생')">#대학생&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span id="취준생" onclick="showGroupsByTag('취준생')">#취준생&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span id="직장인" onclick="showGroupsByTag('직장인')">#직장인</span>
+            <span id="청소년" onclick="showGroupsByTag('청소년')"> #청소년&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span id="대학생" onclick="showGroupsByTag('대학생')"> #대학생&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span id="취준생" onclick="showGroupsByTag('취준생')"> #취준생&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span id="직장인" onclick="showGroupsByTag('직장인')"> #직장인</span>
         </div>
         <br>
 

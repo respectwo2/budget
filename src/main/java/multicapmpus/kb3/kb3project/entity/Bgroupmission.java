@@ -3,6 +3,8 @@ package multicapmpus.kb3.kb3project.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 /*
 -- 그룹미션
 CREATE TABLE Bgroupmission (
@@ -23,8 +25,8 @@ public class Bgroupmission {
     private int g_no;
     private String bgm_name;
     private String bgm_content;
-    private String bgm_start;
-    private String bgm_end;
+    private LocalDate bgm_start;
+    private LocalDate bgm_end;
     private int bgm_goal;
 }
 

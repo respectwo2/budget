@@ -75,8 +75,8 @@ import java.util.List;
         g_requiredTag로 그룹 조회하기
          */
         @GetMapping("/group/list")
-        public String showGroupsByGTag(@Param("tag=") String selectedTag, Model model, HttpServletRequest request) {
-            // 세션에 담긴 회원no가져오기
+        public String showGroupsByGTag(@Param("tag") String selectedTag, Model model, HttpServletRequest request) {
+            // 세션에 담긴 회원no 가져오기
 //        HttpSession session = request.getSession();
 //        int userNo = (int) session.getAttribute("user_no");
             int userNo = 1;
