@@ -8,6 +8,28 @@ public class GroupConsume {
 	private int user_no;
 	private String user_nickname;
 	private LocalDate c_date;
+	private String c_content;
+	private int c_like;
+	private int c_categoryId;
+	
+	public int getC_categoryId() {
+		return c_categoryId;
+	}
+	public void setC_categoryId(int c_categoryId) {
+		this.c_categoryId = c_categoryId;
+	}
+	public int getC_like() {
+		return c_like;
+	}
+	public void setC_like(int c_like) {
+		this.c_like = c_like;
+	}
+	public String getC_content() {
+		return c_content;
+	}
+	public void setC_content(String c_content) {
+		this.c_content = c_content;
+	}
 	public int getC_money() {
 		return c_money;
 	}

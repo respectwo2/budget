@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import multicapmpus.kb3.kb3project.entity.Consume;
 import multicapmpus.kb3.kb3project.entity.GroupConsume;
+import multicapmpus.kb3.kb3project.mapper.ConsumeMapper;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
 import multicapmpus.kb3.kb3project.service.GroupConsumeService;
 
@@ -25,6 +26,12 @@ public class CalendarController {
 	
 	@Autowired
 	private GroupConsumeService groupService;
+	
+	@Autowired
+	private ConsumeMapper csmMapper;
+	
+	
+	  
 	
 	@GetMapping("/buser/calendar")
 	public String calendar(Model model) {
@@ -110,6 +117,9 @@ public class CalendarController {
 		LocalDate now = LocalDate.now();
 		model.addAttribute("now", now);
 		
+		model.addAttribute("month", month);
+	    model.addAttribute("day", day);
+		
 		LocalDate start = LocalDate.of(year, month, 1);
 		String strStart = start.format(DateTimeFormatter.ofPattern("yyyy-MM"));
 		model.addAttribute("start", start);
@@ -126,7 +136,11 @@ public class CalendarController {
 		List <GroupConsume> dayConsumes = groupService.getGroupDayConsume(2, strPickDay);
 		model.addAttribute("dayConsumes", dayConsumes);
 
-		
+//	    int gNo = (int) request.getSession().getAttribute("g_no");
+	    List<Integer> totalmoney = csmMapper.getTotalMoneyList(2, strPickDay);
+	    List<String> usernick = csmMapper.getUserNicknames(2, strPickDay);
+	    model.addAttribute("membercs", totalmoney);
+	    model.addAttribute("member", usernick);
 		
 		return "bgroup/GroupCalendar";
 	}

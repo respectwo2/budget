@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+
+import multicapmpus.kb3.kb3project.entity.Consume;
 import multicapmpus.kb3.kb3project.entity.GroupConsume;
 
 @Mapper
@@ -59,4 +61,17 @@ public interface GroupConsumeMapper {
             "FETCH FIRST 1 ROW ONLY")
     String getTopUserNickname(@Param("g_no") long g_no, @Param("date") String date);
 
+    
+    @Select("Select * from consume where user_no = #{user_no}")
+    Consume getConsumebyId(@Param("user_no") long user_no);
+    
+    @Select("SELECT b.user_nickname, c.c_money, SUM(c.c_money) AS total_money, c.c_content, c.c_like, c.c_categoryid " +
+            "FROM CONSUME c " +
+            "JOIN user_group ug ON c.USER_NO = ug.USER_NO " +
+            "JOIN buser b ON c.USER_NO = b.USER_NO " +
+            "WHERE ug.G_NO = #{g_no} " +
+            "AND TO_CHAR(c.C_DATE, 'YYYY-MM-DD') = #{date} " +
+            "GROUP BY b.user_nickname, c.c_money, c.c_content, c.c_like, c.c_categoryid " +
+            "ORDER BY total_money DESC")
+    List<GroupConsume> getGroupConsumeByDate(@Param("g_no") long g_no, @Param("date") String date);
 }

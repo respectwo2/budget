@@ -77,6 +77,11 @@ public class ConsumeServiceImpl implements ConsumeService {
 		return mapper.getMemberDayConsume(g_no, date);
 	}
 
+	@Override
+	public List<Consume> getGroupConsumeByDate(long g_no, String date) {
+		return mapper.getGroupConsumeByDate(g_no, date);
+	}
+
 
 
 }

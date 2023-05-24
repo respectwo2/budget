@@ -74,16 +74,17 @@
 		</div>
 		
 	</div>
-	
-	<div class="dayconsumes">
-		<c:forEach var="consume" items="${dayConsumes}">
-			<div class="consumebox">			
-				${consume}
-			</div>
-		</c:forEach>
-
-	
-	</div>
+<div>
+    <div class="current-date">
+        <span>${month}월</span> <span>${day}일</span> 
+        <button class="detailbtn" onclick="viewEvent('${start.getYear()}-${String.format('%02d', start.getMonthValue())}-${String.format('%02d', day)}')">+</button>
+    </div>
+    <c:forEach var="member" items="${member}" varStatus="i">
+        <div class="consumebox">
+            <p>${member} : ${membercs[i.index]}</p>
+        </div>
+    </c:forEach>
+</div>
 	
 	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript"> 
@@ -130,7 +131,9 @@
 				}	
 			})
 		} */
-		
+		 function viewEvent(day) {
+	        location.href = "/consume/grouplist/" + day;
+	    }
     </script> 
 </body>
 </html>
