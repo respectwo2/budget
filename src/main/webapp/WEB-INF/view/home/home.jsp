@@ -9,6 +9,7 @@
 <body>
  	<%@ include file="../navbar.jsp" %>
 	<h1>캘린더</h1> <br>
+	
 	<h1>당일 소비 내역</h1>
 	
 </body>

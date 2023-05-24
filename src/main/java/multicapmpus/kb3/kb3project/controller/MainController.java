@@ -28,4 +28,5 @@ public class MainController {
 	public String aaa() {
 		return "home/home";
 	}
+	
 }
