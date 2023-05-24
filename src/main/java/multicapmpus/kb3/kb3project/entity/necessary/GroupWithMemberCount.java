@@ -1,14 +1,13 @@
-package multicapmpus.kb3.kb3project.entity.extra;
+package multicapmpus.kb3.kb3project.entity.necessary;
 
-public class GroupInfo {
+public class GroupWithMemberCount {
     private int g_no;
     private String g_name;
-    private int memberCount;
+    private int memberCount;  //현재인원
     private int g_maxpeople;
     private String g_requiredTag;
     private String g_tag;
     private int g_leader;
-    private String g_leaderName;
     private String g_date;
     private String g_content;
     private char g_private;
@@ -67,14 +66,6 @@ public class GroupInfo {
 
     public void setG_leader(int g_leader) {
         this.g_leader = g_leader;
-    }
-
-    public String getG_leaderName() {
-        return g_leaderName;
-    }
-
-    public void setG_leaderName(String g_leaderName) {
-        this.g_leaderName = g_leaderName;
     }
 
     public String getG_date() {

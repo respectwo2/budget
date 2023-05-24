@@ -1,10 +1,9 @@
-package multicapmpus.kb3.kb3project.entity.extra;
+package multicapmpus.kb3.kb3project.entity.necessary;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor

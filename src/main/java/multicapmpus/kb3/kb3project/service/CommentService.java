@@ -1,7 +1,7 @@
 package multicapmpus.kb3.kb3project.service;
 
 import multicapmpus.kb3.kb3project.entity.Bcomment;
-import multicapmpus.kb3.kb3project.entity.extra.CommentWithUserName;
+import multicapmpus.kb3.kb3project.entity.necessary.CommentWithUserName;
 
 import java.util.List;
 

@@ -1,11 +1,10 @@
 package multicapmpus.kb3.kb3project.service;
 
 import lombok.extern.slf4j.Slf4j;
-import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.Bgroup;
-import multicapmpus.kb3.kb3project.entity.extra.GroupInfo;
+import multicapmpus.kb3.kb3project.entity.necessary.GroupInfo;
 import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
-import multicapmpus.kb3.kb3project.entity.extra.GroupWithMemberCount;
+import multicapmpus.kb3.kb3project.entity.necessary.GroupWithMemberCount;
 import multicapmpus.kb3.kb3project.mapper.GroupMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

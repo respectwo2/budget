@@ -1,6 +1,6 @@
 package multicapmpus.kb3.kb3project.mapper;
 
-import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
+import multicapmpus.kb3.kb3project.entity.necessary.ConsumeWithUserName;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

@@ -1,7 +1,6 @@
 package multicapmpus.kb3.kb3project.controller;
 
-import multicapmpus.kb3.kb3project.entity.extra.GroupInfo;
-import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
+import multicapmpus.kb3.kb3project.entity.necessary.GroupInfo;
 import multicapmpus.kb3.kb3project.service.GroupService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,9 +1,9 @@
 package multicapmpus.kb3.kb3project.mapper;
 
 import multicapmpus.kb3.kb3project.entity.Bgroup;
-import multicapmpus.kb3.kb3project.entity.extra.GroupInfo;
+import multicapmpus.kb3.kb3project.entity.necessary.GroupInfo;
 import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
-import multicapmpus.kb3.kb3project.entity.extra.GroupWithMemberCount;
+import multicapmpus.kb3.kb3project.entity.necessary.GroupWithMemberCount;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

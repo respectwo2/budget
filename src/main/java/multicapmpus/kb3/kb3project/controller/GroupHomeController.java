@@ -1,10 +1,8 @@
 package multicapmpus.kb3.kb3project.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.Bgroup;
-import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
-import multicapmpus.kb3.kb3project.entity.extra.GroupWithMemberCount;
+import multicapmpus.kb3.kb3project.entity.necessary.GroupWithMemberCount;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
 import multicapmpus.kb3.kb3project.service.GroupMissionService;
 import multicapmpus.kb3.kb3project.service.GroupService;
@@ -16,8 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 import java.util.List;
 
     @Controller

@@ -1,8 +1,8 @@
 package multicapmpus.kb3.kb3project.controller;
 
 import multicapmpus.kb3.kb3project.entity.Bcomment;
-import multicapmpus.kb3.kb3project.entity.extra.CommentWithUserName;
-import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
+import multicapmpus.kb3.kb3project.entity.necessary.CommentWithUserName;
+import multicapmpus.kb3.kb3project.entity.necessary.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.service.CommentService;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
 import multicapmpus.kb3.kb3project.service.GroupMissionService;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 

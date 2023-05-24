@@ -1,6 +1,6 @@
 package multicapmpus.kb3.kb3project.service;
 
-import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
+import multicapmpus.kb3.kb3project.entity.necessary.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.mapper.ConsumeMapper;
 import org.springframework.stereotype.Service;
 
