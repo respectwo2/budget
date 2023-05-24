@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -97,12 +99,17 @@ public class CalendarController {
 //	}
 	
 	@GetMapping("/hMyCalendar")
-	public String hMycalendar(@RequestParam("year") int year, @RequestParam("month") int month, @RequestParam("day") int day, Model model) {
+	public String hMycalendar(@RequestParam("year") int year, @RequestParam("month") int month, @RequestParam("day") int day, Model model, HttpSession session) {
 		// 푸터나, 로그인 이후 오늘 날짜로 연결 할 것
-		LocalDate now = LocalDate.now();
+		LocalDate now= (LocalDate)session.getAttribute("loginDate");
+		Integer user_no = (Integer) session.getAttribute("user_no");
+		//
+		
+		//LocalDate now = LocalDate.now();
 		model.addAttribute("now", now);
 		
-		LocalDate start = LocalDate.of(year, month, 1);
+		//LocalDate start = LocalDate.of(year, month, 1);
+		LocalDate start = LocalDate.of(year, month, user_no);
 		String strStart = start.format(DateTimeFormatter.ofPattern("yyyy-MM"));
 		model.addAttribute("start", start);
 		
@@ -111,11 +118,13 @@ public class CalendarController {
 		model.addAttribute("pick", pick);
 		
 		// (수정)유저 번호 받아오기
-		List <Consume> consumes = consumeService.getMonthConsume(1, strStart);
+		//List <Consume> consumes = consumeService.getMonthConsume(1, strStart);
+		List <Consume> consumes = consumeService.getMonthConsume(user_no, strStart);
 		int [] arr = consumeService.getSum(consumes);
 		model.addAttribute("arr", arr);
 		
-		List <Consume> dayConsumes = consumeService.getDayConsume(1, strPickDay);
+		//List <Consume> dayConsumes = consumeService.getDayConsume(1, strPickDay);
+		List <Consume> dayConsumes = consumeService.getDayConsume(user_no, strPickDay);
 		model.addAttribute("dayConsumes", dayConsumes);
 		model.addAttribute("categoryMap", categoryMap); // 카테고리 맵 넘겨주기
 		

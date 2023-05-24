@@ -9,6 +9,7 @@
 <body>
 	<%@ include file="../navbar.jsp"%>
 	<a href="/Buser/logout">로그아웃</a>
-
+	<hr> 당신의 정보는 <br>
+	${buser }
 </body>
 </html>

@@ -1,7 +1,10 @@
 package multicapmpus.kb3.kb3project.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
+import multicapmpus.kb3.kb3project.DataNotFoundException;
 import multicapmpus.kb3.kb3project.entity.Buser;
 import multicapmpus.kb3.kb3project.mapper.BuserMapper;
 
@@ -19,7 +22,14 @@ public class BuserServiceImpl implements BuserService {
 
 	@Override
 	public Buser getBuserDetail(int u_no) {
-		return null;
+		Optional<Buser> buser=this.bMapper.findByUno(u_no);
+		if (buser.isPresent()) {
+			return buser.get();
+		} else {
+			throw new DataNotFoundException("Not Found");
+		}
+		//Buser buser=bMapper.findByUno(u_no);
+	//	return buser;
 	}
 
 	@Override

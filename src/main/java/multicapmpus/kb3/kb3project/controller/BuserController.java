@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import multicapmpus.kb3.kb3project.entity.Buser;
 import multicapmpus.kb3.kb3project.service.BuserService;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
 
@@ -102,7 +103,10 @@ public class BuserController {
 	}
 	
 	@GetMapping("/mypage")
-	public String mypage() {
+	public String mypage(Model model,HttpSession session) {
+		Integer user_no=(Integer)session.getAttribute("user_no");
+		Buser buser=BService.getBuserDetail(user_no);
+		model.addAttribute("buser", buser);
 		return "home/mypage";
 	}
 	
