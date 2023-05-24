@@ -34,20 +34,16 @@ public class ConsumeServiceImpl implements ConsumeService {
 	}
 
 	@Override
-//<<<<<<< HEAD
-//	public Consume getConsumeDetail(int c_no) {
-//		Optional<Consume> csm = this.csmMapper.findByCno(c_no);
-//		if (csm.isPresent()) {
-//			return csm.get();
-//		} else {
-//			throw new DataNotFoundException("Not Found");
-//		}
-//=======
-	public List<Consume> getDayConsume(long user_no, String date) {
-		System.out.println(date);
-		return mapper.getDayConsume(user_no, date);
-
+	public Consume getConsumeDetail(int c_no) {
+		Optional<Consume> csm = this.csmMapper.findByCno(c_no);
+		if (csm.isPresent()) {
+			return csm.get();
+		} else {
+			throw new DataNotFoundException("Not Found");
+		}
 	}
+	
+	
 
 	@Override
 	public void create(String date, int amount, int category, String memo, String photo) {
@@ -85,6 +81,7 @@ public class ConsumeServiceImpl implements ConsumeService {
 
 	@Override
 	public List<Consume> getDayConsume(int user_no, String date) {
+		System.out.println(date);
 		return csmMapper.getDayConsume(user_no, date);
 	}
 

@@ -1,5 +1,6 @@
 package multicapmpus.kb3.kb3project.controller;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,7 +91,10 @@ public class BuserController {
 			int user_no=BService.getBuserNo(id);
 			session.setAttribute("user_no", user_no);
 			session.setAttribute("id", id);
-			return "redirect:/home";
+		    LocalDate now = LocalDate.now();
+		    session.setAttribute("loginDate", now);
+		  //  return "redirect:/home";
+		    return "redirect:/hMyCalendar?year="+now.getYear()+"&&month="+now.getMonthValue()+"&&day="+now.getDayOfMonth();
 		} else {
 			model.addAttribute("error", "로그인 실패");
 			return "home/login";

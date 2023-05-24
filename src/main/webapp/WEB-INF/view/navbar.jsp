@@ -37,6 +37,7 @@
 
 <nav>
   <ul>
+    
     <li><a href="/home">홈</a></li>
     <li><a href="/page2">그룹</a></li>
     <li><a href="/consume/create">+</a></li>
