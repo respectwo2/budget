@@ -139,6 +139,8 @@ public class CalendarController {
 //	    int gNo = (int) request.getSession().getAttribute("g_no");
 	    List<Integer> totalmoney = csmMapper.getTotalMoneyList(2, strPickDay);
 	    List<String> usernick = csmMapper.getUserNicknames(2, strPickDay);
+	    
+	    
 	    model.addAttribute("membercs", totalmoney);
 	    model.addAttribute("member", usernick);
 		

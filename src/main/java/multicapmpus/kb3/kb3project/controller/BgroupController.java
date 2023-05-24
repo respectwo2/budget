@@ -38,7 +38,6 @@ public class BgroupController {
 	
 	@GetMapping("/bgroup/list")
 	public String list(HttpSession session, Model model) {
-	    // ���ǿ��� user_no ��������
 	    int userNo = (int) session.getAttribute("user_no");
 
 
