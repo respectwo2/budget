@@ -10,6 +10,10 @@
 <body>
 미션: ${groupMissionBanner}
 <hr>
+var = ${group.g_no}
+bgm_no
+
+location.href=“/bgm/now” + var;
 
 <c:forEach items="${consumes}" var="consume">
 <tr>

@@ -8,14 +8,28 @@
     </head>
 
     <body>
+        <span><form><input type="search" id="searchInput"></form></span>
+            <img id="searchIcon" onclick="goToSearchPage('searchInput')" src="/img/돋보기.svg">
+        <hr>
+
         <c:forEach items="${groupsBySearch}" var="group" >
             <div onclick="goToGroupInfoPage(${group.g_no})">그룹명: ${group.g_name}, 필수태그: ${group.g_requiredTag}, 작성한 태그: ${group.g_tag}</div>
         </c:forEach>
 
         <script>
+            //검색된 그룹 보여주는 페이지로 이동하기
+            function goToSearchPage(searchInput) {
+                var searchTmp = document.getElementById(searchInput);
+                var searchValue = searchTmp.value;
+
+                location.href = "/group/search?q=" + searchValue;
+            }
+
+            //그룹
             function goToGroupInfoPage(groupNo) {
                 location.href = "/group/info?groupNo=" + groupNo;  // 그룹정보 페이지로 이동
             }
+
         </script>
     </body>
 </html>

@@ -8,6 +8,9 @@ import java.util.List;
 
 public interface GroupService {
 
+    public int createGroup(Bgroup group);  //그룹 만들기
+    public int getGroupNoByGname(String gName);  //gName으로 gNo 가져오기
+
     public List<Bgroup> getGroupsByUserNo(int userNo);  //회원의 모든 그룹 조회
 
     public List<Bgroup> getGroupsByGtag(String gRequiredTag);  //태그로 그룹 조회하기
@@ -19,4 +22,5 @@ public interface GroupService {
     public GroupWithLeaderName getGroupByGroupNo(int groupNo);  //groupNo으로 그룹정보 조회
 
     public int joinGroup(int userNo, int groupNo);  //userNo를 groupNo에 가입
+
 }

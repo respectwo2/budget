@@ -14,6 +14,20 @@ import java.util.List;
 public interface GroupMapper {
 
     /*
+    그룹 만들기
+     */
+    @Insert("insert into bgroup (g_no, g_maxpeople, g_content, g_tag, g_date, g_leader, g_requiredTag, g_name) " +
+            "VALUES (g_no_seq.nextval, #{group.g_maxpeople}, #{group.g_content}, #{group.g_tag}, sysdate, #{group.g_leader}, #{group.g_requiredTag}, #{group.g_name})")
+    int saveGroup(@Param("group") Bgroup group);
+
+    /*
+        gName으로 g_no 가져오기
+     */
+    @Select("SELECT g_no FROM Bgroup WHERE g_name = #{gName}")
+    int selectGroupNoByGname(@Param("gName") String gName);
+
+
+    /*
     그룹 전체 조회
      */
     @Select("select * from bgroup")

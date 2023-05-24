@@ -11,7 +11,9 @@
         <img id="searchIcon" onclick="goToSearchPage('searchInput')" src="img/돋보기.svg">
         <hr>
 
-        <b id="myGroupBar"> 나의 그룹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="createButton" onclick="goToGroupCreationPage()">만들기</span></b>
+        <b id="myGroupBar"> 나의 그룹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="createButton" onclick="goToGroupCreationPage()">만들기</span>
+        </b>
         <br><br>
 
         <c:forEach items="${userGroups}" var="userGroup" >
@@ -50,7 +52,7 @@
 
         //그룹만들기 페이지로 이동
         function goToGroupCreationPage() {
-             location.href = "group/join";
+             location.href = "group/create";
         }
 
         //그룹g_no의 피드로 이동

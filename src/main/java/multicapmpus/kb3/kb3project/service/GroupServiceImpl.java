@@ -22,6 +22,18 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
+    public int createGroup(Bgroup group) {
+        int result = groupMapper.saveGroup(group);
+        return result;
+    }
+
+    @Override
+    public int getGroupNoByGname(String gName) {
+        int result = groupMapper.selectGroupNoByGname(gName);
+        return result;
+    }
+
+    @Override
     public List<Bgroup> getGroupsByUserNo(int userNo) {
         List<Bgroup> userBgroups = groupMapper.selectGroupsByUserNo(userNo);
         return userBgroups;

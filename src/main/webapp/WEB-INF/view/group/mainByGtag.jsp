@@ -8,7 +8,7 @@
     </head>
     <body>
         <span><form><input type="search" id="searchInput"></form></div>
-        <img id="searchIcon" onclick="goToSearchPage('searchInput')" src="img/돋보기.svg">
+        <img id="searchIcon" onclick="goToSearchPage('searchInput')" src="/img/돋보기.svg">
         <hr>
 
         <b id="myGroupBar"> 나의 그룹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="createButton" onclick="goToGroupCreationPage()">만들기</span></b>
@@ -43,7 +43,7 @@
             var searchTmp = document.getElementById(searchInput);
             var searchValue = searchTmp.value;
 
-            location.href = "group/search?q=" + searchValue;
+            location.href = "/group/search?q=" + searchValue;
         }
 
         function goToGroupCreationPage() {
@@ -51,11 +51,16 @@
         }
 
         function goToGroupFeed(gNo) {
-             location.href = "group/feed?groupNo=" + gNo;  //그룹g_no의 피드로 이동
+             location.href = "/group/feed?groupNo=" + gNo;  //그룹g_no의 피드로 이동
         }
 
         function showGroupsByTag(tag) {
-            location.href = "group/list?tag=" + tag;  //태그로 그룹 조회해서 그룹메인 보여주기
+            location.href = "/group/list?tag=" + tag;  //태그로 그룹 조회해서 그룹메인 보여주기
+        }
+
+        //그룹정보 페이지로 이동
+        function goToGroupInfoPage(groupNo) {
+            location.href = "/group/info?groupNo=" + groupNo;
         }
     </script>
     </body>

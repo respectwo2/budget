@@ -7,7 +7,6 @@ import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
 import multicapmpus.kb3.kb3project.service.GroupMissionService;
 import multicapmpus.kb3.kb3project.service.GroupService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,10 +71,49 @@ import java.util.List;
         }
 
         /*
+        그룹 만들기 페이지로 이동
+         */
+        @GetMapping("/group/create")
+        private String createbgroup(Model model) {
+            return "group/createGroup";
+        }
+
+        /*
+        그룹 만들기 처리 후 그룹홈 페이지로 이동
+         */
+        @PostMapping("/group/create")
+        public String createBgroup(@RequestParam("g_name") String gName,
+                                   @RequestParam("g_maxpeople") int gPeople,
+                                   @RequestParam("g_content") String gContent,
+                                   @RequestParam("g_tag") String gTag,
+                                   @RequestParam("g_rtag") String gRTag) {
+            // 세션에 담긴 회원no가져오기
+//        HttpSession session = request.getSession();
+//        int userNo = (int) session.getAttribute("user_no");
+            int userNo = 1;
+
+            // 그룹 생성
+            Bgroup group = new Bgroup();
+            group.setG_name(gName);
+            group.setG_leader(userNo);
+            group.setG_maxpeople(gPeople);
+            group.setG_requiredTag(gRTag);
+            group.setG_tag(gTag);
+            group.setG_content(gContent);
+            groupService.createGroup(group);
+
+            // 생성된 그룹의 groupNo를 받아와서, user_group테이블에 userNo와 groupNo를 삽입해주기
+            int groupNo = groupService.getGroupNoByGname(gName);
+            groupService.joinGroup(userNo, groupNo);
+
+            return "redirect:/group";
+        }
+
+        /*
         g_requiredTag로 그룹 조회하기
          */
         @GetMapping("/group/list")
-        public String showGroupsByGTag(@Param("tag") String selectedTag, Model model, HttpServletRequest request) {
+        public String showGroupsByGTag(@RequestParam("tag") String selectedTag, Model model, HttpServletRequest request) {
             // 세션에 담긴 회원no 가져오기
 //        HttpSession session = request.getSession();
 //        int userNo = (int) session.getAttribute("user_no");
@@ -98,20 +136,6 @@ import java.util.List;
 
             return "group/mainByGtag";
         }
-
-
-
-        /*
-        그룹 만들기 페이지
-         */
-        @GetMapping("/group/join")
-        public String register() {
-            return "bgroup/register";
-        }
-
-
-
-
 
 
         /*
