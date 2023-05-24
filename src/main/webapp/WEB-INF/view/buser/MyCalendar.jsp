@@ -16,14 +16,13 @@
 		<div class="box">
 			<div class="month">
 				<p class="year">${ start.getYear() }<span style="font-size: 14px">년</span></p>
-				<button style="margin-right: 60px" onclick="prev(${start.getYear()}, ${start.getMonthValue()})">
+				<button style="margin-right: 60px" onclick="prev(${start.getYear()}, ${start.getMonthValue()}, 1)">
 					<img alt="" src="${path}/resources/images/Polygon1.svg">
 				</button>
 
 				<span style="font-size: 24px;">${ start.getMonthValue() }</span>월
-				<button style="margin-left: 60px" onclick="next(${start.getYear()}, ${start.getMonthValue()})">
+				<button style="margin-left: 60px" onclick="next(${start.getYear()}, ${start.getMonthValue()}, 1)">
 					<img alt="" src="${path}/resources/images/Polygon2.svg">
-
 				</button>
 				<div class="total">${arr[0]}</div>
 			</div>
@@ -47,10 +46,7 @@
 					</c:forEach>
 				</c:if>
 				<c:forEach var="k" begin="1" end="${e}" step="1">
-					<button class="daybtn" onclick="location.href = '/MyCalendar?year=${start.getYear()}&&month=${start.getMonthValue()}&&day=${k}'">
-
-					<%-- <button class="daybtn" onclick="viewEvent('${start.getYear()}-${start.getMonthValue()}-${k}')"> --%>
-
+					<button class="daybtn" onclick="location.href = '/buser/MyCalendar?year=${start.getYear()}&&month=${start.getMonthValue()}&&day=${k}'">
 						<div class="btn">
 							<c:choose>
 								<c:when test="${k == pick.getDayOfMonth()}">
@@ -100,7 +96,7 @@
 				year -= 1
 			}
 			
-			link = "/buser/MyCalendar?year="+year+"&&month="+month
+			link = "/buser/MyCalendar?year="+year+"&&month="+month+"&&day="+day;
 			location.href = link;
 		}
 		
@@ -111,9 +107,7 @@
 				year += 1
 			}
 			
-
 			link = "/buser/MyCalendar?year="+year+"&&month="+month+"&&day="+day;
-
 			location.href = link;
 		}
 	
@@ -136,10 +130,7 @@
 				}	
 			})
 		} */
-	    function viewEvent(day) {
-		    
-	        location.href = "/consume/list/" + day;
-	    }
+		
     </script> 
 </body>
 </html>

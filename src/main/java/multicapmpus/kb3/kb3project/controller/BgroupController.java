@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import multicapmpus.kb3.kb3project.entity.Bgroup;
+import multicapmpus.kb3.kb3project.entity.Bgroupmission;
 import multicapmpus.kb3.kb3project.service.BgroupService;
 
 
@@ -20,6 +22,8 @@ public class BgroupController {
 
 	@Autowired
 	private BgroupService bgroupservice;
+	
+	
 	
 	@GetMapping("/bgroup/main")
 	public String main(HttpSession session, Model model) {
@@ -34,7 +38,7 @@ public class BgroupController {
 	
 	@GetMapping("/bgroup/list")
 	public String list(HttpSession session, Model model) {
-	    // ¼¼¼Ç¿¡¼­ user_no °¡Á®¿À±â
+	    // ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ user_no ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	    int userNo = (int) session.getAttribute("user_no");
 
 
@@ -55,18 +59,46 @@ public class BgroupController {
 		return "bgroup/register";
 	}
 	
+	@GetMapping("/bgroup/create")
+	private String createbgroup(Model model) {
+		return "bgroup/create";
+	}
+	
+	@PostMapping("/bgroup/create")
+	public String createBgroup(@RequestParam("g_name") String gName,
+	                                  @RequestParam("g_maxpeople") int gPeople,
+	                                  @RequestParam("g_content") String gContent,
+	                                  @RequestParam("g_tag") String gTag,
+	                                  @RequestParam("g_rtag") String gRTag
+	                                  ) {
+
+	    Bgroup bgroup = new Bgroup();
+	    bgroup.setG_name(gName);
+	    bgroup.setG_content(gContent);
+	    bgroup.setG_tag(gTag);
+	    bgroup.setG_requiredTag(gRTag);
+	    bgroup.setG_maxpeople(gPeople);
+	    bgroupservice.saveBgroup(bgroup);
+	    
+	    return "redirect:/bgroup/main";
+	}
+	
+	
 	@GetMapping("/bgroup/info")
 	public String info(@RequestParam("g_no") int gNo, Model model) {
-	    // ¼¼¼Ç¿¡¼­ g_no °¡Á®¿À±â
+	    // ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ g_no ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	    // int gNo = (int) session.getAttribute("g_no");
 
 	    Bgroup bgroupByNo = bgroupservice.getBgroupByNo(gNo);
+	    String g_rtag = bgroupByNo.getG_requiredTag();
 	    String g_content = bgroupByNo.getG_content();
 	    String g_name = bgroupByNo.getG_name();
 	    String g_tag = bgroupByNo.getG_tag();
 	    int g_maxpeople = bgroupByNo.getG_maxpeople();
 	    int g_leader = bgroupByNo.getG_leader();
-
+	    
+	    
+	    model.addAttribute("rtag",g_rtag);
 	    model.addAttribute("content", g_content);
 	    model.addAttribute("name", g_name);
 	    model.addAttribute("tag", g_tag);
