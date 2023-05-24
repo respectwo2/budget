@@ -19,7 +19,7 @@
 	<td>${categoryMap.get(consume.c_categoryid)}</td>
 	<td>${consume.c_content}</td>
 	<td>${consume.c_image}</td>
-	<div onclick="goToComment(${consume.c_no})">댓글</div>
+	<div onclick="goToComment(${consume.c_no})">댓글(${consume.commentNum})</div>
 	<td>like ${consume.c_like}</td>
 </tr>
 <hr>

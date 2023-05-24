@@ -1,4 +1,4 @@
-package multicapmpus.kb3.kb3project.entity.necessary;
+package multicapmpus.kb3.kb3project.entity.extra;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GroupInfoController {
-    //info와 join 구현
 
     private final GroupService groupService;
 
