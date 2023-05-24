@@ -35,9 +35,12 @@ public interface GroupMapper {
     /*
     user_no가 속한 그룹들과 해당 그룹의 현재 인원 가져오기
      */
-    @Select("SELECT u.user_no, u.g_no, COUNT(u2.user_no) AS memberCount " +
-            "FROM user_group u JOIN user_group u2 ON u.g_no = u2.g_no " +
-            "WHERE u.user_no = ${userNo} GROUP BY u.user_no, u.g_no")
+    @Select("SELECT bg.*, COUNT(u2.user_no) AS memberCount " +
+            "FROM bgroup bg " +
+            "JOIN user_group u ON bg.g_no = u.g_no " +
+            "JOIN user_group u2 ON bg.g_no = u2.g_no " +
+            "WHERE u.user_no = ${userNo} " +
+            "GROUP BY bg.g_no, bg.g_name, bg.g_maxpeople, bg.g_content, bg.g_requiredTag, bg.g_tag, bg.g_leader, bg.g_date, bg.g_private")
     public List<GroupWithMemberCount> selectGroupsWithMemberCountByUserNo(@Param("userNo") int userNo);
 
 
