@@ -8,12 +8,8 @@
      <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 </head>
 <body>
-미션: ${groupMissionBanner}
+    <div onclick="goToGroupMissionPage(${bgmNo})">미션: ${groupMissionBanner}</div>
 <hr>
-var = ${group.g_no}
-bgm_no
-
-location.href=“/bgm/now” + var;
 
 <c:forEach items="${consumes}" var="consume">
 <tr>
@@ -32,6 +28,11 @@ location.href=“/bgm/now” + var;
 <script>
     function goToComment(consumeNo) {
         location.href="/group/feed/comment?consumeNo=" + consumeNo;  // 댓글 등록 및 조회 페이지로 이동
+    }
+    function goToGroupMissionPage(bgmNo) {
+        // 슬래쉬 없애야하나?
+        // location.href=“/bgm/now{bgm_n}”;
+        location.href="/bgm/now" + bgmNo;
     }
 </script>
 

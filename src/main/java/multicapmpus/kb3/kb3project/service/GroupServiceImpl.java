@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.Bgroup;
 import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
+import multicapmpus.kb3.kb3project.entity.extra.GroupWithMemberCount;
 import multicapmpus.kb3.kb3project.mapper.GroupMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,9 +35,9 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public List<Bgroup> getGroupsByUserNo(int userNo) {
-        List<Bgroup> userBgroups = groupMapper.selectGroupsByUserNo(userNo);
-        return userBgroups;
+    public List<GroupWithMemberCount> getGroupsWithMemeberCount(int userNo) {
+        List<GroupWithMemberCount> groupWithMemberCount = groupMapper.selectGroupsWithMemberCountByUserNo(userNo);
+        return groupWithMemberCount;
     }
 
     @Override
@@ -71,4 +72,12 @@ public class GroupServiceImpl implements GroupService {
         int result = groupMapper.insertUserGroup(userNo, groupNo);
         return result;
     }
+
+
+    @Override  // 사용X
+    public List<Bgroup> getGroupsByUserNo(int userNo) {
+        List<Bgroup> userBgroups = groupMapper.selectGroupsByUserNo(userNo);
+        return userBgroups;
+    }
+
 }

@@ -16,9 +16,9 @@
         </b>
         <br><br>
 
-        <c:forEach items="${userGroups}" var="userGroup" >
+        <c:forEach items="${groupsWithMemberCount}" var="userGroup" >
             <div id="myGroup" onclick="goToGroupFeed(${userGroup.g_no})">${userGroup.g_name}&nbsp;&nbsp;&nbsp;
-                <small id="peopleNum">현재인원/${userGroup.g_maxpeople}명</small>&nbsp;&nbsp;&nbsp;
+                <small id="peopleNum">${userGroup.memberCount}/${userGroup.g_maxpeople}명</small>&nbsp;&nbsp;&nbsp;
                 <b>#${userGroup.g_tag}</b>
             </div>
             <br>

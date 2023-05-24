@@ -14,9 +14,9 @@
         <b id="myGroupBar"> 나의 그룹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="createButton" onclick="goToGroupCreationPage()">만들기</span></b>
         <br><br>
 
-        <c:forEach items="${userGroups}" var="userGroup" >
+        <c:forEach items="${groupsWithMemberCount}" var="userGroup" >
             <div id="myGroup" onclick="goToGroupFeed(${userGroup.g_no})">${userGroup.g_name}&nbsp;&nbsp;&nbsp;
-                <small id="peopleNum">현재인원/${userGroup.g_maxpeople}명</small>&nbsp;&nbsp;&nbsp;
+                <small id="peopleNum">${userGroup.memberCount}/${userGroup.g_maxpeople}명</small>&nbsp;&nbsp;&nbsp;
                 <b>#${userGroup.g_tag}</b>
             </div>
             <br>
@@ -39,6 +39,7 @@
         </div>
 
     <script>
+
         function goToSearchPage(searchInput) {
             var searchTmp = document.getElementById(searchInput);
             var searchValue = searchTmp.value;
@@ -47,7 +48,7 @@
         }
 
         function goToGroupCreationPage() {
-             location.href = "group/join";  //그룹만들기 페이지로 이동
+             location.href = "/group/create";  //그룹만들기 페이지로 이동
         }
 
         function goToGroupFeed(gNo) {

@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.Bgroup;
 import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
+import multicapmpus.kb3.kb3project.entity.extra.GroupWithMemberCount;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
 import multicapmpus.kb3.kb3project.service.GroupMissionService;
 import multicapmpus.kb3.kb3project.service.GroupService;
@@ -44,17 +45,18 @@ import java.util.List;
 //        int userNo = (int) session.getAttribute("user_no");
             int userNo = 1;
 
-            // 회원이 가입한 그룹들
-            List<Bgroup> userBgroups = groupService.getGroupsByUserNo(userNo);
-            System.out.println("userGroups=" + userBgroups);
-            model.addAttribute("userGroups", userBgroups);
+            // 회원이 가입한 그룹들 (+현재 인원)
+            List<GroupWithMemberCount> groupsWithMemberCount = groupService.getGroupsWithMemeberCount(userNo);
+            System.out.println("groupsWithMemberCount=" + groupsWithMemberCount);
+            model.addAttribute("groupsWithMemberCount", groupsWithMemberCount);
+
 
             // 현재 등록된 그룹들
             List<Bgroup> groupList = groupService.getGroupList();
             System.out.println("groups=" + groupList);
             model.addAttribute("groupList", groupList);
 
-            return "group/main";  //group/main으로 리다이렉트
+            return "group/main";  // group/main으로 리다이렉트
         }
 
         /*
@@ -114,17 +116,15 @@ import java.util.List;
          */
         @GetMapping("/group/list")
         public String showGroupsByGTag(@RequestParam("tag") String selectedTag, Model model, HttpServletRequest request) {
-            // 세션에 담긴 회원no 가져오기
+            // 세션에 담긴 회원no가져오기
 //        HttpSession session = request.getSession();
 //        int userNo = (int) session.getAttribute("user_no");
             int userNo = 1;
 
-            System.out.println("selectedTag=" + selectedTag);
-
-            // 회원이 가입한 그룹들
-            List<Bgroup> userBgroups = groupService.getGroupsByUserNo(userNo);
-            System.out.println("userGroups=" + userBgroups);
-            model.addAttribute("userGroups", userBgroups);
+            // 회원이 가입한 그룹들 (+현재 인원)
+            List<GroupWithMemberCount> groupsWithMemberCount = groupService.getGroupsWithMemeberCount(userNo);
+            System.out.println("groupsWithMemberCount=" + groupsWithMemberCount);
+            model.addAttribute("groupsWithMemberCount", groupsWithMemberCount);
 
             // 선택된 태그의 그룹들
             List<Bgroup> groupsByGtag = groupService.getGroupsByGtag(selectedTag);

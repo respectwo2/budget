@@ -1,8 +1,8 @@
 package multicapmpus.kb3.kb3project.mapper;
 
-import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.Bgroup;
 import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
+import multicapmpus.kb3.kb3project.entity.extra.GroupWithMemberCount;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -26,7 +26,6 @@ public interface GroupMapper {
     @Select("SELECT g_no FROM Bgroup WHERE g_name = #{gName}")
     int selectGroupNoByGname(@Param("gName") String gName);
 
-
     /*
     그룹 전체 조회
      */
@@ -34,16 +33,18 @@ public interface GroupMapper {
     public List<Bgroup> selectAll();
 
     /*
-    user_no가 속한 group 가져오기
+    user_no가 속한 그룹들과 해당 그룹의 현재 인원 가져오기
      */
-    @Select("SELECT * FROM Bgroup WHERE g_no IN " +
-            "(SELECT g_no FROM user_group WHERE user_no = #{userNo})")
-    public List<Bgroup> selectGroupsByUserNo(@Param("userNo") int userNo);
+    @Select("SELECT u.user_no, u.g_no, COUNT(u2.user_no) AS memberCount " +
+            "FROM user_group u JOIN user_group u2 ON u.g_no = u2.g_no " +
+            "WHERE u.user_no = ${userNo} GROUP BY u.user_no, u.g_no")
+    public List<GroupWithMemberCount> selectGroupsWithMemberCountByUserNo(@Param("userNo") int userNo);
+
 
     /*
-        검색어가 그룹명 또는 해시태그에 포함된 그룹 가져오기
+        검색어가 그룹명 또는 해시태그 또는 필수태그에 포함된 그룹 가져오기
     */
-    @Select("SELECT * FROM Bgroup WHERE g_tag LIKE '%' || #{searchValue} || '%' OR g_name LIKE '%' || #{searchValue} || '%'")
+    @Select("SELECT * FROM Bgroup WHERE g_tag LIKE '%' || #{searchValue} || '%' OR g_name LIKE '%' || #{searchValue} || '%' OR g_requiredTag LIKE '%' || #{searchValue} || '%'")
     public List<Bgroup> selectBySearchValue(@Param("searchValue") String searchValue);
 
 
@@ -68,6 +69,13 @@ public interface GroupMapper {
     public int insertUserGroup(@Param("userNo") int userNo, @Param("groupNo") int groupNo);
 
 
+    /*
+    user_no가 속한 group 가져오기 - 사용X
+     */
+    @Select("SELECT * FROM Bgroup WHERE g_no IN " +
+            "(SELECT g_no FROM user_group WHERE user_no = #{userNo})")
+    public List<Bgroup> selectGroupsByUserNo(@Param("userNo") int userNo);
+
 
 
 //    /*
@@ -75,10 +83,5 @@ public interface GroupMapper {
 //    */
 //    @Select("SELECT * FROM Consume WHERE user_no IN (SELECT user_no FROM user_group WHERE g_no = #{groupNo}) ORDER BY c_date ASC")
 //    public List<Consume> selectConsumesByGroupNo(@Param("groupNo") int groupNo);
-//
-//    /*
-//    c_no의 user_name 가져오기
-//    @Select("
-//     */
 
 }

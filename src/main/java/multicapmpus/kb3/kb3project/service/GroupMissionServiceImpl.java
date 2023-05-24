@@ -17,9 +17,7 @@ public class GroupMissionServiceImpl implements GroupMissionService {
         this.groupMissionMapper = groupMissionMapper;
     }
 
-    /*
-    그룹미션 배너 가져오기
-     */
+
     @Override
     public String getGroupMissionBanner(int gNo) {  //param: g_no in GroupMission table
         Bgroupmission BGroupMission = groupMissionMapper.selectOne(gNo);
@@ -30,5 +28,11 @@ public class GroupMissionServiceImpl implements GroupMissionService {
 
         String groupMissionName = gmStartDate + "~" + gmEndDate + "  " + gmGoal + "원만 소비 목표";
         return groupMissionName;
+    }
+
+    @Override
+    public int getGroupMissionNoByGroupNo(int gNo) {
+        int bgmNo = groupMissionMapper.selectBgmNoByGroupNo(gNo);
+        return bgmNo;
     }
 }

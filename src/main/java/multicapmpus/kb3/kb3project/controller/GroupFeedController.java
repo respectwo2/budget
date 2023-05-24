@@ -36,13 +36,17 @@ public class GroupFeedController {
 
     /*
         그룹 피드 화면
-         */
+    */
     @GetMapping("/group/feed")
     public String feed(@RequestParam("groupNo") int groupNo, Model model, HttpServletRequest request) {
 
         String groupMissionBanner = groupMissionService.getGroupMissionBanner(groupNo);
         System.out.println("groupMissionBanner=" + groupMissionBanner);
         model.addAttribute("groupMissionBanner", groupMissionBanner);
+
+        // 그룹미션 넘버 jsp로 넘겨주기 (그룹미션 페이지로 이동시 필요함)
+        int bgmNo = groupMissionService.getGroupMissionNoByGroupNo(groupNo);
+        model.addAttribute("bgmNo", bgmNo);
 
         List<ConsumeWithUserName> consumes = consumeService.getConsumes(groupNo);
         System.out.println("consumes=" + consumes);
