@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import multicapmpus.kb3.kb3project.entity.Consume;
+import multicapmpus.kb3.kb3project.entity.GroupConsume;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
+import multicapmpus.kb3.kb3project.service.GroupConsumeService;
 
 @Controller
 public class CalendarController {
@@ -21,10 +23,36 @@ public class CalendarController {
 	@Autowired
 	private ConsumeService consumeService;
 	
+	@Autowired
+	private GroupConsumeService groupService;
 	
-	@GetMapping("/MyCalendar")
-	public String Mycalendar(@RequestParam("year") int year, @RequestParam("month") int month, @RequestParam("day") int day, Model model) {
-		// 푸터나, 로그인 이후 오늘 날짜로 연결 할 것
+	@GetMapping("/buser/calendar")
+	public String calendar(Model model) {
+		LocalDate now = LocalDate.now();
+		model.addAttribute("now", now);
+		
+		LocalDate pick = LocalDate.now();
+		String strPick = pick.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+		model.addAttribute("pick", pick);
+		
+		LocalDate start = LocalDate.of(pick.getYear(), pick.getMonthValue(), 1);
+		String strStart = start.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+		String strStartDay = start.format(DateTimeFormatter.ofPattern("yyyy-MM-DD"));
+		model.addAttribute("start", start);
+		
+	
+		List <Consume> consumes = consumeService.getMonthConsume(1, strStart);
+		int [] arr = consumeService.getSum(consumes);
+		model.addAttribute("arr", arr);
+		
+		List <Consume> dayConsumes = consumeService.getDayConsume(1, strStartDay);
+		model.addAttribute("dayConsumes", dayConsumes);
+
+		return "buser/calendar";
+	}
+	
+	@GetMapping("/buser/MyCalendar")
+	public String Mycalendar(@RequestParam("year") int year, @RequestParam("month") int month, Model model) {
 		LocalDate now = LocalDate.now();
 		model.addAttribute("now", now);
 		
@@ -36,7 +64,7 @@ public class CalendarController {
 		String strPickDay = pick.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		model.addAttribute("pick", pick);
 		
-		// (수정)유저 번호 받아오기
+		// (�닔�젙)�쑀�� 踰덊샇 諛쏆븘�삤湲�
 		List <Consume> consumes = consumeService.getMonthConsume(1, strStart);
 		int [] arr = consumeService.getSum(consumes);
 		model.addAttribute("arr", arr);
@@ -44,7 +72,53 @@ public class CalendarController {
 		List <Consume> dayConsumes = consumeService.getDayConsume(1, strPickDay);
 		model.addAttribute("dayConsumes", dayConsumes);
 		
-		return "MyCalendar";
+		return "buser/MyCalendar";
 	}
+	
+	@GetMapping("/bgroup/calendar")
+	public String bgroupcalendar(Model model) {
+		LocalDate now = LocalDate.now();
+		model.addAttribute("now", now);
+		LocalDate pick = LocalDate.now();
+//		String strPick = pick.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+		model.addAttribute("pick", pick);
+		
+		LocalDate start = LocalDate.of(pick.getYear(), pick.getMonthValue(), 1);
+		String strStart = start.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+		String strStartDay = start.format(DateTimeFormatter.ofPattern("yyyy-MM-DD"));
+		model.addAttribute("start", start);
+		
+		
+	
+		List <GroupConsume> consumes = groupService.getGroupMonthConsume(2, strStart);
+		int [] arr = groupService.getSum(consumes);
+		model.addAttribute("arr", arr);
+		
+		List <GroupConsume> dayConsumes = groupService.getGroupDayConsume(2, strStartDay);
+		model.addAttribute("dayConsumes", dayConsumes);
+		
+
+		
+		
+		return "bgroup/calendar";
+	}
+	
+	@GetMapping("/bgroup/GroupCalendar")
+	public String Groupcalendar(@RequestParam("year") int year, @RequestParam("month") int month, Model model) {
+		LocalDate now = LocalDate.now();
+		model.addAttribute("now", now);
+		
+		LocalDate start = LocalDate.of(year, month, 1);
+		String strStart = start.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+		model.addAttribute("start", start);
+		
+		List <GroupConsume> consumes = groupService.getGroupMonthConsume(2, strStart);
+		int [] arr = groupService.getSum(consumes);
+		model.addAttribute("arr", arr);
+		
+		
+		return "bgroup/GroupCalendar";
+	}
+
 	
 }

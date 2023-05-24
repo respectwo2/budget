@@ -8,21 +8,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MyCalendar</title>
+<title>calendar</title>
 <link href="${path}/resources/css/calendar.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="box">
 			<div class="month">
+			
 				<p class="year">${ start.getYear() }<span style="font-size: 14px">년</span></p>
-				<button style="margin-right: 60px" onclick="prev(${start.getYear()}, ${start.getMonthValue()}, 1)">
-					<img alt="" src="${path}/resources/icon/Polygon1.svg">
+				<button style="margin-right: 60px" onclick="prev(${start.getYear()}, ${start.getMonthValue()})">
+					<img alt="" src="${path}/resources/images/Polygon1.svg">
 				</button>
 
 				<span style="font-size: 24px;">${ start.getMonthValue() }</span>월
-				<button style="margin-left: 60px" onclick="next(${start.getYear()}, ${start.getMonthValue()}, 1)">
-					<img alt="" src="${path}/resources/icon/Polygon2.svg">
+				<button style="margin-left: 60px">
+					<img alt="" src="${path}/resources/images/Polygon2.svg">
 				</button>
 				<div class="total">${arr[0]}</div>
 			</div>
@@ -38,21 +39,20 @@
 				<div class="w" style="color: #3269F5;">토</div>	
 			</div>
 			<div class="day">
-				<c:if test="${s != 7}">
-					<c:forEach var="i" begin="1" end="${s}" step="1">
-						<button class="blankbtn">
-							<div class="btn"><p>　</p></div>
-						</button>
-					</c:forEach>
-				</c:if>
+				<c:forEach var="i" begin="1" end="${s}" step="1">
+					<button class="blankbtn">
+						<div class="btn"><p>　</p></div>
+					</button>
+				</c:forEach>
+				
 				<c:forEach var="k" begin="1" end="${e}" step="1">
-					<button class="daybtn" onclick="location.href = '/MyCalendar?year=${start.getYear()}&&month=${start.getMonthValue()}&&day=${k}'">
+					<button class="daybtn" onclick="viewEvent('${start.getYear()}-${start.getMonthValue()}-${k}')">
 						<div class="btn">
 							<c:choose>
 								<c:when test="${k == pick.getDayOfMonth()}">
 									<span class="pick">${k}</span>
 								</c:when>							
-								<c:when test="${start.getMonthValue() == now.getMonthValue() && k == now.getDayOfMonth()}">
+								<c:when test="${k == now.getDayOfMonth()}">
 									<span style="color: #F87670">${k}</span>
 								</c:when>	
 								<c:when test="${(k+s)%7 == 0 or (k+s)%7 == 1}">
@@ -72,42 +72,23 @@
 								
 			</div>
 		</div>
-		
 	</div>
-	
-	<div class="dayconsumes">
-		<c:forEach var="consume" items="${dayConsumes}">
-			<div class="consumebox">			
-				${consume}
-			</div>
-		</c:forEach>
 
-	
-	</div>
+	<c:forEach items="${dayConsumes}" var="consume" >
+		${consume}
+	</c:forEach>
 	
 	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript"> 
 	
-		function prev(y, m, d){
-			console.log(d)
-			let month = m - 1; let year = y; let day = d;
+		function prev(y, m){
+			let month = m - 1; let year = y
 			if (month == 0){
 				month = 12
 				year -= 1
 			}
 			
-			link = "/MyCalendar?year="+year+"&&month="+month+"&&day="+day;
-			location.href = link;
-		}
-		
-		function next(y, m, d){
-			let month = m + 1; let year = y; let day = d;
-			if (month == 13){
-				month = 1 
-				year += 1
-			}
-			
-			link = "/MyCalendar?year="+year+"&&month="+month+"&&day="+day;
+			link = "/buser/MyCalendar?year="+year+"&&month="+month
 			location.href = link;
 		}
 	
@@ -130,6 +111,12 @@
 				}	
 			})
 		} */
+	    function viewEvent(day) {
+	    
+	        location.href = "/consume/list/" + day;
+	    }
+		
+		
 		
     </script> 
 </body>
