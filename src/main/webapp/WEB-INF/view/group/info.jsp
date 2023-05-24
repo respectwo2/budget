@@ -12,7 +12,7 @@
         필수태그: ${groupInfo.g_requiredTag}<br>
         추가태그: ${groupInfo.g_tag}<br>
         그룹리더: ${groupInfo.g_leaderName}<br>
-        현재인원/${groupInfo.g_maxpeople}명<br>
+        ${groupInfo.memberCount}/${groupInfo.g_maxpeople}명<br>
         <hr>
         그룹설명: ${groupInfo.g_content}
         <div id="groupJoinButton" onclick="groupJoin(${groupInfo.g_no})">가입하기</div>

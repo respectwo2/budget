@@ -3,6 +3,7 @@ package multicapmpus.kb3.kb3project.service;
 import lombok.extern.slf4j.Slf4j;
 import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.Bgroup;
+import multicapmpus.kb3.kb3project.entity.extra.GroupInfo;
 import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
 import multicapmpus.kb3.kb3project.entity.extra.GroupWithMemberCount;
 import multicapmpus.kb3.kb3project.mapper.GroupMapper;
@@ -35,6 +36,12 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
+    public GroupInfo getGroupInfo(int groupNo) {
+        GroupInfo groupInfo = groupMapper.selectGroupInfo(groupNo);
+        return groupInfo;
+    }
+
+    @Override
     public List<GroupWithMemberCount> getGroupsWithMemeberCount(int userNo) {
         List<GroupWithMemberCount> groupWithMemberCount = groupMapper.selectGroupsWithMemberCountByUserNo(userNo);
         return groupWithMemberCount;
@@ -58,21 +65,17 @@ public class GroupServiceImpl implements GroupService {
         return groupsByRequiredtag;
     }
 
-    /*
-    그룹 정보 페이지
-     */
-    @Override
-    public GroupWithLeaderName getGroupByGroupNo(int groupNo) {
-        GroupWithLeaderName group = groupMapper.selectByGroupNo(groupNo);
-        return group;
-    }
-
     @Override
     public int joinGroup(int userNo, int groupNo) {
         int result = groupMapper.insertUserGroup(userNo, groupNo);
         return result;
     }
 
+    @Override  // 사용X
+    public GroupWithLeaderName getGroupByGroupNo(int groupNo) {
+        GroupWithLeaderName group = groupMapper.selectByGroupNo(groupNo);
+        return group;
+    }
 
     @Override  // 사용X
     public List<Bgroup> getGroupsByUserNo(int userNo) {

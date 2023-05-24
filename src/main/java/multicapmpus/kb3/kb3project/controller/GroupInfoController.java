@@ -1,5 +1,6 @@
 package multicapmpus.kb3.kb3project.controller;
 
+import multicapmpus.kb3.kb3project.entity.extra.GroupInfo;
 import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
 import multicapmpus.kb3.kb3project.service.GroupService;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class GroupInfoController {
     @GetMapping("/group/info")
     public String info(@RequestParam("groupNo") int groupNo, Model model) {
 
-        GroupWithLeaderName groupInfo = groupService.getGroupByGroupNo(groupNo);
+        GroupInfo groupInfo = groupService.getGroupInfo(groupNo);
         System.out.println("groupInfo=" + groupInfo);
         model.addAttribute("groupInfo", groupInfo);
 
