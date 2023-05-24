@@ -16,15 +16,6 @@
 		<div class="box">
 			<div class="month">
 				<p class="year">${ start.getYear() }<span style="font-size: 14px">년</span></p>
-<<<<<<< HEAD:src/main/webapp/WEB-INF/view/MyCalendar.jsp
-				<button style="margin-right: 60px" onclick="prev(${start.getYear()}, ${start.getMonthValue()}, 1)">
-					<img alt="" src="${path}/resources/icon/Polygon1.svg">
-				</button>
-
-				<span style="font-size: 24px;">${ start.getMonthValue() }</span>월
-				<button style="margin-left: 60px" onclick="next(${start.getYear()}, ${start.getMonthValue()}, 1)">
-					<img alt="" src="${path}/resources/icon/Polygon2.svg">
-=======
 				<button style="margin-right: 60px" onclick="prev(${start.getYear()}, ${start.getMonthValue()})">
 					<img alt="" src="${path}/resources/images/Polygon1.svg">
 				</button>
@@ -32,7 +23,7 @@
 				<span style="font-size: 24px;">${ start.getMonthValue() }</span>월
 				<button style="margin-left: 60px" onclick="next(${start.getYear()}, ${start.getMonthValue()})">
 					<img alt="" src="${path}/resources/images/Polygon2.svg">
->>>>>>> dongyeon:src/main/webapp/WEB-INF/view/buser/MyCalendar.jsp
+
 				</button>
 				<div class="total">${arr[0]}</div>
 			</div>
@@ -56,11 +47,10 @@
 					</c:forEach>
 				</c:if>
 				<c:forEach var="k" begin="1" end="${e}" step="1">
-<<<<<<< HEAD:src/main/webapp/WEB-INF/view/MyCalendar.jsp
 					<button class="daybtn" onclick="location.href = '/MyCalendar?year=${start.getYear()}&&month=${start.getMonthValue()}&&day=${k}'">
-=======
-					<button class="daybtn" onclick="viewEvent('${start.getYear()}-${start.getMonthValue()}-${k}')">
->>>>>>> dongyeon:src/main/webapp/WEB-INF/view/buser/MyCalendar.jsp
+
+					<%-- <button class="daybtn" onclick="viewEvent('${start.getYear()}-${start.getMonthValue()}-${k}')"> --%>
+
 						<div class="btn">
 							<c:choose>
 								<c:when test="${k == pick.getDayOfMonth()}">
@@ -110,11 +100,7 @@
 				year -= 1
 			}
 			
-<<<<<<< HEAD:src/main/webapp/WEB-INF/view/MyCalendar.jsp
-			link = "/MyCalendar?year="+year+"&&month="+month+"&&day="+day;
-=======
 			link = "/buser/MyCalendar?year="+year+"&&month="+month
->>>>>>> dongyeon:src/main/webapp/WEB-INF/view/buser/MyCalendar.jsp
 			location.href = link;
 		}
 		
@@ -125,11 +111,9 @@
 				year += 1
 			}
 			
-<<<<<<< HEAD:src/main/webapp/WEB-INF/view/MyCalendar.jsp
-			link = "/MyCalendar?year="+year+"&&month="+month+"&&day="+day;
-=======
-			link = "/buser/MyCalendar?year="+year+"&&month="+month
->>>>>>> dongyeon:src/main/webapp/WEB-INF/view/buser/MyCalendar.jsp
+
+			link = "/buser/MyCalendar?year="+year+"&&month="+month+"&&day="+day;
+
 			location.href = link;
 		}
 	
