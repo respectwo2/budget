@@ -24,9 +24,11 @@
 	<br> ${csm.c_money }원
 	<hr>
 	${csm.c_content }
-	<br> ${csm.c_image }
-	<img src="${pageContext.request.contextPath}/resources/${csm.c_image}"
-		alt="이미지" />
-
+	<br> 
+	<%-- <img src="${pageContext.request.contextPath}/resources/${csm.c_image}"
+		alt="이미지" /> --%>
+	<%-- <img src="${csm.c_image}" alt="이미지" /> --%>
+	<img src="${path}/resources/jpg/${csm.c_image}">
+	
 </body>
 </html>

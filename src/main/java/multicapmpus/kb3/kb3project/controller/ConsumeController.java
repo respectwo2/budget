@@ -2,6 +2,7 @@ package multicapmpus.kb3.kb3project.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,13 +16,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.PageContext;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +58,8 @@ public class ConsumeController {
 
 	private final ConsumeService csmService;
 	private Map<Integer, String> categoryMap = new HashMap<>();
-
+	
+	
 	public ConsumeController(ConsumeService csmService, ConsumeMapper csmMapper) {
 		this.csmService = csmService;
 		this.csmMapper = csmMapper;
@@ -119,6 +124,8 @@ public class ConsumeController {
 //		
 //			System.out.println(csm_date_modify);
 //		}
+		
+		
 		return "consume/consume_date";
 
 	}
@@ -146,20 +153,28 @@ public class ConsumeController {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-
+		String photo_path=null;
 		if (!photo.isEmpty()) {
-			String fileName = photo.getOriginalFilename();
-			String filePath = "D:/tack/Desktop/kb3project/src/main/webapp/resources/" + fileName;
+			UUID uuid = UUID.randomUUID();
+			String uuidString = uuid.toString();
+			String fileName = uuidString+ "_" + photo.getOriginalFilename();
+			String filePath = "D:/tack/Desktop/kb3project/src/main/resources/static/jpg/" + fileName;
+			//String filePath = "D:/tack/Desktop" + fileName;
+			//String filePath = "src/main/resources/static" + fileName;
+			//String filePath = "resources/" + fileName;
+			//String filePath = session.getServletContext().getRealPath("/resources/") + fileName;
+
 			try {
 				File dest = new File(filePath);
 				photo.transferTo(dest);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
+				
+			photo_path= fileName;
 		}
 
-		this.csmService.create(date, amount, category, memo, "test", session);
+		this.csmService.create(date, amount, category, memo, photo_path, session);
 		LocalDate now = (LocalDate) session.getAttribute("loginDate");
 		// System.out.println(now.toString());
 		if (now != null)
