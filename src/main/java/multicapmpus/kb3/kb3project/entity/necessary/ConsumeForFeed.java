@@ -93,4 +93,20 @@ public class ConsumeForFeed {
     public void setCommentNum(int commentNum) {
         this.commentNum = commentNum;
     }
+
+    @Override
+    public String toString() {
+        return "ConsumeForFeed{" +
+                "c_no=" + c_no +
+                ", user_no=" + user_no +
+                ", user_name='" + user_name + '\'' +
+                ", c_date=" + c_date +
+                ", c_money=" + c_money +
+                ", c_categoryid=" + c_categoryid +
+                ", c_content='" + c_content + '\'' +
+                ", c_image='" + c_image + '\'' +
+                ", c_like=" + c_like +
+                ", commentNum=" + commentNum +
+                '}';
+    }
 }

@@ -15,13 +15,13 @@ public interface ConsumeMapper {
     /*
         g_no의 모든 user_no의 user_name과 consume과 해당 consume글의 댓글 개수를 date 오름차순으로 가져오기
     */
-    @Select("SELECT c.c_no, c.user_no, c.c_date, c.c_money, c.c_categoryid, c.c_image, c.c_content, bu.user_name, COUNT(bc.cmn_no) AS commentNum " +
+    @Select("SELECT c.c_no, c.user_no, c.c_date, c.c_money, c.c_categoryid, c.c_image, c.c_content, bu.user_name, COUNT(bc.cmn_no) AS commentNum, c.c_like " +
             "FROM user_group ug " +
             "JOIN Buser bu ON ug.user_no = bu.user_no " +
             "JOIN Consume c ON ug.user_no = c.user_no " +
             "LEFT JOIN Bcomment bc ON c.c_no = bc.c_no " +
             "WHERE ug.g_no = #{groupNo} " +
-            "GROUP BY c.c_no, c.user_no, c.c_date, c.c_money, c.c_categoryid, c.c_image, c.c_content, bu.user_name " +
+            "GROUP BY c.c_no, c.user_no, c.c_date, c.c_money, c.c_categoryid, c.c_image, c.c_content, bu.user_name, c.c_like " +
             "ORDER BY c.c_date ASC")
     public List<ConsumeForFeed> selectConsumesWithCommentNumByGroupNo(@Param("groupNo") int groupNo);
 
