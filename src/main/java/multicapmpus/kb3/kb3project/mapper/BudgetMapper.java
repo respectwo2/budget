@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import multicapmpus.kb3.kb3project.entity.Budget;
 import multicapmpus.kb3.kb3project.entity.BudgetList;
 import multicapmpus.kb3.kb3project.entity.Consume;
+import multicapmpus.kb3.kb3project.entity.ConsumePlusCategory;
 @Mapper
 public interface BudgetMapper {
 	 
@@ -28,12 +29,13 @@ public interface BudgetMapper {
             "WHERE c.user_no = #{user_no} AND b.bd_no = #{bd_no} " +
             "AND c.c_date BETWEEN b.bd_start AND b.bd_end " +
             "GROUP BY c_categoryid")
-    List<Consume> findbudgetC(@Param("user_no") int user_no, @Param("bd_no") int bd_no);
+    List<ConsumePlusCategory> findbudgetC(@Param("user_no") int user_no, @Param("bd_no") int bd_no);
 
-    @Update("UPDATE budget b SET b.bd_goalnow = b.bd_goalnow + " +
-            "(SELECT SUM(c.c_money) FROM consume c " +
-            "WHERE c.user_no = #{user_no} AND c.c_date BETWEEN b.bd_start AND b.bd_end)")
-    void goalnowUpdate(@Param("user_no") int user_no);
+   @Select("SELECT bd_no, bd_name, bd_goal, bd_goal-bd_goalnow AS bd_goalleft, bd_end-bd_start AS bd_dateleft " + 
+   		   "FROM budget WHERE bd_no=#{bd_no}")
+   BudgetList getBudgetByNo(@Param("bd_no") int bd_No);
 
+   @Select("select bd_start, bd_end from budget where bd_no=#{bd_no}")
+   Budget getBdByNo(@Param("bd_no") int bd_No);
 
 }

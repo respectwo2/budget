@@ -35,7 +35,7 @@
 				<% int itemCount=0; %>
 				<c:forEach items="${budgetList}" var="bd">
 				<div class="list">
-					<button type="button" onclick="location.href='/budget/budget_detail${bd.bd_no}'">
+					<button  class="button1" type="button" onclick="location.href='/budget/budget_detail${bd.bd_no}'">
 						<div class="cherry">
 							<img src="/resources/images/cherry.png">
 						</div>
@@ -53,7 +53,10 @@
 			        container.style.height = budgetList.offsetHeight + (itemCount - 1) * 100 + 'px';
 				</script>
 			</div>
-			<div class="footer"></div>
 		</div>
+		<button class="button2" type="button" onclick="location.href='/budget/budget_register'">
+			<img src="${pageContext.request.contextPath}/resources/images/budgetbtn.svg" alt="SVG">
+		</button>
+		<div class="footer"></div>
 </body>
 </html>

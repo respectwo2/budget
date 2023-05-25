@@ -1,5 +1,7 @@
 package multicapmpus.kb3.kb3project.controller;
 
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -17,13 +19,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import multicapmpus.kb3.kb3project.entity.Budget;
 import multicapmpus.kb3.kb3project.entity.BudgetList;
 import multicapmpus.kb3.kb3project.entity.Consume;
+import multicapmpus.kb3.kb3project.entity.ConsumePlusCategory;
 import multicapmpus.kb3.kb3project.service.BudgetService;
 
 @Controller
 public class BudgetController {
 	
 	@Autowired private BudgetService budgetService;
-	//è¸°ê¾©ì»¡ ï¿½ë²‘æ¿¡ï¿½ ï¿½ëŸ¹ï¿½ì” ï§ï¿½
+	//¹öÂî ½ÃÀÛ ÆäÀÌÁö º¸¿©ÁÖ±â
+	@GetMapping("/budget/budget_start")
+	public String budgetStart(Model model) {
+		return "budget/budget_start";
+	}
+	
+	//¹öÂî µî·Ï
 	@GetMapping("/budget/budget_register")
 	public String budgetRegisterForm(Model model) {
 		return "budget/budget_register";
@@ -32,11 +41,11 @@ public class BudgetController {
 	private String createBudget(Model model) {
 		return "budget/create"; 
 	}
-	//è¸°ê¾©ì»¡ ï¿½ë²‘æ¿¡ï¿½ è«›ì†ï¿½ åª›ï¿½ post æ¿¡ï¿½ ï¿½ìŸ¾ï¿½ë„š ï¿½ì‘ insert
-	@PostMapping("/budget/create")//POST è«›â‘¹ë–‡ï¿½ì‘æ¿¡ï¿½ ï¿½ìŸ¾ï¿½ë„š 
+	//post·Î ¹ŞÀº Æû°ªÀ» insert
+	@PostMapping("/budget/create")
 	public String createBudgetPost(@RequestParam("title") String bd_name,
-			@RequestParam("start_date") String bd_start,
-			@RequestParam("end_date") String bd_end,
+			@RequestParam("start_date") LocalDate bd_start,
+			@RequestParam("end_date") LocalDate bd_end,
 			@RequestParam("goal") int bd_goal,
 			@RequestParam("comment") String bd_comment,
 			@RequestParam("user_no") int user_no,
@@ -54,7 +63,7 @@ public class BudgetController {
 		
 		return"redirect:/budget/budget_list"; 
 	}
-	//ï¿½ì‘€ï¿½ï¿½ è¹‚ï¿½ ï¿½ë²‘æ¿¡ì•ºë¸³ è¸°ê¾©ì»¡ ç”±ÑŠë’ªï¿½ë“ƒ è¹‚ëŒë¿¬äºŒì‡¨ë¦° 
+	//¹öÂî ¸®½ºÆ® º¸¿©ÁÖ±â 
 	@GetMapping("/budget/budget_list") 
 	public String budgetList(HttpSession session, Model model) { 
 		int user_No=(int)session.getAttribute("user_no");
@@ -63,7 +72,7 @@ public class BudgetController {
 		return "budget/budget_list"; 
 	}
 	
-	//ï¿½ê½­ï¿½ë€¡ ï¿½ì—«ï¿½ì“½ ï¿½ê½•ï¿½ì ™ï¿½ë¹ï¿½ëª¦å¯ƒï¿½
+	//¸ŞÀÎ¿¡¼­ ¼¼¼Ç ¹Ş¾Æ¿À±â
 	@GetMapping("/budget/main")
 	public String main(HttpSession session, Model model) {
 		int user_No=1;
@@ -74,14 +83,66 @@ public class BudgetController {
 		return "redirect:/budget/budget_list";
 		
 	}
-	//è¸°ê¾©ì»¡ æ¹²ê³Œì»™ è¹‚ï¿½ ï¿½ëƒ¼é®ï¿½ ï¿½ê¶¡ï¿½ë¿­  ç”±ÑŠë’ªï¿½ë“ƒ è¹‚ëŒë¿¬äºŒì‡¨ë¦°
+	//¹öÂîº° ¼Òºñ ¸®½ºÆ® µî µğÅ×ÀÏ º¸¿©ÁÖ±â
 	@GetMapping("/budget/budget_detail{bd_no}")
 	public String budgetDetailList(@PathVariable("bd_no") int bd_No, HttpSession session, Model model) {
 		int user_No=(int) session.getAttribute("user_no");
-		List<Consume> consumeList=budgetService.findbudgetC(user_No,bd_No);
+		
+		BudgetList bgl=budgetService.getBudgetByNo(bd_No);
+		Budget bg=budgetService.getBdByNo(bd_No);
+		LocalDate bd_start=bg.getBd_start();
+		LocalDate bd_end=bg.getBd_end();
+		int bd_no=bgl.getBd_no();
+		String bd_name=bgl.getBd_name();
+		int bd_goal=bgl.getBd_goal();
+		int bd_goalleft=bgl.getBd_goalleft();
+		String bd_dateleft=bgl.getBd_dateleft();
+		List<ConsumePlusCategory> consumeList=budgetService.findbudgetC(user_No,bd_No);
+		
+		HashMap<Integer, String> categoryMap=getCategoryMap();
+		for(ConsumePlusCategory consume : consumeList) {
+			int categoryid=consume.getC_categoryid();
+			String category=categoryMap.get(categoryid);
+			consume.setC_category(category);
+		}
+		
+		model.addAttribute("bd_start",bd_start);
+		model.addAttribute("bd_end",bd_end);
+		model.addAttribute("bd_no",bd_no);
+		model.addAttribute("bd_name",bd_name);
+		model.addAttribute("bd_goal",bd_goal);
+		model.addAttribute("bd_goalleft",bd_goalleft);
+		model.addAttribute("bd_dateleft",bd_dateleft);
 		model.addAttribute("consumeList",consumeList);
 		return "budget/budget_detail";
 	} 
+	
+	//¼ÒºñÄ«Å×°í¸® id->ÀÌ¸§À¸·Î º¯È¯
+	 private HashMap<Integer, String> getCategoryMap() {
+	     HashMap<Integer,String> categoryMap= new HashMap<>();
+	     categoryMap.put(1,"½Äºñ");
+	     categoryMap.put(2,"Ä«Æä/°£½Ä");
+	     categoryMap.put(3,"¼ú/À¯Èï");
+	     categoryMap.put(4,"»ıÈ°");
+	     categoryMap.put(5,"ÆĞ¼Ç¼îÇÎ");
+	     categoryMap.put(6,"ºäÆ¼/¹Ì¿ë");
+	     categoryMap.put(7,"±³Åëºñ");
+	     categoryMap.put(8,"ÁÖ°Åºñ");
+	     categoryMap.put(9,"ÀÇ·á/°Ç°­");
+	     categoryMap.put(10,"¹®È­");
+	     categoryMap.put(11,"±İÀ¶");
+	     categoryMap.put(12,"¿©Çà/¼÷¹Ú");
+	     categoryMap.put(13,"±³À°/ÇĞ½À");
+	     categoryMap.put(14,"°¡Á·");
+	     categoryMap.put(15,"¹İ·Áµ¿¹°");
+	     categoryMap.put(16,"°æÁ¶»ç/¼±¹°");
+	     categoryMap.put(17,"¸ÛÃ»ºñ¿ë");
+	     categoryMap.put(18,"±âÅ¸");
+         return categoryMap;
+	    }
+	
+	
+	
 	
 		
 

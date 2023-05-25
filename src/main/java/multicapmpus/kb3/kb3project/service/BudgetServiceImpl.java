@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import multicapmpus.kb3.kb3project.entity.Budget;
 import multicapmpus.kb3.kb3project.entity.BudgetList;
 import multicapmpus.kb3.kb3project.entity.Consume;
+import multicapmpus.kb3.kb3project.entity.ConsumePlusCategory;
 import multicapmpus.kb3.kb3project.mapper.BudgetMapper;
 
 @Service
@@ -18,26 +19,32 @@ public class BudgetServiceImpl implements BudgetService {
 	@Autowired 
 	public BudgetServiceImpl(BudgetMapper budgetMapper) {	
 		this.budgetMapper = budgetMapper; }
-	//è¸°ê¾©ì»¡ ï¿½ë²‘æ¿¡ï¿½
+	//¹öÂî µî·Ï
 	@Override 
 	public int saveBudget(Budget budget) {
 		int bbudget=budgetMapper.save(budget);
 		return bbudget;
 	}
-	//è¸°ê¾©ì»¡ ç”±ÑŠë’ªï¿½ë“ƒ
+	//¹öÂî ¸®½ºÆ®
 	@Override
 	public List<BudgetList> findbudgetAll(int user_No) {
 		return budgetMapper.findbudgetAll(user_No);
 	}
-	//è¸°ê¾©ì»¡ è¹‚ï¿½ ï¿½ëƒ¼é®ï¿½ ç”±ÑŠë’ªï¿½ë“ƒ
+	//¹öÂî º° ¼Òºñ ¸®½ºÆ®
 	@Override
-	public List<Consume> findbudgetC(int user_No, int bd_No){
+	public List<ConsumePlusCategory> findbudgetC(int user_No, int bd_No){
 		return budgetMapper.findbudgetC(user_No, bd_No);
 	}
-	
-//	@Override 
-	//public Budget getBudgetByNo(int user_No) { 
-		//Budget budget=budgetMapper.getBudgetById(user_No); 
-		//return budget; 
-//	}
+	//¹öÂî Á¤º¸
+	@Override 
+	public BudgetList getBudgetByNo(int bd_No) { 
+		BudgetList bgl=budgetMapper.getBudgetByNo(bd_No); 
+		return bgl; 
+	}
+	//¹öÂî ³¯Â¥
+	@Override
+	public Budget getBdByNo(int bd_No) {
+		Budget bd=budgetMapper.getBdByNo(bd_No);
+		return bd;
+	}
 }

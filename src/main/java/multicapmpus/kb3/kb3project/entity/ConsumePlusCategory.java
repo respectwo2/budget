@@ -2,7 +2,7 @@ package multicapmpus.kb3.kb3project.entity;
 
 import java.time.LocalDate;
 
-public class Consume {
+public class ConsumePlusCategory {
 	private int c_no;
 	private int user_no;
 	private int c_money;
@@ -12,8 +12,15 @@ public class Consume {
 	private String c_image;
 	private String c_content;
 	private int c_like;
+	//카테고리 id에서 string으로 변환해야해서 추가 , 동연 버찌할때 필요
+	private String c_category;
 	
-
+	public String getC_category() {
+		return c_category;
+	}
+	public void setC_category(String c_category) {
+		this.c_category = c_category;
+	}
 	public int getC_like() {
 		return c_like;
 	}
@@ -72,9 +79,8 @@ public class Consume {
 	public String toString() {
 		return "Consume [c_no=" + c_no + ", user_no=" + user_no + ", c_money=" + c_money + ", c_categoryid="
 				+ c_categoryid + ", c_date=" + c_date + ", c_image=" + c_image + ", c_content=" + c_content
-				+ ", c_like=" + c_like + "]";
+				+ ", c_like=" + c_like + ", c_category=" + c_category + "]";
 	}
-	
 	
 }
 

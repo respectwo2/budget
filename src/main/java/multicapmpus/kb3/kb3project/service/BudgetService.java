@@ -8,15 +8,21 @@ import org.apache.ibatis.annotations.Param;
 import multicapmpus.kb3.kb3project.entity.Budget;
 import multicapmpus.kb3.kb3project.entity.BudgetList;
 import multicapmpus.kb3.kb3project.entity.Consume;
+import multicapmpus.kb3.kb3project.entity.ConsumePlusCategory;
 
 public interface BudgetService {
 	//public List<Budget> getBudgetList();
 	//Budget getBudgetByNo(int user_No);
-	//è¸°ê¾©ì»¡ ï¿½ë²‘æ¿¡ï¿½
+	
+	//¹öÂî µî·Ï
 	int saveBudget(Budget budget);
-	//è¸°ê¾©ì»¡ ç”±ÑŠë’ªï¿½ë“ƒ
+	//¹öÁö ¸®½ºÆ® º¸¿©ÁÖ±â
 	List<BudgetList> findbudgetAll(int user_No);
-	//è¸°ê¾©ì»¡ è¹‚ï¿½ ï¿½ëƒ¼é®ï¿½ ç”±ÑŠë’ªï¿½ë“ƒ
-	List<Consume> findbudgetC(int user_No, int bd_No);
+	//¹öÂî º° ¼Òºñ ¸®½ºÆ® º¸¿©ÁÖ±â
+	List<ConsumePlusCategory> findbudgetC(int user_No, int bd_No);
+	//¹öÂî Á¤º¸
+	BudgetList getBudgetByNo(int bd_No);
+	//¹öÂî ¼öÇà ³¯Â¥ º¸¿©ÁÖ±â
+	Budget getBdByNo(int bd_No);
 
 }

@@ -1,1 +1,858 @@
 @charset "UTF-8";
+/* 챌린지 페이지 */
+
+body {
+	width: 375px;
+	height: 812px;
+	background: linear-gradient(180deg, #FFF5F2 0%, #E9F5F4 100%);
+}
+
+/* 상단네모 */
+.top-rectangle{
+	position: absolute;
+	left: 0%;
+	right: 0%;
+	top: 0%;
+	bottom: 88.18%;
+	
+	background: #FFFFFF;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	
+}
+
+
+/* 와이파이 */
+.wifi{
+	position: absolute;
+	left: 81.07%;
+	right: 13.6%;
+	top: 8%;
+	/* bottom: 96.31%;
+
+	background: #000000; */
+}
+.wifi img{
+	width:100%;
+	height:100%;
+}
+/* 배터리 */
+.battery{
+	position: absolute;
+	left: 88%;
+	right: 6.67%;
+	top: 8%;
+	/* bottom: 96.43%;
+
+	background: #000000; */
+}
+.battery img{
+	width:100%;
+	height:100%;
+}
+/* 데이터 */
+.data{
+	position: absolute;
+	left: 74.67%;
+	right: 20.53%;
+	top: 8%;
+	/* bottom: 96.31%;
+
+	background: #000000;
+	 */
+}
+.data img{
+	width:100%;
+	height:100%;
+}
+/* 9:40 */
+.time{
+	position: absolute;
+	left: 8.53%;
+	right: 78.13%;
+	top: 8%;
+	bottom: 96.8%;
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 22px;
+
+	color: #000000;
+	
+}
+
+
+/* 이전페이지로 */
+.back-page{
+	position: absolute;
+	left: auto;
+	right: 90%;
+	top: 60%;
+	background-color: transparent;
+    border: none;
+	/* bottom: 90.27%;
+
+	border: 2px solid #363636; */
+}
+.back-page img{
+	width:100%;
+	height:100%;
+}
+
+.my-budget{
+	position: absolute;
+	/* left: 39.47%; */
+	right: 37.87%;
+	top: 43%;
+	bottom: 90.27%;
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
+
+	color: #000000;
+	
+}
+
+/* 선택 버찌 멘트 */
+
+position: absolute;
+width: 352px;
+height: 103px;
+left: 19px;
+top: 119px;
+
+
+
+/* 선택버찌 체리 */
+
+position: absolute;
+width: 20px;
+height: 20px;
+left: 22px;
+top: 119px;
+
+background: url(image.png);
+
+
+/* 2주동안 10만원 쓰기 챌린지! */
+
+position: absolute;
+left: 11.73%;
+right: 17.07%;
+top: 14.66%;
+bottom: 81.9%;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #000000;
+
+
+
+/* 목표 금액: 10만원 남은 금액: 5만원 남은 기간: 3일 */
+
+position: absolute;
+left: 5.07%;
+right: 1.07%;
+top: 18.23%;
+bottom: 72.66%;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+line-height: 18px;
+
+color: #8CA1B6;
+
+
+
+
+
+
+/* 선택버찌네모 */
+
+position: absolute;
+left: 0.27%;
+right: -0.27%;
+top: -5.05%;
+bottom: 76.85%;
+
+background: #FFFFFF;
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+border-radius: 30px;
+
+/* 나의 지출 */
+
+position: absolute;
+width: 67px;
+height: 24px;
+left: 24px;
+top: 215px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+line-height: 18px;
+
+color: #000000;
+
+
+
+/* 내 소비패턴 */
+
+position: absolute;
+width: 306px;
+height: 24px;
+left: 15px;
+top: 419px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+line-height: 18px;
+
+color: #000000;
+
+
+
+/* 소비 식비 */
+
+position: absolute;
+width: 344px;
+height: 55px;
+left: 13px;
+top: 254px;
+
+
+
+/* 식비 큰네모 */
+
+position: absolute;
+left: 3.47%;
+right: 4.8%;
+top: 31.28%;
+bottom: 61.95%;
+
+background: #FFFFFF;
+box-shadow: 0px 1px 5px rgba(112, 144, 176, 0.2);
+border-radius: 20px;
+
+
+/* 식비 네모 */
+
+position: absolute;
+width: 65px;
+height: 28px;
+left: 41px;
+top: 267px;
+
+background: #FF9900;
+border-radius: 10px;
+
+
+/* 식비 */
+
+position: absolute;
+width: 25px;
+height: 17px;
+left: 62px;
+top: 273px;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* 8,000 */
+
+position: absolute;
+width: 39px;
+height: 19px;
+left: 287px;
+top: 272px;
+
+font-family: 'Abhaya Libre ExtraBold';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 19px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* 소비 이미지 */
+
+position: absolute;
+width: 20px;
+height: 20px;
+left: 254px;
+top: 269px;
+
+background: url(image.png);
+
+
+/* 소비 교통비 */
+
+position: absolute;
+width: 344px;
+height: 55px;
+left: 13px;
+top: 324px;
+
+
+
+/* 교통비 큰네모 */
+
+position: absolute;
+left: 3.47%;
+right: 4.8%;
+top: 39.9%;
+bottom: 53.33%;
+
+background: #FFFFFF;
+box-shadow: 0px 1px 5px rgba(112, 144, 176, 0.2);
+border-radius: 20px;
+
+
+/* 교통비 네모 */
+
+position: absolute;
+width: 65px;
+height: 28px;
+left: 41px;
+top: 337px;
+
+background: #3B82A1;
+border-radius: 10px;
+
+
+/* 교통비 */
+
+position: absolute;
+width: 37px;
+height: 17px;
+left: 55px;
+top: 343px;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* 10,000 */
+
+position: absolute;
+width: 46px;
+height: 19px;
+left: 280px;
+top: 343px;
+
+font-family: 'Abhaya Libre ExtraBold';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 19px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* 소비 이미지 */
+
+position: absolute;
+width: 20px;
+height: 20px;
+left: 247px;
+top: 340px;
+
+background: url(image.png);
+
+
+/* 파이차트 */
+
+position: absolute;
+width: 247.04px;
+height: 247.53px;
+left: -29px;
+top: 425px;
+
+
+
+/* Ellipse 7 */
+
+position: absolute;
+width: 172.64px;
+height: 176.74px;
+left: 95.69px;
+top: 425px;
+
+background: #43B8B1;
+transform: rotate(44.87deg);
+
+
+/* Ellipse 4 */
+
+position: absolute;
+width: 177px;
+height: 174px;
+left: 7px;
+top: 461px;
+
+background: #FF9900;
+
+
+/* Ellipse 5 */
+
+position: absolute;
+width: 177px;
+height: 176.42px;
+left: 70.07px;
+top: 671.76px;
+
+background: #3B82A1;
+transform: rotate(-123.26deg);
+
+
+/* Ellipse 6 */
+
+position: absolute;
+width: 177px;
+height: 175.4px;
+left: 217.2px;
+top: 530.01px;
+
+background: #4D97ED;
+transform: rotate(126.37deg);
+
+
+/* 2023.05.01~2023.05.07 */
+
+position: absolute;
+width: 226px;
+height: 24px;
+left: 191px;
+top: 419px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+line-height: 18px;
+
+color: #000000;
+
+
+
+/* 2023.05.01~2023.05.07 */
+
+position: absolute;
+width: 226px;
+height: 24px;
+left: 191px;
+top: 215px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+line-height: 18px;
+
+color: #000000;
+
+
+
+/* 소비패턴 네모 */
+
+position: absolute;
+width: 149px;
+height: 162px;
+left: 201px;
+top: 449px;
+
+
+
+/* 소비패턴 네모 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 149px;
+height: 162px;
+left: 201px;
+top: 449px;
+
+background: #FFFFFF;
+mix-blend-mode: multiply;
+border: 1px solid #000000;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 30px;
+
+
+/* 식비 */
+
+position: absolute;
+width: 99.68px;
+height: 55.14px;
+left: 223.61px;
+top: 458.44px;
+
+
+
+/* Rectangle 173 */
+
+position: absolute;
+width: 99.68px;
+height: 25.84px;
+left: 223.61px;
+top: 465.33px;
+
+background: #FF9900;
+border-radius: 40px;
+
+
+/* Frame 33 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+position: absolute;
+width: 99.68px;
+height: 55.14px;
+left: 223.61px;
+top: 458.44px;
+
+
+
+/* 식비 2만원 */
+
+width: 78px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 교통비 */
+
+position: absolute;
+width: 102px;
+height: 48.24px;
+left: 220.52px;
+top: 496.97px;
+
+
+
+/* Rectangle 177 */
+
+position: absolute;
+width: 99.68px;
+height: 25.84px;
+left: 222.58px;
+top: 500.42px;
+
+background: #3B82A1;
+border-radius: 40px;
+
+
+/* Frame 34 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+position: absolute;
+width: 102px;
+height: 48.24px;
+left: 220.52px;
+top: 496.97px;
+
+
+
+/* 교통비 2만원 */
+
+width: 82px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 생활비 */
+
+position: absolute;
+width: 102px;
+height: 32.74px;
+left: 223.61px;
+top: 533.93px;
+
+
+
+/* Rectangle 175 */
+
+position: absolute;
+width: 99.68px;
+height: 25.84px;
+left: 225.66px;
+top: 537.38px;
+
+background: #4D97ED;
+border-radius: 40px;
+
+
+/* Frame 35 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+position: absolute;
+width: 102px;
+height: 32.74px;
+left: 223.61px;
+top: 533.93px;
+
+
+
+/* 생활비 2만원 */
+
+width: 82px;
+height: 18px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 저축 */
+
+position: absolute;
+width: 99.68px;
+height: 44.31px;
+left: 224.63px;
+top: 563.03px;
+
+
+
+/* Rectangle 174 */
+
+position: absolute;
+width: 99.68px;
+height: 23.74px;
+left: 224.63px;
+top: 573.32px;
+
+background: #7BCDC8;
+border-radius: 40px;
+
+
+/* Frame 36 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+position: absolute;
+width: 89.4px;
+height: 44.31px;
+left: 229.77px;
+top: 563.03px;
+
+
+
+/* 저축 1만원 */
+
+position: absolute;
+width: 68.85px;
+height: 28.49px;
+left: 240.05px;
+top: 578.85px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+
+color: #FFFFFF;
+
+
+
+/* 총 7만원 지출 */
+
+position: absolute;
+width: 248px;
+height: 28px;
+left: 238px;
+top: 650px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+
+color: #000000;
+
+
+
+/* 소비패턴 라인 */
+
+position: absolute;
+width: 141px;
+height: 0px;
+left: 209px;
+top: 635px;
+
+border: 1px solid #000000;
+
+
+/* 하단바 */
+
+position: absolute;
+width: 375px;
+height: 65px;
+left: 0px;
+top: 747px;
+
+
+
+/* Rectangle 16 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 92%;
+bottom: 0%;
+
+background: #FFFFFF;
+border-radius: 25px 25px 0px 0px;
+
+
+/* 홈 */
+
+position: absolute;
+width: 26px;
+height: 26px;
+left: 30px;
+top: 767px;
+
+background: url(home.png);
+
+
+/* 그룹 */
+
+position: absolute;
+width: 26px;
+height: 26px;
+left: 99px;
+top: 767px;
+
+background: url(multiple-users-silhouette.png);
+
+
+/* 소비등록 */
+
+position: absolute;
+width: 26px;
+height: 26.9px;
+left: 175px;
+top: 767px;
+
+background: url(plus.png);
+
+
+/* 마이페이지 */
+
+position: absolute;
+width: 26px;
+height: 26px;
+left: 316px;
+top: 767px;
+
+background: url(account.png);
+
+
+/* 버찌 */
+
+position: absolute;
+width: 26px;
+height: 26px;
+left: 249px;
+top: 767px;
+
+background: url(image.png);
+
