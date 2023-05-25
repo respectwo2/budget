@@ -24,6 +24,12 @@ public class ConsumeServiceImpl implements ConsumeService {
     }
 
     @Override
+    public int increaseLike(int consumeNo) {
+        int result = consumeMapper.updateLike(consumeNo);
+        return result;
+    }
+
+    @Override
     public ConsumeWithUserName getConsumeByConsumeNo(int consumeNo) {
         ConsumeWithUserName consume = consumeMapper.selectOneByConsumeNo(consumeNo);
         return consume;

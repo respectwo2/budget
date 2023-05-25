@@ -5,6 +5,7 @@ import multicapmpus.kb3.kb3project.entity.necessary.ConsumeForFeed;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -40,4 +41,11 @@ public interface ConsumeMapper {
             "        WHERE C.user_no IN (SELECT user_no FROM user_group WHERE g_no = #{groupNo})" +
             "        ORDER BY C.c_date ASC")
     public List<ConsumeWithUserName> selectConsumesByGroupNo(@Param("groupNo") int groupNo);
+
+    /*
+    좋아요 누르면 c_like +1
+     */
+    @Update("UPDATE Consume SET c_like = c_like + 1 WHERE c_no = #{consumeNo}")
+    public int updateLike(@Param("consumeNo") int consumeNo);
+
 }

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -57,6 +58,22 @@ public class GroupFeedController {
         model.addAttribute("categoryMap", categoryMap);
         return "group/feed";
     }
+
+    // 좋아요 수를 증가시키는 Ajax 요청을 처리하는 메서드 in 그룹피드
+    @PostMapping("/consume/increaseLikeCount")
+    @ResponseBody
+    public void increaseLikeCount(@RequestParam("consumeNo") int consumeNo) {
+        consumeService.increaseLike(consumeNo);
+    }
+
+    // 업데이트된 좋아요 수를 화면에 반영하기
+    @GetMapping("/consume/getConsume")
+    @ResponseBody
+    public ConsumeWithUserName getConsume(@RequestParam("consumeNo") int consumeNo) {
+        return consumeService.getConsumeByConsumeNo(consumeNo);
+    }
+
+
 
     /*
         그룹피드 댓글 화면
