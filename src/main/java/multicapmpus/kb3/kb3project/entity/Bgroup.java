@@ -10,6 +10,14 @@ public class Bgroup {
     private Date g_date;
     private int g_leader;
     private String g_name;
+    private String g_requiredTag;
+    
+	public String getG_requiredTag() {
+		return g_requiredTag;
+	}
+	public void setG_requiredTag(String g_requiredTag) {
+		this.g_requiredTag = g_requiredTag;
+	}
 	public int getG_no() {
 		return g_no;
 	}

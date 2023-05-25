@@ -18,5 +18,6 @@ public interface GroupConsumeService {
 
 	String getTopUserNickname(long g_no, String date);
 	
+	List<GroupConsume> getGroupConsumeByDate(long g_no, String date);
 
 }

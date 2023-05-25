@@ -24,4 +24,6 @@ public interface ConsumeService {
 	List<Consume> getMemberMonthConsume(long g_no, String date);
 	
 	List<Consume> getMemberDayConsume(long g_no, String date);
+	
+	
 }

@@ -24,6 +24,7 @@ public class ConsumeServiceImpl implements ConsumeService {
 
 	@Override
 	public List<Consume> getDayConsume(long user_no, String date) {
+		System.out.println(date);
 		return mapper.getDayConsume(user_no, date);
 	}
 
@@ -75,6 +76,8 @@ public class ConsumeServiceImpl implements ConsumeService {
 	public List<Consume> getMemberDayConsume(long g_no, String date) {
 		return mapper.getMemberDayConsume(g_no, date);
 	}
+
+	
 
 
 

@@ -23,16 +23,18 @@ public interface ConsumeMapper {
 	        "JOIN buser ON user_group.USER_NO = buser.USER_NO " +
 	        "WHERE user_group.G_NO = #{g_no} " +
 	        "AND TO_CHAR(CONSUME.C_DATE, 'YYYY-MM-DD') = #{date} " +
-	        "GROUP BY buser.user_nickname")
+	        "GROUP BY buser.user_nickname " +
+	        "ORDER BY SUM(CONSUME.c_money) deSC") 
 	List<String> getUserNicknames(@Param("g_no") long g_no, @Param("date") String date);
-	
+
 	@Select("SELECT SUM(CONSUME.c_money) AS total_money " +
 	        "FROM CONSUME " +
 	        "JOIN user_group ON CONSUME.USER_NO = user_group.USER_NO " +
 	        "JOIN buser ON user_group.USER_NO = buser.USER_NO " +
 	        "WHERE user_group.G_NO = #{g_no} " +
 	        "AND TO_CHAR(CONSUME.C_DATE, 'YYYY-MM-DD') = #{date} " +
-	        "GROUP BY buser.user_nickname")
+	        "GROUP BY buser.user_nickname " +
+	        "ORDER BY total_money deSC") 
 	List<Integer> getTotalMoneyList(@Param("g_no") long g_no, @Param("date") String date);
 
 	@Select("SELECT * " + 
@@ -66,5 +68,14 @@ public interface ConsumeMapper {
 	        ") " +
 	        "WHERE ROWNUM = 1")
 	List<Consume> getMemberDayConsume(@Param("g_no") long g_no, @Param("date") String date);
+	
+	@Select("SELECT b.user_nickname, c.c_money, c.c_content, c.c_like " +
+	        "FROM CONSUME c " +
+	        "JOIN user_group ug ON c.USER_NO = ug.USER_NO " +
+	        "JOIN buser b ON c.USER_NO = b.USER_NO " +
+	        "WHERE ug.G_NO = #{g_no} " +
+	        "AND TO_CHAR(c.C_DATE, 'YYYY-MM-DD') = #{date}")
+	List<Consume> getGroupConsumeByDate(@Param("g_no") long g_no, @Param("date") String date);
+
 	
 }
