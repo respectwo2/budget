@@ -2,6 +2,9 @@ package multicapmpus.kb3.kb3project.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -12,7 +15,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -112,7 +118,7 @@ public class ConsumeController {
 
 	@PostMapping("/create")
 	public String create(@RequestParam String date, @RequestParam int amount, @RequestParam int category,
-			@RequestParam String memo, @RequestParam String photo,HttpSession session) {
+			@RequestParam String memo,HttpSession session,@RequestParam MultipartFile photo) {
 		// @RequestParam MultipartFile file
 		/*
 		 * SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); Date date2
@@ -128,8 +134,21 @@ public class ConsumeController {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
+		
+	    if (!photo.isEmpty()) {
+	    	String fileName = photo.getOriginalFilename();
+	    	String filePath = "D:/tack/Desktop/kb3project/src/main/webapp/resources/" + fileName;
+	    	try {
+	    	    File dest = new File(filePath);
+	    	    photo.transferTo(dest);
+	    	} catch (IOException e) {
+	    	    e.printStackTrace();
+	    	}
 
-		this.csmService.create(date, amount, category, memo, photo,session);
+	    }
+		 
+		
+		this.csmService.create(date, amount, category, memo, "test",session);
 		LocalDate now= (LocalDate)session.getAttribute("loginDate");
 		//System.out.println(now.toString());
 		if (now!=null)

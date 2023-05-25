@@ -24,7 +24,7 @@
 	<div>
 		<h5>소비 등록</h5>
 		<form action="${pageContext.request.contextPath}/consume/create"
-			method="post">
+			method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="date">소비일</label> <input type="date" name="date"
 					id="date">

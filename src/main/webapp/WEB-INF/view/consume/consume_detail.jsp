@@ -25,6 +25,8 @@
 	<hr>
 	${csm.c_content }
 	<br> ${csm.c_image }
+	<img src="${pageContext.request.contextPath}/resources/${csm.c_image}"
+		alt="이미지" />
 
 </body>
 </html>
