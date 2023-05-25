@@ -20,19 +20,28 @@ public class GroupMissionServiceImpl implements GroupMissionService {
 
     @Override
     public String getGroupMissionBanner(int gNo) {  //param: g_no in GroupMission table
-        Bgroupmission BGroupMission = groupMissionMapper.selectOne(gNo);
+        Bgroupmission bGroupMission = groupMissionMapper.selectOne(gNo);
 
-        LocalDate gmStartDate = BGroupMission.getBgm_start();
-        LocalDate gmEndDate = BGroupMission.getBgm_end();
-        int gmGoal = BGroupMission.getBgm_goal();
+        if (bGroupMission == null) {
+            return "현재 등록된 미션이 없습니다!";
+        }
+
+        LocalDate gmStartDate = bGroupMission.getBgm_start();
+        LocalDate gmEndDate = bGroupMission.getBgm_end();
+        int gmGoal = bGroupMission.getBgm_goal();
 
         String groupMissionName = gmStartDate + "~" + gmEndDate + "  " + gmGoal + "원만 소비 목표";
         return groupMissionName;
     }
 
     @Override
-    public int getGroupMissionNoByGroupNo(int gNo) {
-        int bgmNo = groupMissionMapper.selectBgmNoByGroupNo(gNo);
+    public Integer getGroupMissionNoByGroupNo(int gNo) {
+        Integer bgmNo = groupMissionMapper.selectBgmNoByGroupNo(gNo);
+
+        if (bgmNo == null) {
+            return 0;  //ㄱㅊ?
+        }
+
         return bgmNo;
     }
 }
