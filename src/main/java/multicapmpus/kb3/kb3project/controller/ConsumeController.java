@@ -58,24 +58,24 @@ public class ConsumeController {
 	public ConsumeController(ConsumeService csmService, ConsumeMapper csmMapper) {
 		this.csmService = csmService;
 		this.csmMapper = csmMapper;
-		categoryMap.put(1, "식비");
-		categoryMap.put(2, "카페/간식");
-		categoryMap.put(3, "술/유흥");
-		categoryMap.put(4, "생활");
-		categoryMap.put(5, "패션쇼핑");
-		categoryMap.put(6, "뷰티/미용");
-		categoryMap.put(7, "교통비");
-		categoryMap.put(8, "주거비");
-		categoryMap.put(9, "의료/건강");
-		categoryMap.put(10, "문화");
-		categoryMap.put(11, "금융");
-		categoryMap.put(12, "여행/숙박");
-		categoryMap.put(13, "교육/학습");
-		categoryMap.put(14, "가족");
-		categoryMap.put(15, "반려동물");
-		categoryMap.put(16, "경조사/선물");
-		categoryMap.put(17, "멍청비용");
-		categoryMap.put(18, "기타");
+	      categoryMap.put(1, "식비");
+	      categoryMap.put(2, "카페/간식");
+	      categoryMap.put(3, "술/유흥");
+	      categoryMap.put(4, "생활");
+	      categoryMap.put(5, "패션쇼핑");
+	      categoryMap.put(6, "뷰티/미용");
+	      categoryMap.put(7, "교통비");
+	      categoryMap.put(8, "주거비");
+	      categoryMap.put(9, "의료/건강");
+	      categoryMap.put(10, "문화");
+	      categoryMap.put(11, "금융");
+	      categoryMap.put(12, "여행/숙박");
+	      categoryMap.put(13, "교육/학습");
+	      categoryMap.put(14, "가족");
+	      categoryMap.put(15, "반려동물");
+	      categoryMap.put(16, "경조사/선물");
+	      categoryMap.put(17, "멍청비용");
+	      categoryMap.put(18, "기타");
 
 	}
 
@@ -94,11 +94,11 @@ public class ConsumeController {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String date = csm.getC_date().format(formatter);
 
-		// String csm_date_modify = date.substring(0, 10); //시간 정보 제거
-		// String csm_date_modify = csm.getC_date().substring(0, 10); //시간 정보 제거
-//		model.addAttribute("csm_date_modify", csm_date_modify); //날짜만 넘겨주기
-		model.addAttribute("csm_date_modify", date); // 날짜만 넘겨주기
-		model.addAttribute("categoryMap", categoryMap); // 카테고리 맵 넘겨주기
+		// String csm_date_modify = date.substring(0, 10); //�떆媛� �젙蹂� �젣嫄�
+		// String csm_date_modify = csm.getC_date().substring(0, 10); //�떆媛� �젙蹂� �젣嫄�
+//		model.addAttribute("csm_date_modify", csm_date_modify); //�궇吏쒕쭔 �꽆寃⑥＜湲�
+		model.addAttribute("csm_date_modify", date); // �궇吏쒕쭔 �꽆寃⑥＜湲�
+		model.addAttribute("categoryMap", categoryMap); // 移댄뀒怨좊━ 留� �꽆寃⑥＜湲�
 		return "consume/consume_detail";
 	}
 
@@ -135,7 +135,7 @@ public class ConsumeController {
 		/*
 		 * SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); Date date2
 		 * = null; try { date2 = dateFormat.parse(date); } catch (ParseException e) { //
-		 * 날짜 변환 실패 처리 e.printStackTrace(); }
+		 * �궇吏� 蹂��솚 �떎�뙣 泥섎━ e.printStackTrace(); }
 		 */
 //		String fileName = date + file.getOriginalFilename();
 //		String filePath = "src/main/webapp/resources/" + fileName;
@@ -173,7 +173,7 @@ public class ConsumeController {
 	@Autowired
 	private GroupConsumeService groupservice;
 
-	@GetMapping("/consume/grouplist/{date}")
+	@GetMapping("/grouplist/{date}")
 	public String grouplist(@PathVariable("date") String date, HttpServletRequest request, Model model) {
 
 		int gNo = (int) request.getSession().getAttribute("g_no");
@@ -185,7 +185,7 @@ public class ConsumeController {
 		model.addAttribute("member", usernick);
 
 		LocalDate parsedDate = LocalDate.parse(date);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy�� MM�� dd��");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
 		String formattedDate = parsedDate.format(formatter);
 
 		model.addAttribute("parsedDate", formattedDate);

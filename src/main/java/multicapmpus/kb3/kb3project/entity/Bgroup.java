@@ -9,10 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
-@Getter
-@Setter
-
 public class Bgroup {
     private int g_no;
     private int g_maxpeople;

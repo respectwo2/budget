@@ -14,7 +14,7 @@ public class MainController {
 	@GetMapping("/sbb")
 	@ResponseBody
 	public String index() {
-		return "ì•ˆë…•í•˜ì„¸ìš” indexìž…ë‹ˆë‹¤.";
+		return "¾È³çÇÏ¼¼¿ä ÀÎµ¦½ºÀÔ´Ï´Ù.";
 	}
 
 	@GetMapping("/")

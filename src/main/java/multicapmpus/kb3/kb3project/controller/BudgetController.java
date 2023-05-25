@@ -26,13 +26,13 @@ import multicapmpus.kb3.kb3project.service.BudgetService;
 public class BudgetController {
 	
 	@Autowired private BudgetService budgetService;
-	//���� ���� ������ �����ֱ�
+	//占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쌍깍옙
 	@GetMapping("/budget/budget_start")
 	public String budgetStart(Model model) {
 		return "budget/budget_start";
 	}
 	
-	//���� ���
+	//占쏙옙占쏙옙 占쏙옙占�
 	@GetMapping("/budget/budget_register")
 	public String budgetRegisterForm(Model model) {
 		return "budget/budget_register";
@@ -41,7 +41,7 @@ public class BudgetController {
 	private String createBudget(Model model) {
 		return "budget/create"; 
 	}
-	//post�� ���� ������ insert
+	//post占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 insert
 	@PostMapping("/budget/create")
 	public String createBudgetPost(@RequestParam("title") String bd_name,
 			@RequestParam("start_date") LocalDate bd_start,
@@ -63,7 +63,7 @@ public class BudgetController {
 		
 		return"redirect:/budget/budget_list"; 
 	}
-	//���� ����Ʈ �����ֱ� 
+	//占쏙옙占쏙옙 占쏙옙占쏙옙트 占쏙옙占쏙옙占쌍깍옙 
 	@GetMapping("/budget/budget_list") 
 	public String budgetList(HttpSession session, Model model) { 
 		int user_No=(int)session.getAttribute("user_no");
@@ -72,7 +72,7 @@ public class BudgetController {
 		return "budget/budget_list"; 
 	}
 	
-	//���ο��� ���� �޾ƿ���
+	//占쏙옙占싸울옙占쏙옙 占쏙옙占쏙옙 占쌨아울옙占쏙옙
 	@GetMapping("/budget/main")
 	public String main(HttpSession session, Model model) {
 		int user_No=1;
@@ -83,7 +83,7 @@ public class BudgetController {
 		return "redirect:/budget/budget_list";
 		
 	}
-	//��� �Һ� ����Ʈ �� ������ �����ֱ�
+	//占쏙옙占쏘별 占쌀븝옙 占쏙옙占쏙옙트 占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쌍깍옙
 	@GetMapping("/budget/budget_detail{bd_no}")
 	public String budgetDetailList(@PathVariable("bd_no") int bd_No, HttpSession session, Model model) {
 		int user_No=(int) session.getAttribute("user_no");
@@ -119,27 +119,28 @@ public class BudgetController {
 		return "budget/budget_detail";
 	} 
 	
-	//�Һ�ī�װ� id->�̸����� ��ȯ
+	//占쌀븝옙카占쌓곤옙 id->占싱몌옙占쏙옙占쏙옙 占쏙옙환
 	 private HashMap<Integer, String> getCategoryMap() {
-	     HashMap<Integer,String> categoryMap= new HashMap<>();
-	     categoryMap.put(1,"식비");
-	        categoryMap.put(2,"카페/간식");
-	        categoryMap.put(3,"술/유흥");
-	        categoryMap.put(4,"생활");
-	        categoryMap.put(5,"패션쇼핑");
-	        categoryMap.put(6,"뷰티/미용");
-	        categoryMap.put(7,"교통비");
-	        categoryMap.put(8,"주거비");
-	        categoryMap.put(9,"의료/건강");
-	        categoryMap.put(10,"문화");
-	        categoryMap.put(11,"금융");
-	        categoryMap.put(12,"여행/숙박");
-	        categoryMap.put(13,"교육/학습");
-	        categoryMap.put(14,"가족");
-	        categoryMap.put(15,"반려동물");
-	        categoryMap.put(16,"경조사/선물");
-	        categoryMap.put(17,"멍청비용");
-	        categoryMap.put(18,"기타");
+		 HashMap<Integer,String> categoryMap= new HashMap<>();
+	        categoryMap.put(1,"식비");
+	           categoryMap.put(2,"카페/간식");
+	           categoryMap.put(3,"술/유흥");
+	           categoryMap.put(4,"생활");
+	           categoryMap.put(5,"패션쇼핑");
+	           categoryMap.put(6,"뷰티/미용");
+	           categoryMap.put(7,"교통비");
+	           categoryMap.put(8,"주거비");
+	           categoryMap.put(9,"의료/건강");
+	           categoryMap.put(10,"문화");
+	           categoryMap.put(11,"금융");
+	           categoryMap.put(12,"여행/숙박");
+	           categoryMap.put(13,"교육/학습");
+	           categoryMap.put(14,"가족");
+	           categoryMap.put(15,"반려동물");
+	           categoryMap.put(16,"경조사/선물");
+	           categoryMap.put(17,"멍청비용");
+	           categoryMap.put(18,"기타");
+
          return categoryMap;
 	    }
 	

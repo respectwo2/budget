@@ -1,20 +1,34 @@
 package multicapmpus.kb3.kb3project.entity;
 
+import java.time.LocalDate;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-@ToString
-@Getter
-@Setter
 public class Bgroupmission {
+	private int g_no;
     private int bgm_no;
     private int bgm_goal;
     private String bgm_content;
-    private String bgm_start;
-    private String bgm_end;
+    private LocalDate bgm_start;
+    private LocalDate bgm_end;
     private String bgm_name;
+    
+	public LocalDate getBgm_start() {
+		return bgm_start;
+	}
+	public void setBgm_start(LocalDate bgm_start) {
+		this.bgm_start = bgm_start;
+	}
+	public LocalDate getBgm_end() {
+		return bgm_end;
+	}
+	public void setBgm_end(LocalDate bgm_end) {
+		this.bgm_end = bgm_end;
+	}
+	public int getG_no() {
+		return g_no;
+	}
+	public void setG_no(int g_no) {
+		this.g_no = g_no;
+	}
 	public int getBgm_no() {
 		return bgm_no;
 	}
@@ -33,18 +47,7 @@ public class Bgroupmission {
 	public void setBgm_content(String bgm_content) {
 		this.bgm_content = bgm_content;
 	}
-	public String getBgm_start() {
-		return bgm_start;
-	}
-	public void setBgm_start(String bgm_start) {
-		this.bgm_start = bgm_start;
-	}
-	public String getBgm_end() {
-		return bgm_end;
-	}
-	public void setBgm_end(String bgm_end) {
-		this.bgm_end = bgm_end;
-	}
+
 	public String getBgm_name() {
 		return bgm_name;
 	}
