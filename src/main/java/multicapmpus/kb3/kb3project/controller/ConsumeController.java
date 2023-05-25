@@ -1,7 +1,10 @@
 package multicapmpus.kb3.kb3project.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
@@ -18,7 +21,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import ch.qos.logback.core.Context;
 import multicapmpus.kb3.kb3project.entity.Consume;
 import multicapmpus.kb3.kb3project.mapper.ConsumeMapper;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
@@ -107,13 +112,28 @@ public class ConsumeController {
 
 	@PostMapping("/create")
 	public String create(@RequestParam String date, @RequestParam int amount, @RequestParam int category,
-			@RequestParam String memo, @RequestParam String photo) {
+			@RequestParam String memo, @RequestParam String photo,HttpSession session) {
+		// @RequestParam MultipartFile file
 		/*
 		 * SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); Date date2
 		 * = null; try { date2 = dateFormat.parse(date); } catch (ParseException e) { //
 		 * 날짜 변환 실패 처리 e.printStackTrace(); }
 		 */
-		this.csmService.create(date, amount, category, memo, photo);
-		return "redirect:/consume/list";
+//		String fileName = date + file.getOriginalFilename();
+//		String filePath = "src/main/webapp/resources/" + fileName;
+//		try {
+//			file.transferTo(new File(filePath));
+//		} catch (IllegalStateException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+
+		this.csmService.create(date, amount, category, memo, photo,session);
+		LocalDate now= (LocalDate)session.getAttribute("loginDate");
+		//System.out.println(now.toString());
+		if (now!=null)
+			return "redirect:/hMyCalendar?year=" + now.getYear() + "&month=" + now.getMonthValue() + "&day=" + now.getDayOfMonth();
+		return "redirect:/Buser/login";
 	}
 }

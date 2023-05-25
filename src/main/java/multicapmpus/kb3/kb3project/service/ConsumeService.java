@@ -13,7 +13,7 @@ import multicapmpus.kb3.kb3project.entity.Consume;
 public interface ConsumeService {
 	public List<Consume> getConsumeList();
 	public Consume getConsumeDetail(int c_no);
-	public void create(String date, int amount, int category,String memo, String photo);
+	public void create(String date, int amount, int category,String memo, String photo,HttpSession session);
 //	public List<Consume> getConsumeListByDate(String c_date);
 	public List<Consume> getConsumeListByDate(String c_date,HttpSession session, Model model);
 	

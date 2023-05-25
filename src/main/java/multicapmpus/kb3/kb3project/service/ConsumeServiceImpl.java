@@ -46,13 +46,14 @@ public class ConsumeServiceImpl implements ConsumeService {
 	
 
 	@Override
-	public void create(String date, int amount, int category, String memo, String photo) {
+	public void create(String date, int amount, int category, String memo, String photo,HttpSession session) {
 		// date type String to LocalDate
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate localDate = LocalDate.parse(date, formatter);
 
 		Consume csm = new Consume();
-		csm.setUser_no(1); // 수정필요
+		Integer user_no=(Integer)session.getAttribute("user_no");
+		csm.setUser_no(user_no); // 수정필요
 		//csm.setC_date(date);
 		csm.setC_date(localDate);
 		csm.setC_money(amount);
