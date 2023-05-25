@@ -6,12 +6,38 @@
 <c:set var="e" value="${ start.withDayOfMonth(start.lengthOfMonth()).getDayOfMonth() }" />
 <!DOCTYPE html>
 <html>
+<style>
+.daytotal {
+	width:18px;
+}
+
+</style>
+
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <title>GroupCalendar</title>
 <link href="${path}/resources/css/calendar.css" rel="stylesheet">
 </head>
 <body>
+<div>
+<div class="top-rectangle">
+      <div class="time">9:40</div>
+      <div class="data">
+         <img src="${pageContext.request.contextPath}/resources/images/data.svg" alt="SVG">
+      </div>
+      <div class="wifi">
+         <img src="${pageContext.request.contextPath}/resources/images/wifi.svg" alt="SVG">
+      </div>
+      <div class="battery">
+         <img src="${pageContext.request.contextPath}/resources/images/battery.svg" alt="SVG">
+      </div>
+      <button class="back-page" type="button" onclick="location.href='/budget/budget_list'">
+         <img src="${pageContext.request.contextPath}/resources/images/back-page.svg" alt="SVG">
+      </button>
+      <h1 class="my-budget">상단바</h1>
+   </div>
+</div>
 	<div class="container">
 		<div class="box">
 			<div class="month">
@@ -63,7 +89,9 @@
 								</c:otherwise>						
 							</c:choose>
 							<c:if test="${arr[k] != 0}">
-								<div class="daytotal">${arr[k]}</div>
+								<div class="daytotal">
+								<span style="font-size: 10px;">${arr[k]}</span>
+								</div>
 							</c:if>
 						</div>
 						

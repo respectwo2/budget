@@ -6,7 +6,14 @@
 <c:set var="e" value="${ start.withDayOfMonth(start.lengthOfMonth()).getDayOfMonth() }" />
 <!DOCTYPE html>
 <html>
+<style>
+.daytotal {
+	width:18px;
+}
+
+</style>
 <head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <meta charset="UTF-8">
 <title>MyCalendar</title>
 <link href="${path}/resources/css/calendar.css" rel="stylesheet">
@@ -66,7 +73,9 @@
 								</c:otherwise>						
 							</c:choose>
 							<c:if test="${arr[k] != 0}">
-								<div class="daytotal">${arr[k]}</div>
+								<div class="daytotal">
+								<span style="font-size: 10px;">${arr[k]}</span>
+								</div>
 							</c:if>
 						</div>
 						
