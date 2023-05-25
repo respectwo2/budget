@@ -50,20 +50,17 @@
 
     // 업데이트된 좋아요 수를 가져와서 화면에 업데이트하는 함수
     function updateLikeCount(consumeNo) {
-      // 서버로부터 업데이트된 데이터를 가져와서 화면에 반영하는 로직을 작성
-      // 예시로서 Ajax 요청을 보내서 업데이트된 데이터를 받아오는 것으로 가정
       $.ajax({
         type: 'GET',
         url: '/consume/getConsume',
         data: { consumeNo: consumeNo },
         success: function(response) {
-          // 업데이트된 데이터로 화면 업데이트
           const updatedLikeCount = response.c_like;
-          const likeElement = $('div[data-consume-no="${consumeNo}"]');
-          likeElement.text('like ${updatedLikeCount}');
+          const likeElement = $('div[data-consume-no="' + consumeNo + '"]');
+          likeElement.text('like ' + updatedLikeCount);
         },
         error: function() {
-          console.error('데이터 가져오기 실패');
+          console.error('Failed to fetch updated data');
         }
       });
     }
