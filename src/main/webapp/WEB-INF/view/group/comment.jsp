@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<html>
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=yes;">
@@ -25,6 +24,12 @@
         <p>${comment.user_name}, 작성일: ${comment.cmn_date}, ${comment.cmn_content}</p>
     </c:forEach>
 
+    <span onclick="goBack()" class="btn btn-primary" style="background-color: green">뒤로가기</span>
 
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>
