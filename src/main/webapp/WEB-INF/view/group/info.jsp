@@ -23,7 +23,7 @@
                 var groupNo = gNo;
                 var form = document.createElement("form");
                 form.method = "POST";
-                form.action = "/group/join";
+                form.action = "/group/create";
 
                 var input = document.createElement("input");
                 input.type = "hidden";

@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ConsumeService {
 
+    ///////////////////////////////minjoo
     public List<ConsumeForFeed> getConsumesForFeed(int groupNo);  //해당 그룹의 모든 소비글 가져오기(+댓글 개수, 좋아요수)
 
     public int increaseLike(int consumeNo);  //해당 소비글의 좋아요 수 증가

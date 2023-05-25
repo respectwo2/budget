@@ -8,7 +8,7 @@
     </head>
     <body>
         <span><form><input type="search" id="searchInput"></form></span>
-        <img id="searchIcon" onclick="goToSearchPage('searchInput')" src="img/돋보기.svg">
+        <img id="searchIcon" onclick="goToSearchPage('searchInput')" src="images/돋보기.svg">
         <hr>
 
         <b id="myGroupBar"> 나의 그룹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

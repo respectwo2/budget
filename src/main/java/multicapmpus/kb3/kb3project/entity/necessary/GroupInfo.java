@@ -1,5 +1,7 @@
 package multicapmpus.kb3.kb3project.entity.necessary;
 
+import java.util.Date;
+
 public class GroupInfo {
     private int g_no;
     private String g_name;
@@ -9,9 +11,9 @@ public class GroupInfo {
     private String g_tag;
     private int g_leader;
     private String g_leaderName;
-    private String g_date;
+    private Date g_date;
     private String g_content;
-    private char g_private;
+    private int g_private;
 
     public int getG_no() {
         return g_no;
@@ -77,11 +79,11 @@ public class GroupInfo {
         this.g_leaderName = g_leaderName;
     }
 
-    public String getG_date() {
+    public Date getG_date() {
         return g_date;
     }
 
-    public void setG_date(String g_date) {
+    public void setG_date(Date g_date) {
         this.g_date = g_date;
     }
 
@@ -93,11 +95,11 @@ public class GroupInfo {
         this.g_content = g_content;
     }
 
-    public char getG_private() {
+    public int getG_private() {
         return g_private;
     }
 
-    public void setG_private(char g_private) {
+    public void setG_private(int g_private) {
         this.g_private = g_private;
     }
 }

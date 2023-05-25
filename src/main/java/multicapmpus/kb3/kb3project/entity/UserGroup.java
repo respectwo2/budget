@@ -3,19 +3,33 @@ package multicapmpus.kb3.kb3project.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/*
--- user-group 맵핑
-CREATE TABLE user_group (
-usergroup	NUMBER(8)		NOT NULL,  -- pk, sequence = PK_USER_GROUP
-user_no	NUMBER(8)		NOT NULL,  -- 회원no, fk: buser (user_no)
-g_no	NUMBER(8)		NOT NULL  -- 그룹no, fk: bgroup (g_no)
-);
- */
 
-@Data
-@NoArgsConstructor
 public class UserGroup {
     private int userGroup;
     private int user_no;
     private int g_no;
+
+    public int getUserGroup() {
+        return userGroup;
+    }
+
+    public void setUserGroup(int userGroup) {
+        this.userGroup = userGroup;
+    }
+
+    public int getUser_no() {
+        return user_no;
+    }
+
+    public void setUser_no(int user_no) {
+        this.user_no = user_no;
+    }
+
+    public int getG_no() {
+        return g_no;
+    }
+
+    public void setG_no(int g_no) {
+        this.g_no = g_no;
+    }
 }

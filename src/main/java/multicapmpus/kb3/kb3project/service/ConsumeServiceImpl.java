@@ -17,6 +17,7 @@ public class ConsumeServiceImpl implements ConsumeService {
     }
 
 
+    ///////////////////////////////////minjoo
     @Override
     public List<ConsumeForFeed> getConsumesForFeed(int groupNo) {
         List<ConsumeForFeed> consumesForFeed = consumeMapper.selectConsumesWithCommentNumByGroupNo(groupNo);

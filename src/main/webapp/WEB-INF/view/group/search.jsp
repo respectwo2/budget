@@ -9,7 +9,7 @@
 
     <body>
         <span><form><input type="search" id="searchInput"></form></span>
-            <img id="searchIcon" onclick="goToSearchPage('searchInput')" src="/img/돋보기.svg">
+            <img id="searchIcon" onclick="goToSearchPage('searchInput')" src="/images/돋보기.svg">
         <hr>
 
         <c:forEach items="${groupsBySearch}" var="group" >
