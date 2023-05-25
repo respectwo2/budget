@@ -27,12 +27,10 @@ public class BgroupController {
 	
 	@GetMapping("/bgroup/main")
 	public String main(HttpSession session, Model model) {
-	    int userNo = 1; 
-	    int gNo = 2;
-	    session.setAttribute("user_no", userNo);
-	    session.setAttribute("g_no", gNo);
+		int userNo = (int) session.getAttribute("user_no");
+	    int gNo = (int) session.getAttribute("g_no");
 	    model.addAttribute("user_no", userNo);
-	    
+	    model.addAttribute("g_no",gNo);
 	    return "redirect:/bgroup/list";
 	}
 	

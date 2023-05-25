@@ -14,7 +14,7 @@ public interface BgroupmissionService {
 
     List<Bgroupmission> getAll();
     
-    int saveBgroupmission(Bgroupmission bgm);
+    int saveBgroupmission(int gNo,Bgroupmission bgm);
 
     int deleteBgroupmission(int bgmNo);
     

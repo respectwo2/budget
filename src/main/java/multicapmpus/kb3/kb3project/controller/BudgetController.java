@@ -75,9 +75,7 @@ public class BudgetController {
 	//占쏙옙占싸울옙占쏙옙 占쏙옙占쏙옙 占쌨아울옙占쏙옙
 	@GetMapping("/budget/main")
 	public String main(HttpSession session, Model model) {
-		int user_No=1;
-		session.setAttribute("user_no", user_No);
-	
+		int user_No=(int)session.getAttribute("user_no");	
 		model.addAttribute("user_no",user_No);
 		
 		return "redirect:/budget/budget_list";

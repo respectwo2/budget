@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,12 +43,16 @@ public class BgroupmissionController {
 	}
 	
 	@PostMapping("/bgm/create")
-	public String createBgroupMission(@RequestParam("bgm_name") String bgmName,
+	public String createBgroupMission(HttpSession session,
+									  @RequestParam("bgm_name") String bgmName,
 	                                  @RequestParam("bgm_goal") int bgmGoal,
 	                                  @RequestParam("bgm_content") String bgmContent,
 	                                  @RequestParam("bgm_start") LocalDate bgmStart,
 	                                  @RequestParam("bgm_end") LocalDate bgmEnd) {
 
+	    int gNo = (int) session.getAttribute("g_no");
+
+		
 	    Bgroupmission bgm = new Bgroupmission();
 	    bgm.setBgm_name(bgmName);
 	    bgm.setBgm_goal(bgmGoal);
@@ -54,7 +60,9 @@ public class BgroupmissionController {
 	    bgm.setBgm_start(bgmStart);
 	    bgm.setBgm_end(bgmEnd);
 	    
-	    bgroupmissionservice.saveBgroupmission(bgm);
+	    bgm.setG_no(gNo);
+	    
+	    bgroupmissionservice.saveBgroupmission(gNo, bgm);
 	    
 	    return "redirect:/bgroup/main";
 	}

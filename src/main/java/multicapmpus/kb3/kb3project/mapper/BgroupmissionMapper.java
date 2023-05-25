@@ -23,9 +23,9 @@ public interface BgroupmissionMapper {
 	@Select("SELECT * FROM bgroupmission WHERE bgm_no = #{bgmno}")
 	Bgroupmission getBgmByNo(@Param("bgmno") int bgmNo);
 
-	@Insert("insert into Bgroupmission (g_no,bgm_no, bgm_goal, bgm_content, bgm_start, bgm_end, bgm_name) "
-			+ "VALUES (2,bgm_no_seq.nextval,#{bgm.bgm_goal},#{bgm.bgm_content},#{bgm.bgm_start},#{bgm.bgm_end},#{bgm.bgm_name})")
-	int save(@Param("bgm") Bgroupmission bgm);
+	@Insert("INSERT INTO Bgroupmission (g_no, bgm_no, bgm_goal, bgm_content, bgm_start, bgm_end, bgm_name) " +
+	        "VALUES (#{g_no}, bgm_no_seq.nextval, #{bgm.bgm_goal}, #{bgm.bgm_content}, #{bgm.bgm_start}, #{bgm.bgm_end}, #{bgm.bgm_name})")
+	int save(@Param("g_no") int gNo, @Param("bgm") Bgroupmission bgm);
 	
 	@Delete("DELETE FROM bgroupmission WHERE bgm_no = #{bgmno}")
 	int delete(@Param("bgmno") int bgmNo);

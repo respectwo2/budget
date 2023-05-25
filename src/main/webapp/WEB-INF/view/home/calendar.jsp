@@ -9,10 +9,15 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+
 <title>calendar</title>
 <link href="${path}/resources/css/calendar.css" rel="stylesheet">
 </head>
 <body>
+	<%@ include file="../navbar.jsp"%>
+
 	<div class="container">
 		<div class="box">
 			<div class="month">

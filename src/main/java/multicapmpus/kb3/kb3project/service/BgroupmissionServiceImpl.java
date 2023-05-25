@@ -28,11 +28,7 @@ public class BgroupmissionServiceImpl implements BgroupmissionService {
 		return bgm;
 	}
 
-	@Override
-	public int saveBgroupmission(Bgroupmission bgm) {
-		int bgroupmission = bgroupmissionMapper.save(bgm);
-		return bgroupmission;
-	}
+	
 
 	@Override
 	public int deleteBgroupmission(int bgmNo) {
@@ -74,6 +70,12 @@ public class BgroupmissionServiceImpl implements BgroupmissionService {
 	@Override
 	public List<Integer> getUserNicknameByUserNo(int userNo) {
 		return bgroupmissionMapper.getUserNicknameByUserNo(userNo);
+	}
+
+	@Override
+	public int saveBgroupmission(int gNo, Bgroupmission bgm) {
+		return bgroupmissionMapper.save(gNo, bgm);
+		
 	}
 
 
