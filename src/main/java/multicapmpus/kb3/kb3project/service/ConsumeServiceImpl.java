@@ -18,24 +18,24 @@ import multicapmpus.kb3.kb3project.mapper.ConsumeMapper;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Service
 public class ConsumeServiceImpl implements ConsumeService {
 
-	private final ConsumeMapper csmMapper;
+	private final ConsumeMapper mapper;
 
-//	public ConsumeServiceImpl(ConsumeMapper csmMapper) {
-//		this.csmMapper = csmMapper;
-//	}
+	public ConsumeServiceImpl(ConsumeMapper mapper) {
+		this.mapper = mapper;
+	}
 
 	@Override
 	public List<Consume> getConsumeList() {
-		return csmMapper.getAll();
+		return mapper.getAll();
 	}
 
 	@Override
 	public Consume getConsumeDetail(int c_no) {
-		Optional<Consume> csm = this.csmMapper.findByCno(c_no);
+		Optional<Consume> csm = this.mapper.findByCno(c_no);
 		if (csm.isPresent()) {
 			return csm.get();
 		} else {
@@ -60,30 +60,30 @@ public class ConsumeServiceImpl implements ConsumeService {
 		csm.setC_categoryid(category);
 		csm.setC_content(memo);
 		csm.setC_image(photo);
-		this.csmMapper.save(csm);
+		this.mapper.save(csm);
 
 	}
 
 //	@Override
 //	public List<Consume> getConsumeListByDate(String c_date) {
-//		return csmMapper.findByDate(c_date);
+//		return mapper.findByDate(c_date);
 //	}
 
 	@Override
 	public List<Consume> getConsumeListByDate(String c_date, HttpSession session, Model model) {
-		return csmMapper.findByDate(c_date, (int) session.getAttribute("user_no"));
+		return mapper.findByDate(c_date, (int) session.getAttribute("user_no"));
 	}
 
 //////////////////////////////////////////////////ys
 	@Override
 	public List<Consume> getMonthConsume(int user_no, String date) {
-		return csmMapper.getMonthConsume(user_no, date);
+		return mapper.getMonthConsume(user_no, date);
 	}
 
 	@Override
 	public List<Consume> getDayConsume(int user_no, String date) {
 		System.out.println(date);
-		return csmMapper.getDayConsume(user_no, date);
+		return mapper.getDayConsume(user_no, date);
 	}
 
 	@Override
@@ -99,4 +99,38 @@ public class ConsumeServiceImpl implements ConsumeService {
 
 		return arr;
 	}
+//	@Override
+//	public List<Consume> getGroupDayConsume(long g_no, String date) {
+//		return mapper.getGroupDayConsume(g_no, date);
+//		
+//	}
+
+	@Override
+	public List<String> getUserNicknames(long g_no, String date) {
+		// TODO Auto-generated method stub
+		return mapper.getUserNicknames(g_no, date);
+	}
+
+	@Override
+	public List<Integer> getTotalMoneyList(long g_no, String date) {
+		// TODO Auto-generated method stub
+		return mapper.getTotalMoneyList(g_no, date);
+	}
+
+	@Override
+	public List<Consume> getGroupDayConsume(long g_no, String date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Consume> getMemberMonthConsume(long g_no, String date) {
+		return mapper.getMemberMonthConsume(g_no, date);
+	}
+
+	@Override
+	public List<Consume> getMemberDayConsume(long g_no, String date) {
+		return mapper.getMemberDayConsume(g_no, date);
+	}
+
 }

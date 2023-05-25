@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,10 @@ import javax.servlet.jsp.PageContext;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +37,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import ch.qos.logback.core.Context;
 import multicapmpus.kb3.kb3project.entity.Consume;
+import multicapmpus.kb3.kb3project.entity.GroupConsume;
 import multicapmpus.kb3.kb3project.mapper.ConsumeMapper;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
+
+import multicapmpus.kb3.kb3project.service.GroupConsumeService;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import lombok.RequiredArgsConstructor;
 
@@ -44,8 +55,9 @@ public class ConsumeController {
 	private final ConsumeService csmService;
 	private Map<Integer, String> categoryMap = new HashMap<>();
 
-	public ConsumeController(ConsumeService csmService) {
+	public ConsumeController(ConsumeService csmService, ConsumeMapper csmMapper) {
 		this.csmService = csmService;
+		this.csmMapper = csmMapper;
 		categoryMap.put(1, "식비");
 		categoryMap.put(2, "카페/간식");
 		categoryMap.put(3, "술/유흥");
@@ -94,7 +106,7 @@ public class ConsumeController {
 	// @ResponseBody
 	public String dateList(Model model, @PathVariable("c_date") String c_date, HttpSession session) throws Exception {
 
-		if(session.getAttribute("user_no") == null) {
+		if (session.getAttribute("user_no") == null) {
 			return "redirect:/Buser/login";
 		}
 		List<Consume> csmList = csmService.getConsumeListByDate(c_date, session, model);
@@ -118,7 +130,7 @@ public class ConsumeController {
 
 	@PostMapping("/create")
 	public String create(@RequestParam String date, @RequestParam int amount, @RequestParam int category,
-			@RequestParam String memo,HttpSession session,@RequestParam MultipartFile photo) {
+			@RequestParam String memo, HttpSession session, @RequestParam MultipartFile photo) {
 		// @RequestParam MultipartFile file
 		/*
 		 * SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); Date date2
@@ -134,25 +146,72 @@ public class ConsumeController {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-		
-	    if (!photo.isEmpty()) {
-	    	String fileName = photo.getOriginalFilename();
-	    	String filePath = "D:/tack/Desktop/kb3project/src/main/webapp/resources/" + fileName;
-	    	try {
-	    	    File dest = new File(filePath);
-	    	    photo.transferTo(dest);
-	    	} catch (IOException e) {
-	    	    e.printStackTrace();
-	    	}
 
-	    }
-		 
-		
-		this.csmService.create(date, amount, category, memo, "test",session);
-		LocalDate now= (LocalDate)session.getAttribute("loginDate");
-		//System.out.println(now.toString());
-		if (now!=null)
-			return "redirect:/hMyCalendar?year=" + now.getYear() + "&month=" + now.getMonthValue() + "&day=" + now.getDayOfMonth();
+		if (!photo.isEmpty()) {
+			String fileName = photo.getOriginalFilename();
+			String filePath = "D:/tack/Desktop/kb3project/src/main/webapp/resources/" + fileName;
+			try {
+				File dest = new File(filePath);
+				photo.transferTo(dest);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		this.csmService.create(date, amount, category, memo, "test", session);
+		LocalDate now = (LocalDate) session.getAttribute("loginDate");
+		// System.out.println(now.toString());
+		if (now != null)
+			return "redirect:/hMyCalendar?year=" + now.getYear() + "&month=" + now.getMonthValue() + "&day="
+					+ now.getDayOfMonth();
 		return "redirect:/Buser/login";
 	}
+
+	private final ConsumeMapper csmMapper;
+
+	@Autowired
+	private GroupConsumeService groupservice;
+
+	@GetMapping("/consume/grouplist/{date}")
+	public String grouplist(@PathVariable("date") String date, HttpServletRequest request, Model model) {
+
+		int gNo = (int) request.getSession().getAttribute("g_no");
+
+		List<Integer> totalmoney = csmMapper.getTotalMoneyList(gNo, date);
+		List<String> usernick = csmMapper.getUserNicknames(gNo, date);
+
+		model.addAttribute("membercs", totalmoney);
+		model.addAttribute("member", usernick);
+
+		LocalDate parsedDate = LocalDate.parse(date);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy�� MM�� dd��");
+		String formattedDate = parsedDate.format(formatter);
+
+		model.addAttribute("parsedDate", formattedDate);
+
+		List<GroupConsume> groupConsumeByDate = groupservice.getGroupConsumeByDate(gNo, date);
+
+		model.addAttribute("list", groupConsumeByDate);
+
+		List<String> consumeList = new ArrayList<>();
+		Map<String, List<GroupConsume>> consumeMap = new HashMap<>();
+
+		for (GroupConsume consume : groupConsumeByDate) {
+			String nickname = consume.getUser_nickname();
+			if (!consumeList.contains(nickname)) {
+				consumeList.add(nickname);
+			}
+			if (!consumeMap.containsKey(nickname)) {
+				consumeMap.put(nickname, new ArrayList<>());
+			}
+			consumeMap.get(nickname).add(consume);
+		}
+
+		model.addAttribute("consumeList", consumeList);
+		model.addAttribute("consumeMap", consumeMap);
+
+		return "consume/grouplist";
+	}
+
 }

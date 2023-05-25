@@ -1,50 +1,149 @@
 package multicapmpus.kb3.kb3project.controller;
 
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import multicapmpus.kb3.kb3project.entity.Bgroup;
-import multicapmpus.kb3.kb3project.service.BgroupService;
-
+import multicapmpus.kb3.kb3project.entity.Budget;
+import multicapmpus.kb3.kb3project.entity.BudgetList;
+import multicapmpus.kb3.kb3project.entity.Consume;
+import multicapmpus.kb3.kb3project.entity.ConsumePlusCategory;
+import multicapmpus.kb3.kb3project.service.BudgetService;
 
 @Controller
 public class BudgetController {
-
-	@Autowired
-	private BgroupService bgroupservice;
 	
-//	@GetMapping("/bgroup/list{g_no}")
-//	public String list(@PathVariable("g_no") int gNo, Model model) {
-//		Bgroup bgroupByNo = bgroupservice.getBgroupByNo(gNo);
-//		String g_name = bgroupByNo.getG_name();
-//		model.addAttribute("name",g_name);
-//		return "bgroup/list";
-//	}
-//	
+	@Autowired private BudgetService budgetService;
+	//버찌 시작 페이지 보여주기
+	@GetMapping("/budget/budget_start")
+	public String budgetStart(Model model) {
+		return "budget/budget_start";
+	}
+	
+	//버찌 등록
 	@GetMapping("/budget/budget_register")
-	public String register(Model model) {
+	public String budgetRegisterForm(Model model) {
 		return "budget/budget_register";
 	}
-//	
-//	@GetMapping("/bgroup/info{g_no}")
-//	public String info(@PathVariable("g_no") int gNo, Model model) {
-//		
-//		Bgroup bgroupByNo = bgroupservice.getBgroupByNo(gNo);
-//		String g_content = bgroupByNo.getG_content();
-//		String g_name = bgroupByNo.getG_name();
-//		String g_tag = bgroupByNo.getG_tag();
-//		int g_maxpeople = bgroupByNo.getG_maxpeople();
-//		int g_leader = bgroupByNo.getG_leader();
-//		
-//		model.addAttribute("content",g_content);
-//		model.addAttribute("name",g_name);
-//		model.addAttribute("tag",g_tag);
-//		model.addAttribute("maxpeople",g_maxpeople);
-//		model.addAttribute("leader",g_leader);
-//		
-//	    return "bgroup/info";
-//	}
-}
+	@GetMapping("/budget/create") 
+	private String createBudget(Model model) {
+		return "budget/create"; 
+	}
+	//post로 받은 폼값을 insert
+	@PostMapping("/budget/create")
+	public String createBudgetPost(@RequestParam("title") String bd_name,
+			@RequestParam("start_date") LocalDate bd_start,
+			@RequestParam("end_date") LocalDate bd_end,
+			@RequestParam("goal") int bd_goal,
+			@RequestParam("comment") String bd_comment,
+			@RequestParam("user_no") int user_no,
+			@RequestParam("goal_now") int bd_goalnow) { 
+		Budget bd=new Budget();
+		bd.setBd_name(bd_name);
+		bd.setBd_start(bd_start);
+		bd.setBd_end(bd_end);
+		bd.setBd_goal(bd_goal);
+		bd.setBd_content(bd_comment);
+		bd.setUser_no(user_no);
+		bd.setBd_goalnow(bd_goalnow);
+		
+		budgetService.saveBudget(bd);
+		
+		return"redirect:/budget/budget_list"; 
+	}
+	//버찌 리스트 보여주기 
+	@GetMapping("/budget/budget_list") 
+	public String budgetList(HttpSession session, Model model) { 
+		int user_No=(int)session.getAttribute("user_no");
+		List<BudgetList> budgetList = budgetService.findbudgetAll(user_No);
+		model.addAttribute("budgetList", budgetList);
+		return "budget/budget_list"; 
+	}
+	
+	//메인에서 세션 받아오기
+	@GetMapping("/budget/main")
+	public String main(HttpSession session, Model model) {
+		int user_No=1;
+		session.setAttribute("user_no", user_No);
+	
+		model.addAttribute("user_no",user_No);
+		
+		return "redirect:/budget/budget_list";
+		
+	}
+	//버찌별 소비 리스트 등 디테일 보여주기
+	@GetMapping("/budget/budget_detail{bd_no}")
+	public String budgetDetailList(@PathVariable("bd_no") int bd_No, HttpSession session, Model model) {
+		int user_No=(int) session.getAttribute("user_no");
+		
+		BudgetList bgl=budgetService.getBudgetByNo(bd_No);
+		Budget bg=budgetService.getBdByNo(bd_No);
+		LocalDate bd_start=bg.getBd_start();
+		LocalDate bd_end=bg.getBd_end();
+		int bd_no=bgl.getBd_no();
+		String bd_name=bgl.getBd_name();
+		int bd_goal=bgl.getBd_goal();
+		int bd_goalleft=bgl.getBd_goalleft();
+		String bd_dateleft=bgl.getBd_dateleft();
+		List<ConsumePlusCategory> consumeList=budgetService.findbudgetC(user_No,bd_No);
+		
+		HashMap<Integer, String> categoryMap=getCategoryMap();
+		for(ConsumePlusCategory consume : consumeList) {
+			int categoryid=consume.getC_categoryid();
+			String category=categoryMap.get(categoryid);
+			consume.setC_category(category);
+		}
+		
+		model.addAttribute("bd_start",bd_start);
+		model.addAttribute("bd_end",bd_end);
+		model.addAttribute("bd_no",bd_no);
+		model.addAttribute("bd_name",bd_name);
+		model.addAttribute("bd_goal",bd_goal);
+		model.addAttribute("bd_goalleft",bd_goalleft);
+		model.addAttribute("bd_dateleft",bd_dateleft);
+		model.addAttribute("consumeList",consumeList);
+		return "budget/budget_detail";
+	} 
+	
+	//소비카테고리 id->이름으로 변환
+	 private HashMap<Integer, String> getCategoryMap() {
+	     HashMap<Integer,String> categoryMap= new HashMap<>();
+	     categoryMap.put(1,"식비");
+	     categoryMap.put(2,"카페/간식");
+	     categoryMap.put(3,"술/유흥");
+	     categoryMap.put(4,"생활");
+	     categoryMap.put(5,"패션쇼핑");
+	     categoryMap.put(6,"뷰티/미용");
+	     categoryMap.put(7,"교통비");
+	     categoryMap.put(8,"주거비");
+	     categoryMap.put(9,"의료/건강");
+	     categoryMap.put(10,"문화");
+	     categoryMap.put(11,"금융");
+	     categoryMap.put(12,"여행/숙박");
+	     categoryMap.put(13,"교육/학습");
+	     categoryMap.put(14,"가족");
+	     categoryMap.put(15,"반려동물");
+	     categoryMap.put(16,"경조사/선물");
+	     categoryMap.put(17,"멍청비용");
+	     categoryMap.put(18,"기타");
+         return categoryMap;
+	    }
+	
+	
+	
+	
+		
+
+}	

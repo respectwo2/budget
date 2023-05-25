@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import org.apache.ibatis.annotations.Param;
+
 import multicapmpus.kb3.kb3project.entity.Consume;
 
 public interface ConsumeService {
@@ -24,4 +26,16 @@ public interface ConsumeService {
 	List<Consume> getDayConsume(int user_no, String date);
 
 	int [] getSum(List<Consume> consumes);
+	
+	List<Consume> getGroupDayConsume(long g_no, String date);
+	
+	List<String> getUserNicknames(long g_no, String date);
+	
+	List<Integer> getTotalMoneyList(long g_no, String date);
+
+	List<Consume> getMemberMonthConsume(long g_no, String date);
+	
+	List<Consume> getMemberDayConsume(long g_no, String date);
+	
+	
 }

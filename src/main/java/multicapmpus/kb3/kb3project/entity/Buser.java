@@ -1,12 +1,6 @@
 package multicapmpus.kb3.kb3project.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@ToString
-@Getter
-@Setter
 public class Buser {
 	private int user_no;
 	private String user_pwd;
@@ -14,7 +8,10 @@ public class Buser {
 	private String user_name;
 	private String user_id;
 	private String user_nickname;
-	
+
+	public int getUser_no() {
+		return user_no;
+	}
 	public void setUser_no(int user_no) {
 		this.user_no = user_no;
 	}
@@ -48,4 +45,11 @@ public class Buser {
 	public void setUser_nickname(String user_nickname) {
 		this.user_nickname = user_nickname;
 	}
+
+	@Override
+	public String toString() {
+		return "Buser [user_no=" + user_no + ", user_pwd=" + user_pwd + ", user_email=" + user_email + ", user_name="
+				+ user_name + ", user_id=" + user_id + ", user_nickname=" + user_nickname + "]";
+	}
+
 }

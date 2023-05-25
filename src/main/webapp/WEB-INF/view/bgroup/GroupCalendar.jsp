@@ -12,13 +12,32 @@
 }
 
 </style>
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-<title>MyCalendar</title>
+<title>GroupCalendar</title>
 <link href="${path}/resources/css/calendar.css" rel="stylesheet">
 </head>
 <body>
+<div>
+<div class="top-rectangle">
+      <div class="time">9:40</div>
+      <div class="data">
+         <img src="${pageContext.request.contextPath}/resources/images/data.svg" alt="SVG">
+      </div>
+      <div class="wifi">
+         <img src="${pageContext.request.contextPath}/resources/images/wifi.svg" alt="SVG">
+      </div>
+      <div class="battery">
+         <img src="${pageContext.request.contextPath}/resources/images/battery.svg" alt="SVG">
+      </div>
+      <button class="back-page" type="button" onclick="location.href='/budget/budget_list'">
+         <img src="${pageContext.request.contextPath}/resources/images/back-page.svg" alt="SVG">
+      </button>
+      <h1 class="my-budget">상단바</h1>
+   </div>
+</div>
 	<div class="container">
 		<div class="box">
 			<div class="month">
@@ -53,7 +72,7 @@
 					</c:forEach>
 				</c:if>
 				<c:forEach var="k" begin="1" end="${e}" step="1">
-					<button class="daybtn" onclick="location.href = '/buser/MyCalendar?year=${start.getYear()}&&month=${start.getMonthValue()}&&day=${k}'">
+					<button class="daybtn" onclick="location.href = '/bgroup/GroupCalendar?year=${start.getYear()}&&month=${start.getMonthValue()}&&day=${k}'">
 						<div class="btn">
 							<c:choose>
 								<c:when test="${k == pick.getDayOfMonth()}">
@@ -83,16 +102,17 @@
 		</div>
 		
 	</div>
-	
-	<div class="dayconsumes">
-		<c:forEach var="consume" items="${dayConsumes}">
-			<div class="consumebox">			
-				${consume}
-			</div>
-		</c:forEach>
-
-	
-	</div>
+<div>
+    <div class="current-date">
+        <span>${month}월</span> <span>${day}일</span> 
+        <button class="detailbtn" onclick="viewEvent('${start.getYear()}-${String.format('%02d', start.getMonthValue())}-${String.format('%02d', day)}')">+</button>
+    </div>
+    <c:forEach var="member" items="${member}" varStatus="i">
+        <div class="consumebox">
+            <p>${member} : ${membercs[i.index]}</p>
+        </div>
+    </c:forEach>
+</div>
 	
 	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript"> 
@@ -105,7 +125,7 @@
 				year -= 1
 			}
 			
-			link = "/buser/MyCalendar?year="+year+"&&month="+month+"&&day="+day;
+			link = "/bgroup/GroupCalendar?year="+year+"&&month="+month+"&&day="+day;
 			location.href = link;
 		}
 		
@@ -116,7 +136,7 @@
 				year += 1
 			}
 			
-			link = "/buser/MyCalendar?year="+year+"&&month="+month+"&&day="+day;
+			link = "/bgroup/GroupCalendar?year="+year+"&&month="+month+"&&day="+day;
 			location.href = link;
 		}
 	
@@ -139,7 +159,9 @@
 				}	
 			})
 		} */
-		
+		 function viewEvent(day) {
+	        location.href = "/consume/grouplist/" + day;
+	    }
     </script> 
 </body>
 </html>
