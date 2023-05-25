@@ -1,8 +1,6 @@
 package multicapmpus.kb3.kb3project.entity;
 import java.util.Date;
 
-
-
 public class Bgroup {
     private int g_no;
     private int g_maxpeople;
@@ -77,3 +75,4 @@ public class Bgroup {
     
     
 }
+

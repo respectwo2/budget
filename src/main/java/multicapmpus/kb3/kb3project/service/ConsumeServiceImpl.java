@@ -5,7 +5,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
+import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
+import multicapmpus.kb3.kb3project.entity.necessary.ConsumeForFeed;
+import multicapmpus.kb3.kb3project.mapper.ConsumeMapper;
+import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 
 import multicapmpus.kb3.kb3project.DataNotFoundException;
@@ -16,13 +19,13 @@ import org.springframework.ui.Model;
 import multicapmpus.kb3.kb3project.entity.Consume;
 import multicapmpus.kb3.kb3project.mapper.ConsumeMapper;
 
-import lombok.RequiredArgsConstructor;
 
 //@RequiredArgsConstructor
 @Service
 public class ConsumeServiceImpl implements ConsumeService {
 
 	private final ConsumeMapper mapper;
+	
 
 	public ConsumeServiceImpl(ConsumeMapper mapper) {
 		this.mapper = mapper;
@@ -53,7 +56,7 @@ public class ConsumeServiceImpl implements ConsumeService {
 
 		Consume csm = new Consume();
 		Integer user_no=(Integer)session.getAttribute("user_no");
-		csm.setUser_no(user_no); // 수정필요
+		csm.setUser_no(user_no); // �닔�젙�븘�슂
 		//csm.setC_date(date);
 		csm.setC_date(localDate);
 		csm.setC_money(amount);
@@ -132,5 +135,31 @@ public class ConsumeServiceImpl implements ConsumeService {
 	public List<Consume> getMemberDayConsume(long g_no, String date) {
 		return mapper.getMemberDayConsume(g_no, date);
 	}
+    @Override
+    public List<ConsumeForFeed> getConsumesForFeed(int groupNo) {
+        List<ConsumeForFeed> consumesForFeed = mapper.selectConsumesWithCommentNumByGroupNo(groupNo);
+        return consumesForFeed;
+    }
+
+    @Override
+    public int increaseLike(int consumeNo) {
+        int result = mapper.updateLike(consumeNo);
+        return result;
+    }
+
+    @Override
+    public ConsumeWithUserName getConsumeByConsumeNo(int consumeNo) {
+        ConsumeWithUserName consume = mapper.selectOneByConsumeNo(consumeNo);
+        return consume;
+    }
+
+    @Override  // �궗�슜X
+    public List<ConsumeWithUserName> getConsumes(int groupNo) {
+        List<ConsumeWithUserName> consumes = mapper.selectConsumesByGroupNo(groupNo);
+        return consumes;
+    }
+
+
+    ///////////////////////////////////minjoo
 
 }

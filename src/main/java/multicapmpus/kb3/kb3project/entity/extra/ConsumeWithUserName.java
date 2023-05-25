@@ -1,11 +1,14 @@
-package multicapmpus.kb3.kb3project.entity;
+package multicapmpus.kb3.kb3project.entity.extra;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
 
-public class Consume {
+public class ConsumeWithUserName {
     private int c_no;
     private int user_no;
+    private String user_name;
     private LocalDate c_date;
     private int c_money;
     private int c_categoryid;
@@ -27,6 +30,14 @@ public class Consume {
 
     public void setUser_no(int user_no) {
         this.user_no = user_no;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public LocalDate getC_date() {
@@ -77,5 +88,3 @@ public class Consume {
         this.c_like = c_like;
     }
 }
-
-

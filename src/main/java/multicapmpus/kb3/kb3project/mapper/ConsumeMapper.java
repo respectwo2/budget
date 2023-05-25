@@ -1,18 +1,59 @@
 package multicapmpus.kb3.kb3project.mapper;
 
-import java.util.List;
-import java.util.Optional;
 
-
-import org.apache.ibatis.annotations.Insert;
+import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
+import multicapmpus.kb3.kb3project.entity.necessary.ConsumeForFeed;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import java.util.List;
+import java.util.Optional;
+
+import org.apache.ibatis.annotations.Insert;
 
 import multicapmpus.kb3.kb3project.entity.Consume;
 
+
 @Mapper
 public interface ConsumeMapper {
+
+    /*
+        g_no�쓽 紐⑤뱺 user_no�쓽 user_name怨� consume怨� �빐�떦 consume湲��쓽 �뙎湲� 媛쒖닔瑜� date �삤由꾩감�닚�쑝濡� 媛��졇�삤湲�
+    */
+    @Select("SELECT c.c_no, c.user_no, c.c_date, c.c_money, c.c_categoryid, c.c_image, c.c_content, bu.user_name, COUNT(bc.cmn_no) AS commentNum, c.c_like " +
+            "FROM user_group ug " +
+            "JOIN Buser bu ON ug.user_no = bu.user_no " +
+            "JOIN Consume c ON ug.user_no = c.user_no " +
+            "LEFT JOIN Bcomment bc ON c.c_no = bc.c_no " +
+            "WHERE ug.g_no = #{groupNo} " +
+            "GROUP BY c.c_no, c.user_no, c.c_date, c.c_money, c.c_categoryid, c.c_image, c.c_content, bu.user_name, c.c_like " +
+            "ORDER BY c.c_date ASC")
+    public List<ConsumeForFeed> selectConsumesWithCommentNumByGroupNo(@Param("groupNo") int groupNo);
+
+    /*
+        consumeNo濡� �냼鍮꾧� 媛��졇�삤湲� - �궗�슜X
+     */
+    @Select("SELECT consume.*, buser.user_name " +
+            "FROM consume JOIN buser ON consume.user_no = buser.user_no " +
+            "WHERE c_no = #{consumeNo}")
+    public ConsumeWithUserName selectOneByConsumeNo(@Param("consumeNo") int consumeNo);
+
+    /*
+        g_no�쓽 紐⑤뱺 user_no�쓽 user_name怨� consume�쓣 date �삤由꾩감�닚�쑝濡� 媛��졇�삤湲� - �궗�슜X
+    */
+    @Select("SELECT C.*, B.user_name" +
+            "        FROM Consume C JOIN Buser B ON C.user_no = B.user_no" +
+            "        WHERE C.user_no IN (SELECT user_no FROM user_group WHERE g_no = #{groupNo})" +
+            "        ORDER BY C.c_date ASC")
+    public List<ConsumeWithUserName> selectConsumesByGroupNo(@Param("groupNo") int groupNo);
+
+    /*
+    醫뗭븘�슂 �늻瑜대㈃ c_like +1
+     */
+    @Update("UPDATE Consume SET c_like = c_like + 1 WHERE c_no = #{consumeNo}")
+    public int updateLike(@Param("consumeNo") int consumeNo);
+    
 	@Select("Select * from CONSUME ORDER BY c_no DESC")
 	public List<Consume> getAll();
 
@@ -32,7 +73,7 @@ public interface ConsumeMapper {
 	// c_date <= TO_DATE(#{date}, 'YYYY-MM-DD')+1")
 	public List<Consume> findByDate(@Param("date") String date, @Param("user_no") int user_no);
 
-	////////////// 예슬님
+	////////////// �삁�뒳�떂
 	@Select("SELECT * FROM CONSUME WHERE USER_NO=#{user_no} AND TO_CHAR(C_DATE, 'YYYY-MM') = #{date}")
 	List<Consume> getMonthConsume(@Param("user_no") int user_no, @Param("date") String date);
 

@@ -1,17 +1,18 @@
-package multicapmpus.kb3.kb3project.entity;
+package multicapmpus.kb3.kb3project.entity.necessary;
 
 import java.time.LocalDate;
-import java.util.Date;
 
-public class Consume {
+public class ConsumeForFeed {
     private int c_no;
     private int user_no;
+    private String user_name;
     private LocalDate c_date;
     private int c_money;
     private int c_categoryid;
     private String c_content;
     private String c_image;
     private int c_like;
+    private int commentNum;  //댓글 개수
 
     public int getC_no() {
         return c_no;
@@ -27,6 +28,14 @@ public class Consume {
 
     public void setUser_no(int user_no) {
         this.user_no = user_no;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public LocalDate getC_date() {
@@ -76,6 +85,28 @@ public class Consume {
     public void setC_like(int c_like) {
         this.c_like = c_like;
     }
+
+    public int getCommentNum() {
+        return commentNum;
+    }
+
+    public void setCommentNum(int commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    @Override
+    public String toString() {
+        return "ConsumeForFeed{" +
+                "c_no=" + c_no +
+                ", user_no=" + user_no +
+                ", user_name='" + user_name + '\'' +
+                ", c_date=" + c_date +
+                ", c_money=" + c_money +
+                ", c_categoryid=" + c_categoryid +
+                ", c_content='" + c_content + '\'' +
+                ", c_image='" + c_image + '\'' +
+                ", c_like=" + c_like +
+                ", commentNum=" + commentNum +
+                '}';
+    }
 }
-
-
