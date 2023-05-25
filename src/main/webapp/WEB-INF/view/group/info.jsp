@@ -5,6 +5,24 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=yes;">
+
+    <script>
+                function groupJoin(gNo) {
+                    var groupNo = gNo;
+                    var form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = "/group/join";
+
+                    var input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = "groupNo";
+                    input.value = groupNo;
+                    form.appendChild(input);
+
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+    </script>
     </head>
 
     <body>
@@ -17,23 +35,5 @@
         그룹설명: ${groupInfo.g_content}
         <div id="groupJoinButton" onclick="groupJoin(${groupInfo.g_no})">가입하기</div>
 
-        <script>
-            function groupJoin(gNo) {
-
-                var groupNo = gNo;
-                var form = document.createElement("form");
-                form.method = "POST";
-                form.action = "/group/create";
-
-                var input = document.createElement("input");
-                input.type = "hidden";
-                input.name = "groupNo";
-                input.value = groupNo;
-                form.appendChild(input);
-
-                document.body.appendChild(form);
-                form.submit();
-            }
-        </script>
     </body>
 </html>

@@ -41,6 +41,23 @@
             cursor: pointer;
         }
     </style>
+    <script>
+                    function groupJoin(gNo) {
+                        var groupNo = gNo;
+                        var form = document.createElement("form");
+                        form.method = "POST";
+                        form.action = "/group/join";
+
+                        var input = document.createElement("input");
+                        input.type = "hidden";
+                        input.name = "groupNo";
+                        input.value = groupNo;
+                        form.appendChild(input);
+
+                        document.body.appendChild(form);
+                        form.submit();
+                    }
+        </script>
 </head>
 <body>
     <!-- 모달 창 -->
