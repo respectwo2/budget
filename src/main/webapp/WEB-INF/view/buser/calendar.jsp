@@ -30,12 +30,12 @@
 				</p>
 				<button style="margin-right: 60px"
 					onclick="prev(${start.getYear()}, ${start.getMonthValue()})">
-					<img alt="" src="${path}/resources/icon/Polygon1.svg">
+					<img alt="" src="${path}/resources/images/Polygon1.svg">
 				</button>
 
 				<span style="font-size: 24px;">${ start.getMonthValue() }</span>월
 				<button style="margin-left: 60px">
-					<img alt="" src="${path}/resources/icon/Polygon2.svg">
+					<img alt="" src="${path}/resources/images/Polygon2.svg">
 					=======
 					<p class="year">${ start.getYear() }<span
 							style="font-size: 14px">년</span>

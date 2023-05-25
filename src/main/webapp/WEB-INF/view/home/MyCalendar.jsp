@@ -22,13 +22,13 @@
 				</p>
 				<button style="margin-right: 60px"
 					onclick="prev(${start.getYear()}, ${start.getMonthValue()}, 1)">
-					<img alt="" src="${path}/resources/icon/Polygon1.svg">
+					<img alt="" src="${path}/resources/images/Polygon1.svg">
 				</button>
 
 				<span style="font-size: 24px;">${ start.getMonthValue() }</span>월
 				<button style="margin-left: 60px"
 					onclick="next(${start.getYear()}, ${start.getMonthValue()}, 1)">
-					<img alt="" src="${path}/resources/icon/Polygon2.svg">
+					<img alt="" src="${path}/resources/images/Polygon2.svg">
 				</button>
 				<div class="total">${arr[0]}</div>
 			</div>
