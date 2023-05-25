@@ -1,5 +1,6 @@
 package multicapmpus.kb3.kb3project.controller;
 
+import lombok.extern.log4j.Log4j2;
 import multicapmpus.kb3.kb3project.entity.necessary.GroupInfo;
 import multicapmpus.kb3.kb3project.service.GroupService;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@Log4j2
 public class GroupInfoController {
 
     private final GroupService groupService;
