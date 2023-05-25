@@ -30,6 +30,22 @@
                 location.href = "/group/info?groupNo=" + groupNo;  // 그룹정보 페이지로 이동
             }
 
+            //그룹 가입하기
+            function groupJoin(gNo) {
+                var groupNo = gNo;
+                var form = document.createElement("form");
+                form.method = "POST";
+                form.action = "/group/join";
+
+                var input = document.createElement("input");
+                input.type = "hidden";
+                input.name = "groupNo";
+                input.value = groupNo;
+                form.appendChild(input);
+
+                document.body.appendChild(form);
+                form.submit();
+         }
         </script>
     </body>
 </html>

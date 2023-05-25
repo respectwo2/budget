@@ -24,6 +24,7 @@ public class GroupInfoController {
     public String info(@RequestParam("groupNo") int groupNo, Model model) {
 
         GroupInfo groupInfo = groupService.getGroupInfo(groupNo);
+        System.out.println("groupNo=" + groupNo);
         System.out.println("groupInfo=" + groupInfo);
         model.addAttribute("groupInfo", groupInfo);
 
