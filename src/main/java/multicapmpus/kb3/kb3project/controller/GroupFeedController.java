@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -106,9 +108,10 @@ public class GroupFeedController {
                                 Model model, HttpServletRequest request) {
 
         // 세션 처리하기
-//        HttpSession session = request.getSession();
-//        int userNo = (int) session.getAttribute("user_no");
-        int userNo = 1;
+        HttpSession session = request.getSession();
+        int userNo = (int) session.getAttribute("user_no");
+        int gNo = (int) session.getAttribute("g_no");
+//        int userNo = 1;
 
         // 댓글 등록
         Bcomment comment = new Bcomment();
@@ -127,8 +130,9 @@ public class GroupFeedController {
     */
     @GetMapping("/group/feedTest")
     public String feedTest(Model model, HttpServletRequest request) {
-        // ⚠️ g_no 어떻게 가져와!!!!!!!
-        int g_no = 4;
+        HttpSession session = request.getSession();
+        int userNo = (int) session.getAttribute("user_no");
+        int g_no = (int) session.getAttribute("g_no");
 
         String groupMissionBanner = groupMissionService.getGroupMissionBanner(g_no);
         System.out.println("groupMissionBanner=" + groupMissionBanner);

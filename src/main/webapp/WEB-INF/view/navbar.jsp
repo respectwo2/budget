@@ -39,7 +39,7 @@
   <ul>
     
     <li><a href="/home">홈</a></li>
-    <li><a href="/bgroup/list">그룹</a></li>
+    <li><a href="/group">그룹</a></li>
     <li><a href="/consume/create">+</a></li>
     <li><a href="/budget/main">버찌</a></li>
     <li><a href="/Buser/mypage">마이페이지</a></li>

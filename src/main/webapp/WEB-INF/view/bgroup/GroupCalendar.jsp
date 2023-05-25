@@ -32,7 +32,7 @@
       <div class="battery">
          <img src="${pageContext.request.contextPath}/resources/images/battery.svg" alt="SVG">
       </div>
-      <button class="back-page" type="button" onclick="location.href='/budget/budget_list'">
+      <button class="back-page" type="button" onclick="history.back()'">
          <img src="${pageContext.request.contextPath}/resources/images/back-page.svg" alt="SVG">
       </button>
       <h1 class="my-budget">상단바</h1>

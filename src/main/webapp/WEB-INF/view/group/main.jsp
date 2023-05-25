@@ -93,7 +93,7 @@
 
     <script>
         // 모달 열기
-        function openModal(groupNo) {
+        /* function openModal(groupNo) {
             var modal = document.getElementById("groupModal");
             modal.style.display = "block";
 
@@ -102,6 +102,23 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var groupInfo = document.getElementById("groupInfo");
+                    groupInfo.innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/group/info?groupNo=" + groupNo, true);
+            xhttp.send();
+        } */
+        
+        function openModal(groupNo) {
+            var modal = document.getElementById("groupModal_" + groupNo);
+            var groupInfo = document.getElementById("groupInfo_" + groupNo);
+
+            modal.style.display = "block";
+
+            // AJAX request to fetch group information and display it in modal
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
                     groupInfo.innerHTML = this.responseText;
                 }
             };
