@@ -68,9 +68,9 @@
 
     <c:forEach items="${groupsWithMemberCount}" var="userGroup">
         <div id="myGroup" onclick="goToGroupFeed(${userGroup.g_no})">
-            ${userGroup.g_name}&nbsp;&nbsp;&nbsp;
+            <b>${userGroup.g_name}&nbsp;&nbsp;&nbsp;</b>
             <small id="peopleNum">${userGroup.memberCount}/${userGroup.g_maxpeople}명</small>&nbsp;&nbsp;&nbsp;
-            <b>#${userGroup.g_tag}</b>
+            <small>#${userGroup.g_tag}</small>
         </div>
         <br>
     </c:forEach>
