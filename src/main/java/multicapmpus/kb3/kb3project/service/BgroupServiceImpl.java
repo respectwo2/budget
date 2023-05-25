@@ -3,13 +3,12 @@ package multicapmpus.kb3.kb3project.service;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import multicapmpus.kb3.kb3project.entity.Bgroup;
 import multicapmpus.kb3.kb3project.mapper.BgroupMapper;
+
 @Service
 public class BgroupServiceImpl implements BgroupService {
 	

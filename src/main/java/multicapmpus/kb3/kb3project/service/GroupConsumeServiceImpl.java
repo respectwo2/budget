@@ -46,7 +46,11 @@ public class GroupConsumeServiceImpl implements GroupConsumeService {
 	public String getTopUserNickname(long g_no, String date) {
 		return mapper.getTopUserNickname(g_no, date);
 	}
-
+	
+	@Override
+	public List<GroupConsume> getGroupConsumeByDate(long g_no, String date) {
+		return mapper.getGroupConsumeByDate(g_no, date);
+	}
 
 
 
