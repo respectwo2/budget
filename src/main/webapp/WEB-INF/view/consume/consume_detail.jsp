@@ -24,11 +24,17 @@
 	<br> ${csm.c_money }원
 	<hr>
 	${csm.c_content }
-	<br> 
+	<br>
 	<%-- <img src="${pageContext.request.contextPath}/resources/${csm.c_image}"
 		alt="이미지" /> --%>
 	<%-- <img src="${csm.c_image}" alt="이미지" /> --%>
-	<img src="${path}/resources/jpg/${csm.c_image}">
-	
+	<%-- <img src="${path}/resources/jpg/${csm.c_image}" width="400">  --%>
+
+	<c:if test="${csm.c_image ne 'none'}">
+		<img src="${path}/resources/jpg/${csm.c_image}" width="400" alt="이미지">
+	</c:if>
+
+
+
 </body>
 </html>

@@ -12,7 +12,7 @@
 <title>MyCalendar</title>
 <link href="${path}/resources/css/calendar.css" rel="stylesheet">
 </head>
-<body style="margin-bottom:100px;">
+<body style="margin-bottom: 100px;">
 	<%@ include file="../navbar.jsp"%>
 	<div class="container">
 		<div class="box">
@@ -94,9 +94,8 @@
 		</c:forEach>
 
 		<c:if test="${totalMoney ne 0}">
-			
-			<a href="/consume/list/${start.getYear()}-${String.format("%02d", start.getMonthValue())}-${String.format("%02d", pick.getDayOfMonth())}">총소비액:
-				${totalMoney}</a>
+				<a href="/consume/list/${start.getYear()}-${String.format("%02d", start.getMonthValue())}-${String.format("%02d", pick.getDayOfMonth())}" >총소비액:
+					${totalMoney}</a>
 			<br>
 		</c:if>
 

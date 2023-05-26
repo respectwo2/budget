@@ -153,7 +153,7 @@ public class ConsumeController {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-		String photo_path=null;
+		String photo_path="none";
 		if (!photo.isEmpty()) {
 			UUID uuid = UUID.randomUUID();
 			String uuidString = uuid.toString();
@@ -174,6 +174,7 @@ public class ConsumeController {
 			photo_path= fileName;
 		}
 
+		//this.csmService.create(date, amount, category, memo, photo_path, session);
 		this.csmService.create(date, amount, category, memo, photo_path, session);
 		LocalDate now = (LocalDate) session.getAttribute("loginDate");
 		// System.out.println(now.toString());

@@ -140,10 +140,10 @@ body {
 	max-width: 880px;
 }
 
-.dayconsumes {
+ .dayconsumes {
 	position: relative;
 	z-index: 10;
 	margin: auto;
 	width: 100%;
 	max-width: 880px;
-}
+} 
