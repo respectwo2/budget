@@ -9,6 +9,11 @@
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <title>Insert title here</title>
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+</style>
+<link href="${path}/resources/css/budget_list.css" rel="stylesheet">
 </head>
 <body>
 	<div class="top-rectangle">
@@ -28,8 +33,7 @@
 				src="${pageContext.request.contextPath}/resources/images/battery.svg"
 				alt="SVG">
 		</div>
-		<button class="back-page" type="button"
-			onclick="location.href='/budget/budget_list'">
+		<button class="back-page" type="button" onclick="history.back()">
 			<img
 				src="${pageContext.request.contextPath}/resources/images/back-page.svg"
 				alt="SVG">
