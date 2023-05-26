@@ -55,8 +55,16 @@
 		</button>
 		<h1 class="my-budget">마이 버찌</h1>
 	</div>
-		
-		
+	<div class="budget-rectangle">	
+		<div class="budget-comment">
+			<div class="cherry">
+				<img src="/resources/images/cherry.png">
+			</div>
+			<div class="budget-name">${bd_name}</div><br>
+			<div class="budget-detail">목표금액:${bd_goal} 남은금액:${bd_goalleft} 남은기간:${bd_dateleft}</div>
+		</div>
+	</div>	
+	
 	<h3>나의 지출</h3>
 	<c:forEach items="${consumeList}" var="c">
       <p>${c.c_money}</p>
@@ -64,13 +72,9 @@
     </c:forEach>
  	<div id="piechart" style="width: 200px; height: 200px;"></div>
  	
-	<div class="cherry">
-		<img src="/resources/images/cherry.png">
-	</div>
-	<div class="budget-name">${bd_name}</div><br>
-	<div class="budget-detail">목표금액:${bd_goal} 남은금액:${bd_goalleft} 남은기간:${bd_dateleft}</div>
 	<div>${bd_start}</div>
 	<div>${bd_end}</div>
+	<div>${bd_goalnow}</div>
   
 </body>
 </html>

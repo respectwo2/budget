@@ -9,22 +9,27 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+
 <title>calendar</title>
 <link href="${path}/resources/css/calendar.css" rel="stylesheet">
 </head>
 <body>
+	<%@ include file="../navbar.jsp"%>
+
 	<div class="container">
 		<div class="box">
 			<div class="month">
 			
 				<p class="year">${ start.getYear() }<span style="font-size: 14px">년</span></p>
 				<button style="margin-right: 60px" onclick="prev(${start.getYear()}, ${start.getMonthValue()})">
-					<img alt="" src="${path}/resources/icon/Polygon1.svg">
+					<img alt="" src="${path}/resources/images/Polygon1.svg">
 				</button>
 
 				<span style="font-size: 24px;">${ start.getMonthValue() }</span>월
 				<button style="margin-left: 60px">
-					<img alt="" src="${path}/resources/icon/Polygon2.svg">
+					<img alt="" src="${path}/resources/images/Polygon2.svg">
 				</button>
 				<div class="total">${arr[0]}</div>
 			</div>

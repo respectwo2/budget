@@ -21,7 +21,7 @@ import multicapmpus.kb3.kb3project.service.ConsumeService;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+
 @Controller
 @RequestMapping("/Buser")
 public class BuserController {
@@ -29,10 +29,10 @@ public class BuserController {
 	private final BuserService BService;
 
 
-//	public BuserController(BuserService BService) {
-//		this.BService = BService;
-//		 		 
-//	}
+	public BuserController(BuserService BService) {
+		this.BService = BService;
+		 		 
+	}
 
 	@GetMapping("/signup")
 	public String signup() {

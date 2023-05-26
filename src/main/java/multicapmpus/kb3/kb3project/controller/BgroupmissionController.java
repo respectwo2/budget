@@ -2,9 +2,13 @@ package multicapmpus.kb3.kb3project.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,12 +43,16 @@ public class BgroupmissionController {
 	}
 	
 	@PostMapping("/bgm/create")
-	public String createBgroupMission(@RequestParam("bgm_name") String bgmName,
+	public String createBgroupMission(HttpSession session,
+									  @RequestParam("bgm_name") String bgmName,
 	                                  @RequestParam("bgm_goal") int bgmGoal,
 	                                  @RequestParam("bgm_content") String bgmContent,
-	                                  @RequestParam("bgm_start") String bgmStart,
-	                                  @RequestParam("bgm_end") String bgmEnd) {
+	                                  @RequestParam("bgm_start") LocalDate bgmStart,
+	                                  @RequestParam("bgm_end") LocalDate bgmEnd) {
 
+	    int gNo = (int) session.getAttribute("g_no");
+
+		
 	    Bgroupmission bgm = new Bgroupmission();
 	    bgm.setBgm_name(bgmName);
 	    bgm.setBgm_goal(bgmGoal);
@@ -52,7 +60,9 @@ public class BgroupmissionController {
 	    bgm.setBgm_start(bgmStart);
 	    bgm.setBgm_end(bgmEnd);
 	    
-	    bgroupmissionservice.saveBgroupmission(bgm);
+	    bgm.setG_no(gNo);
+	    
+	    bgroupmissionservice.saveBgroupmission(gNo, bgm);
 	    
 	    return "redirect:/bgroup/main";
 	}
@@ -62,8 +72,8 @@ public class BgroupmissionController {
 		Bgroupmission bgm = bgroupmissionservice.getBgmByNo(bgmNo);
 		String bgm_content = bgm.getBgm_content();
 		String bgm_name = bgm.getBgm_name();
-		String bgm_start = bgm.getBgm_start();
-		String bgm_end = bgm.getBgm_end();
+		LocalDate bgm_start = bgm.getBgm_start();
+		LocalDate bgm_end = bgm.getBgm_end();
 		int bgm_goal = bgm.getBgm_goal();
 		
 		
@@ -73,17 +83,22 @@ public class BgroupmissionController {
 		model.addAttribute("end",bgm_end);
 		model.addAttribute("goal",bgm_goal);
 		
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
+	    long remain = ChronoUnit.DAYS.between(bgm_start, bgm_end);
+	    model.addAttribute("remain", remain);
+
+		
+		
+//	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
 	    
-	    try {
-	        Date startDate = dateFormat.parse(bgm_start); 
-	        Date endDate = dateFormat.parse(bgm_end); 
-	        long remain = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24); 
-	        
-	        model.addAttribute("remain", remain); 
-	    } catch (ParseException e) {
-	        e.printStackTrace();
-	    }
+//	    try {
+//	        Date startDate = dateFormat.parse(bgm_start); 
+//	        Date endDate = dateFormat.parse(bgm_end); 
+//	        long remain = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24); 
+//	        
+//	        model.addAttribute("remain", remain); 
+//	    } catch (ParseException e) {
+//	        e.printStackTrace();
+//	    }
 		
 		return "bgroupmission/info";
 	}
@@ -94,8 +109,8 @@ public class BgroupmissionController {
 	    Bgroupmission bgm = bgroupmissionservice.getBgmByNo(bgmNo);
 	    String bgm_content = bgm.getBgm_content();
 	    String bgm_name = bgm.getBgm_name();
-	    String bgm_start = bgm.getBgm_start().substring(0, 10);
-	    String bgm_end = bgm.getBgm_end().substring(0, 10);
+	    LocalDate bgm_start = bgm.getBgm_start();
+	    LocalDate bgm_end = bgm.getBgm_end();
 	    int bgm_goal = bgm.getBgm_goal();
 	    List<Integer> userCList = bgroupmissionservice.getUserCListDate(bgmNo);
 	    List<String> userNicknameList = bgroupmissionservice.getUserCListDateUserNo(bgmNo);
@@ -108,18 +123,21 @@ public class BgroupmissionController {
 	    model.addAttribute("goal", bgm_goal);
 	    model.addAttribute("membercs", userCList);
 	    model.addAttribute("member", userNicknameList);
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
 	    
-	    try {
-	        Date startDate = dateFormat.parse(bgm_start); 
-	        Date endDate = dateFormat.parse(bgm_end); 
-	        long remain = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24); 
-	        
-	        model.addAttribute("remain", remain); 
-	    } catch (ParseException e) {
-	        e.printStackTrace();
-	    }
+	    long remain = ChronoUnit.DAYS.between(bgm_start, bgm_end);
+	    model.addAttribute("remain", remain);
 	    
+	    //	    
+//	    try {
+//	        Date startDate = dateFormat.parse(bgm_start); 
+//	        Date endDate = dateFormat.parse(bgm_end); 
+//	        long remain = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24); 
+//	        
+//	        model.addAttribute("re	main", remain); 
+//	    } catch (ParseException e) {
+//	        e.printStackTrace();
+//	    }
+//	    
 	    return "bgroupmission/bgmnow";
 	}
 	

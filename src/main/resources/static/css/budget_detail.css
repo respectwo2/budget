@@ -17,7 +17,7 @@ body {
 	
 	background: #FFFFFF;
 	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-	
+	z-index: 2;
 }
 
 
@@ -117,77 +117,87 @@ body {
 	
 }
 
-/* 선택 버찌 멘트 */
+/* 선택버찌네모 */
+.budget-rectangle{
+	
+	position: absolute;
+	left: 0.27%;
+	right: -0.27%;
+	top: -5.05%;
+	bottom: 76.85%;
+	
+	background: #FFFFFF;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	border-radius: 30px;
+	z-index: 1; 
+}
 
-position: absolute;
-width: 352px;
-height: 103px;
-left: 19px;
-top: 119px;
+/* 선택 버찌 멘트 */
+.budget-comment{
+	
+	position: absolute;
+	width: 352px;
+	height: 103px;
+	left: 19px;
+	top: 119px;
+}
 
 
 
 /* 선택버찌 체리 */
+.cherry img{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 22px;
+	top: 119px;
+	
+}
 
-position: absolute;
-width: 20px;
-height: 20px;
-left: 22px;
-top: 119px;
-
-background: url(image.png);
 
 
 /* 2주동안 10만원 쓰기 챌린지! */
-
-position: absolute;
-left: 11.73%;
-right: 17.07%;
-top: 14.66%;
-bottom: 81.9%;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-
-color: #000000;
+.budget-name{
+	
+	position: absolute;
+	left: 11.73%;
+	right: 17.07%;
+	top: 14.66%;
+	bottom: 81.9%;
+	
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+	
+	color: #000000;
+}
 
 
 
 /* 목표 금액: 10만원 남은 금액: 5만원 남은 기간: 3일 */
-
-position: absolute;
-left: 5.07%;
-right: 1.07%;
-top: 18.23%;
-bottom: 72.66%;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 300;
-font-size: 15px;
-line-height: 18px;
-
-color: #8CA1B6;
-
-
-
-
+.budget-detail{
+	
+	position: absolute;
+	left: 5.07%;
+	right: 1.07%;
+	top: 18.23%;
+	bottom: 72.66%;
+	
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 18px;
+	
+	color: #8CA1B6;
+}
 
 
-/* 선택버찌네모 */
 
-position: absolute;
-left: 0.27%;
-right: -0.27%;
-top: -5.05%;
-bottom: 76.85%;
 
-background: #FFFFFF;
-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-border-radius: 30px;
+
 
 /* 나의 지출 */
 

@@ -26,13 +26,13 @@ import multicapmpus.kb3.kb3project.service.BudgetService;
 public class BudgetController {
 	
 	@Autowired private BudgetService budgetService;
-	//¹öÂî ½ÃÀÛ ÆäÀÌÁö º¸¿©ÁÖ±â
+	//å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ìŒê¹ì˜™
 	@GetMapping("/budget/budget_start")
 	public String budgetStart(Model model) {
 		return "budget/budget_start";
 	}
 	
-	//¹öÂî µî·Ï
+	//å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ï¿½
 	@GetMapping("/budget/budget_register")
 	public String budgetRegisterForm(Model model) {
 		return "budget/budget_register";
@@ -41,7 +41,7 @@ public class BudgetController {
 	private String createBudget(Model model) {
 		return "budget/create"; 
 	}
-	//post·Î ¹ŞÀº Æû°ªÀ» insert
+	//postå ì™ì˜™ å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ insert
 	@PostMapping("/budget/create")
 	public String createBudgetPost(@RequestParam("title") String bd_name,
 			@RequestParam("start_date") LocalDate bd_start,
@@ -63,7 +63,7 @@ public class BudgetController {
 		
 		return"redirect:/budget/budget_list"; 
 	}
-	//¹öÂî ¸®½ºÆ® º¸¿©ÁÖ±â 
+	//å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™íŠ¸ å ì™ì˜™å ì™ì˜™å ìŒê¹ì˜™ 
 	@GetMapping("/budget/budget_list") 
 	public String budgetList(HttpSession session, Model model) { 
 		int user_No=(int)session.getAttribute("user_no");
@@ -72,18 +72,16 @@ public class BudgetController {
 		return "budget/budget_list"; 
 	}
 	
-	//¸ŞÀÎ¿¡¼­ ¼¼¼Ç ¹Ş¾Æ¿À±â
+	//å ì™ì˜™å ì‹¸ìš¸ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™ å ìŒ¨ì•„ìš¸ì˜™å ì™ì˜™
 	@GetMapping("/budget/main")
 	public String main(HttpSession session, Model model) {
-		int user_No=1;
-		session.setAttribute("user_no", user_No);
-	
+		int user_No=(int)session.getAttribute("user_no");	
 		model.addAttribute("user_no",user_No);
 		
 		return "redirect:/budget/budget_list";
 		
 	}
-	//¹öÂîº° ¼Òºñ ¸®½ºÆ® µî µğÅ×ÀÏ º¸¿©ÁÖ±â
+	//å ì™ì˜™å ì˜ë³„ å ìŒ€ë¸ì˜™ å ì™ì˜™å ì™ì˜™íŠ¸ å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ìŒê¹ì˜™
 	@GetMapping("/budget/budget_detail{bd_no}")
 	public String budgetDetailList(@PathVariable("bd_no") int bd_No, HttpSession session, Model model) {
 		int user_No=(int) session.getAttribute("user_no");
@@ -92,6 +90,7 @@ public class BudgetController {
 		Budget bg=budgetService.getBdByNo(bd_No);
 		LocalDate bd_start=bg.getBd_start();
 		LocalDate bd_end=bg.getBd_end();
+		int bd_goalnow=bg.getBd_goalnow();
 		int bd_no=bgl.getBd_no();
 		String bd_name=bgl.getBd_name();
 		int bd_goal=bgl.getBd_goal();
@@ -106,6 +105,7 @@ public class BudgetController {
 			consume.setC_category(category);
 		}
 		
+		model.addAttribute("bd_goalnow",bd_goalnow);
 		model.addAttribute("bd_start",bd_start);
 		model.addAttribute("bd_end",bd_end);
 		model.addAttribute("bd_no",bd_no);
@@ -117,27 +117,28 @@ public class BudgetController {
 		return "budget/budget_detail";
 	} 
 	
-	//¼ÒºñÄ«Å×°í¸® id->ÀÌ¸§À¸·Î º¯È¯
+	//å ìŒ€ë¸ì˜™ì¹´å ìŒ“ê³¤ì˜™ id->å ì‹±ëªŒì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™í™˜
 	 private HashMap<Integer, String> getCategoryMap() {
-	     HashMap<Integer,String> categoryMap= new HashMap<>();
-	     categoryMap.put(1,"½Äºñ");
-	     categoryMap.put(2,"Ä«Æä/°£½Ä");
-	     categoryMap.put(3,"¼ú/À¯Èï");
-	     categoryMap.put(4,"»ıÈ°");
-	     categoryMap.put(5,"ÆĞ¼Ç¼îÇÎ");
-	     categoryMap.put(6,"ºäÆ¼/¹Ì¿ë");
-	     categoryMap.put(7,"±³Åëºñ");
-	     categoryMap.put(8,"ÁÖ°Åºñ");
-	     categoryMap.put(9,"ÀÇ·á/°Ç°­");
-	     categoryMap.put(10,"¹®È­");
-	     categoryMap.put(11,"±İÀ¶");
-	     categoryMap.put(12,"¿©Çà/¼÷¹Ú");
-	     categoryMap.put(13,"±³À°/ÇĞ½À");
-	     categoryMap.put(14,"°¡Á·");
-	     categoryMap.put(15,"¹İ·Áµ¿¹°");
-	     categoryMap.put(16,"°æÁ¶»ç/¼±¹°");
-	     categoryMap.put(17,"¸ÛÃ»ºñ¿ë");
-	     categoryMap.put(18,"±âÅ¸");
+		 HashMap<Integer,String> categoryMap= new HashMap<>();
+	        categoryMap.put(1,"ì‹ë¹„");
+	           categoryMap.put(2,"ì¹´í˜/ê°„ì‹");
+	           categoryMap.put(3,"ìˆ /ìœ í¥");
+	           categoryMap.put(4,"ìƒí™œ");
+	           categoryMap.put(5,"íŒ¨ì…˜ì‡¼í•‘");
+	           categoryMap.put(6,"ë·°í‹°/ë¯¸ìš©");
+	           categoryMap.put(7,"êµí†µë¹„");
+	           categoryMap.put(8,"ì£¼ê±°ë¹„");
+	           categoryMap.put(9,"ì˜ë£Œ/ê±´ê°•");
+	           categoryMap.put(10,"ë¬¸í™”");
+	           categoryMap.put(11,"ê¸ˆìœµ");
+	           categoryMap.put(12,"ì—¬í–‰/ìˆ™ë°•");
+	           categoryMap.put(13,"êµìœ¡/í•™ìŠµ");
+	           categoryMap.put(14,"ê°€ì¡±");
+	           categoryMap.put(15,"ë°˜ë ¤ë™ë¬¼");
+	           categoryMap.put(16,"ê²½ì¡°ì‚¬/ì„ ë¬¼");
+	           categoryMap.put(17,"ë©ì²­ë¹„ìš©");
+	           categoryMap.put(18,"ê¸°íƒ€");
+
          return categoryMap;
 	    }
 	

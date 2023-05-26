@@ -35,7 +35,7 @@ public interface BudgetMapper {
    		   "FROM budget WHERE bd_no=#{bd_no}")
    BudgetList getBudgetByNo(@Param("bd_no") int bd_No);
 
-   @Select("select bd_start, bd_end from budget where bd_no=#{bd_no}")
+   @Select("select bd_start, bd_end, bd_goalnow from budget where bd_no=#{bd_no}")
    Budget getBdByNo(@Param("bd_no") int bd_No);
 
 }

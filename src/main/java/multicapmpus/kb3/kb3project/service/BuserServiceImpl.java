@@ -10,15 +10,15 @@ import multicapmpus.kb3.kb3project.mapper.BuserMapper;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+
 @Service
 public class BuserServiceImpl implements BuserService {
 
 	private final BuserMapper bMapper;
 
-//	public BuserServiceImpl(BuserMapper bMapper) {
-//		this.bMapper = bMapper;
-//	}
+	public BuserServiceImpl(BuserMapper bMapper) {
+		this.bMapper = bMapper;
+	}
 
 	@Override
 	public Buser getBuserDetail(int u_no) {
