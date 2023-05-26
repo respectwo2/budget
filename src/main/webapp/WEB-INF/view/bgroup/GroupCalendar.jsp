@@ -20,6 +20,7 @@
 <link href="${path}/resources/css/calendar.css" rel="stylesheet">
 </head>
 <body>
+<%@ include file="../navbar.jsp"%>
 <div>
 <div class="top-rectangle">
       <div class="time">9:40</div>

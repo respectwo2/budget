@@ -42,6 +42,8 @@ public class GroupFeedController {
     */
     @GetMapping("/group/feed")
     public String feed(@RequestParam("groupNo") int groupNo, Model model, HttpServletRequest request) {
+    	
+    	
 
         String groupMissionBanner = groupMissionService.getGroupMissionBanner(groupNo);
         System.out.println("groupMissionBanner=" + groupMissionBanner);
