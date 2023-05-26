@@ -46,7 +46,6 @@ import java.util.List;
             System.out.println("groupsWithMemberCount=" + groupsWithMemberCount);
             model.addAttribute("groupsWithMemberCount", groupsWithMemberCount);
 
-
             // 현재 등록된 그룹들
             List<Bgroup> groupList = groupService.getGroupList();
             System.out.println("groups=" + groupList);
