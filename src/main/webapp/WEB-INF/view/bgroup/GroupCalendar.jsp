@@ -39,6 +39,7 @@
       <h1 class="my-budget">상단바</h1>
    </div>
 </div>
+<div style="margin-bottom: 25px;"></div>
 	<div class="container">
 		<div class="box">
 			<div class="month">
@@ -104,15 +105,21 @@
 		
 	</div>
 <div>
+<div class="calendar-details">
     <div class="current-date">
         <span>${month}월</span> <span>${day}일</span> 
-        <button class="detailbtn" onclick="viewEvent('${start.getYear()}-${String.format('%02d', start.getMonthValue())}-${String.format('%02d', day)}')">+</button>
     </div>
+        <button class="detailbtn" onclick="viewEvent('${start.getYear()}-${String.format('%02d', start.getMonthValue())}-${String.format('%02d', day)}')">+</button>
+    
     <c:forEach var="member" items="${member}" varStatus="i">
         <div class="consumebox">
-            <p>${member} : ${membercs[i.index]}</p>
+            <a class="memcss">${member}</a><a class="memcssidx">${membercs[i.index]}</a>
         </div>
     </c:forEach>
+    </div>
+    <script>
+    </script>
+        <div style="margin-bottom: 100px;"></div>
 </div>
 	
 	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -163,6 +170,9 @@
 		 function viewEvent(day) {
 	        location.href = "/consume/grouplist/" + day;
 	    }
+		
+		
+		
     </script> 
 </body>
 </html>

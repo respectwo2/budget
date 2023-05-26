@@ -168,69 +168,80 @@ public class CalendarController {
 	}
 	
 	
-	@GetMapping("/bgroup/calendar")
-	public String bgroupcalendar(Model model) {
-		LocalDate now = LocalDate.now();
-		model.addAttribute("now", now);
-		
-		LocalDate pick = LocalDate.now();
-		String strPick = pick.format(DateTimeFormatter.ofPattern("yyyy-MM"));
-		model.addAttribute("pick", pick);
-		
-		LocalDate start = LocalDate.of(pick.getYear(), pick.getMonthValue(), 1);
-		String strStart = start.format(DateTimeFormatter.ofPattern("yyyy-MM"));
-		String strStartDay = start.format(DateTimeFormatter.ofPattern("yyyy-MM-DD"));
-		model.addAttribute("start", start);
-		
-	
-		
-	
-		List <GroupConsume> consumes = groupService.getGroupMonthConsume(2, strStart);
-		int [] arr = groupService.getSum(consumes);
-		model.addAttribute("arr", arr);
-		
-		List <GroupConsume> dayConsumes = groupService.getGroupDayConsume(2, strStartDay);
-		model.addAttribute("dayConsumes", dayConsumes);
-		
-
-		
-		
-		return "bgroup/calendar";
-	}
+//	@GetMapping("/bgroup/calendar")
+//	public String bgroupcalendar(Model model) {
+//		LocalDate now = LocalDate.now();
+//		model.addAttribute("now", now);
+//		
+//		LocalDate pick = LocalDate.now();
+//		String strPick = pick.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+//		model.addAttribute("pick", pick);
+//		
+//		LocalDate start = LocalDate.of(pick.getYear(), pick.getMonthValue(), 1);
+//		String strStart = start.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+//		String strStartDay = start.format(DateTimeFormatter.ofPattern("yyyy-MM-DD"));
+//		model.addAttribute("start", start);
+//		
+//	
+//		
+//	
+//		List <GroupConsume> consumes = groupService.getGroupMonthConsume(2, strStart);
+//		int [] arr = groupService.getSum(consumes);
+//		model.addAttribute("arr", arr);
+//		
+//		List <GroupConsume> dayConsumes = groupService.getGroupDayConsume(2, strStartDay);
+//		model.addAttribute("dayConsumes", dayConsumes);
+//		
+//
+//		
+//		
+//		return "bgroup/calendar";
+//	}
 	
 	@GetMapping("/bgroup/GroupCalendar")
-	public String Groupcalendar(@RequestParam("year") int year, @RequestParam("month") int month,@RequestParam("day") int day, Model model) {
-		LocalDate now = LocalDate.now();
-		model.addAttribute("now", now);
-		
-		model.addAttribute("month", month);
-	    model.addAttribute("day", day);
-		
-		LocalDate start = LocalDate.of(year, month, 1);
-		String strStart = start.format(DateTimeFormatter.ofPattern("yyyy-MM"));
-		model.addAttribute("start", start);
-		
-		LocalDate pick = LocalDate.of(year, month, day);
-		String strPickDay = pick.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		model.addAttribute("pick", pick);
-		
-		
-		List <GroupConsume> consumes = groupService.getGroupMonthConsume(2, strStart);
-		int [] arr = groupService.getSum(consumes);
-		model.addAttribute("arr", arr);
-		
-		List <GroupConsume> dayConsumes = groupService.getGroupDayConsume(2, strPickDay);
-		model.addAttribute("dayConsumes", dayConsumes);
+	public String Groupcalendar(@RequestParam(value = "year", required = false) Integer year,
+	                            @RequestParam(value = "month", required = false) Integer month,
+	                            @RequestParam(value = "day", required = false) Integer day,
+	                            Model model,
+	                            HttpSession session) {
+	    int g_no = (int) session.getAttribute("g_no");
 
-//	    int gNo = (int) request.getSession().getAttribute("g_no");
-	    List<Integer> totalmoney = csmMapper.getTotalMoneyList(2, strPickDay);
-	    List<String> usernick = csmMapper.getUserNicknames(2, strPickDay);
-	    
-	    
+	    LocalDate now = LocalDate.now();
+	    int currentYear = now.getYear();
+	    int currentMonth = now.getMonthValue();
+	    int currentDay = now.getDayOfMonth();
+
+	    year = (year != null) ? year : currentYear;
+	    month = (month != null) ? month : currentMonth;
+	    day = (day != null) ? day : currentDay;
+
+	    model.addAttribute("now", now);
+	    model.addAttribute("year", year);
+	    model.addAttribute("month", month);
+	    model.addAttribute("day", day);
+
+	    LocalDate start = LocalDate.of(year, month, 1);
+	    String strStart = start.format(DateTimeFormatter.ofPattern("yyyy-MM"));
+	    model.addAttribute("start", start);
+
+	    LocalDate pick = LocalDate.of(year, month, day);
+	    String strPickDay = pick.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	    model.addAttribute("pick", pick);
+
+	    List<GroupConsume> consumes = groupService.getGroupMonthConsume(g_no, strStart);
+	    int[] arr = groupService.getSum(consumes);
+	    model.addAttribute("arr", arr);
+
+	    List<GroupConsume> dayConsumes = groupService.getGroupDayConsume(g_no, strPickDay);
+	    model.addAttribute("dayConsumes", dayConsumes);
+
+	    List<Integer> totalmoney = csmMapper.getTotalMoneyList(g_no, strPickDay);
+	    List<String> usernick = csmMapper.getUserNicknames(g_no, strPickDay);
+
 	    model.addAttribute("membercs", totalmoney);
 	    model.addAttribute("member", usernick);
-		
-		return "bgroup/GroupCalendar";
+
+	    return "bgroup/GroupCalendar";
 	}
 
 	

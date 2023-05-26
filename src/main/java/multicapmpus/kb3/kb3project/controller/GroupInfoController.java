@@ -7,6 +7,8 @@ import multicapmpus.kb3.kb3project.service.GroupService;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,8 +43,10 @@ public class GroupInfoController {
     그룹가입
      */
     @PostMapping("/group/join")
-    public String join(@RequestParam("groupNo") int groupNo) {
-        int userNo = 1;
+    public String join(@RequestParam("groupNo") int groupNo,HttpServletRequest request,Model model) {
+    	
+		int userNo = (int) request.getSession().getAttribute("user_no");
+		model.addAttribute("user_no",userNo);
 
         // 그룹 가입 처리
         groupService.joinGroup(userNo, groupNo);

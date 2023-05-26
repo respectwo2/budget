@@ -39,20 +39,14 @@ import java.util.List;
         @GetMapping("/group")
         public String main(Model model, HttpServletRequest request) {
             // 세션에 담긴 회원no가져오기
-//        HttpSession session = request.getSession();
-//        int userNo = (int) session.getAttribute("user_no");
-            int userNo = 1;
+        HttpSession session = request.getSession();
+        int userNo = (int) session.getAttribute("user_no");
+//            int userNo = 1;
 
             // 회원이 가입한 그룹들 (+현재 인원)
             List<GroupWithMemberCount> groupsWithMemberCount = groupService.getGroupsWithMemeberCount(userNo);
             System.out.println("groupsWithMemberCount=" + groupsWithMemberCount);
             model.addAttribute("groupsWithMemberCount", groupsWithMemberCount);
-            
-            
-//            model.addAttribute("g_no",gNo);
-//            model.addAttribute("gNo",groupNo);
-
-            // �쁽�옱 �벑濡앸맂 洹몃９�뱾
             List<Bgroup> groupList = groupService.getGroupList();
             System.out.println("groups=" + groupList);
             model.addAttribute("groupList", groupList);
@@ -97,7 +91,6 @@ import java.util.List;
 //        int userNo = (int) session.getAttribute("user_no");
 //        int userNo = 1;
 
-            // 洹몃９ �깮�꽦
             Bgroup group = new Bgroup();
             group.setG_name(gName);
             group.setG_leader(userNo);
@@ -107,6 +100,8 @@ import java.util.List;
             group.setG_content(gContent);
             groupService.createGroup(group);
             System.out.println("생성완료");
+            
+            
             // �깮�꽦�맂 洹몃９�쓽 groupNo瑜� 諛쏆븘���꽌, user_group�뀒�씠釉붿뿉 userNo�� groupNo瑜� �궫�엯�빐二쇨린
             int groupNo = groupService.getGroupNoByGname(gName);
             groupService.joinGroup(userNo, groupNo);

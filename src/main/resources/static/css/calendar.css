@@ -8,13 +8,127 @@
 }
 
 body {
-	font-family: 'Pretendard-Regular';
+	width: 375px;
+	height: 812px;
+	background: #F5F5F5;
+	width:95%;
+}
+
+/* 상단네모 */
+.top-rectangle{
+	position: absolute;
+	left: 0%;
+	right: 0%;
+	top: 0%;
+	bottom: 88.18%;
+	
+	background: #FFFFFF;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	z-index: 2;
+}
+
+
+/* 와이파이 */
+.wifi{
+	position: absolute;
+	left: 81.07%;
+	right: 13.6%;
+	top: 8%;
+	/* bottom: 96.31%;
+
+	background: #000000; */
+}
+.wifi img{
+	width:100%;
+	height:100%;
+}
+/* 배터리 */
+.battery{
+	position: absolute;
+	left: 88%;
+	right: 6.67%;
+	top: 8%;
+	/* bottom: 96.43%;
+
+	background: #000000; */
+}
+.battery img{
+	width:100%;
+	height:100%;
+}
+/* 데이터 */
+.data{
+	position: absolute;
+	left: 74.67%;
+	right: 20.53%;
+	top: 8%;
+	/* bottom: 96.31%;
+
+	background: #000000;
+	 */
+}
+.data img{
+	width:100%;
+	height:100%;
+}
+/* 9:40 */
+.time{
+	position: absolute;
+	left: 8.53%;
+	right: 78.13%;
+	top: 8%;
+	bottom: 96.8%;
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 22px;
+
+	color: #000000;
+	
+}
+
+
+/* 이전페이지로 */
+.back-page{
+	position: absolute;
+	left: auto;
+	right: 90%;
+	top: 60%;
+	background-color: transparent;
+    border: none;
+	/* bottom: 90.27%;
+
+	border: 2px solid #363636; */
+}
+.back-page img{
+	width:100%;
+	height:100%;
+}
+
+.my-budget{
+	position: absolute;
+	/* left: 39.47%; */
+	right: 37.87%;
+	top: 43%;
+	bottom: 90.27%;
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
+
+	color: #000000;
+	
 }
 
 .container {
 	border-radius: 0px 0px 30px 30px;
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 50px 0px;
 	margin-bottom: 30px;
+	background-color : #FFFFFF;
 }
 
 .box {
@@ -145,4 +259,75 @@ body {
 	margin: auto;
 	width: 100%;
 	max-width: 880px;
+}
+
+/* 5월 4일 */
+
+.current-date{
+position: absolute;
+left: 10.13%;
+right: 74.93%;
+top: 62.32%;
+bottom: 35.1%;
+
+font-family: 'Abhaya Libre ExtraBold';
+font-style: normal;
+font-weight: 800;
+font-size: 18px;
+line-height: 21px;
+
+color: #363636;
+}
+
+.detailbtn{
+	position: absolute;
+width: 18.98px;
+height: 18.9px;
+left: 299.07px;
+top: 506px;
+
+background: url(image.png);
+transform: rotate(0.2deg);
+	
+}
+
+.memcss{
+	position: absolute;
+width: 40px;
+height: 27px;
+left: 47px;
+top: 556px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+
+color: #79CCB8;
+}
+
+.memcssidx{
+	position: absolute;
+width: 53px;
+height: 20px;
+left: 275px;
+top: 553px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 20px;
+
+
+color: #F96D6B;
+	
+}
+
+.calendar-details {
+   margin-top: 20px; /* Adjust the margin-top value as needed */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }

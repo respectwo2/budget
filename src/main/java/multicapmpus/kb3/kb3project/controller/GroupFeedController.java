@@ -41,10 +41,9 @@ public class GroupFeedController {
         그룹 피드 화면
     */
     @GetMapping("/group/feed")
-    public String feed(@RequestParam("groupNo") int groupNo, Model model, HttpServletRequest request) {
-    	
-    	
-
+    public String feed(@RequestParam("groupNo") int groupNo, Model model,HttpSession session) {
+    	session.setAttribute("g_no", groupNo);
+		
         String groupMissionBanner = groupMissionService.getGroupMissionBanner(groupNo);
         System.out.println("groupMissionBanner=" + groupMissionBanner);
         model.addAttribute("groupMissionBanner", groupMissionBanner);
@@ -110,6 +109,7 @@ public class GroupFeedController {
 
         // 세션 처리하기
         HttpSession session = request.getSession();
+        
         int userNo = (int) session.getAttribute("user_no");
         int gNo = (int) session.getAttribute("g_no");
 //        int userNo = 1;

@@ -177,7 +177,8 @@ public class ConsumeController {
 	public String grouplist(@PathVariable("date") String date, HttpServletRequest request, Model model) {
 
 		int gNo = (int) request.getSession().getAttribute("g_no");
-
+		model.addAttribute("g_no",gNo);
+		
 		List<Integer> totalmoney = csmMapper.getTotalMoneyList(gNo, date);
 		List<String> usernick = csmMapper.getUserNicknames(gNo, date);
 
