@@ -105,7 +105,6 @@
 		
 	</div>
 <div>
-<div class="calendar-details">
     <div class="current-date">
         <span>${month}월</span> <span>${day}일</span> 
     </div>
@@ -116,7 +115,6 @@
             <a class="memcss">${member}</a><a class="memcssidx">${membercs[i.index]}</a>
         </div>
     </c:forEach>
-    </div>
     <script>
     </script>
         <div style="margin-bottom: 100px;"></div>
