@@ -12,7 +12,9 @@
 	<%@ include file="../navbar.jsp"%>
 	<!-- 홈화면에서 총소비 누르면 보여줄 리스트 -->
 	<h1>날짜별 소비 내역 리스트</h1>
-	<h2>${c_date}</h2>
+	<%-- <h2>${c_date}</h2>
+ --%>
+	<h2>${year}년 ${month}월 ${day}일</h2>  
 	<table>
 		<thead>
 			<tr>

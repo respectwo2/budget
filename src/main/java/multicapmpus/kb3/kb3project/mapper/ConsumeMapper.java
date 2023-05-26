@@ -66,7 +66,7 @@ public interface ConsumeMapper {
 
 	// SELECT * FROM Consume WHERE c_date >= TO_DATE('2023-05-17', 'YYYY-MM-DD') and
 	// c_date <= TO_DATE('2023-05-17', 'YYYY-MM-DD')+1;
-	@Select("SELECT * FROM consume WHERE TRUNC(c_date) = TO_DATE(#{date}, 'YYYY-MM-DD') " + "AND user_no=#{user_no}")
+	@Select("SELECT * FROM consume WHERE TRUNC(c_date) = TO_DATE(#{date}, 'YYYY-MM-DD') " + "AND user_no=#{user_no} ORDER BY C_NO")
 	// ("select * from consume where c_date >= TO_DATE( #{date}, 'YYYY-MM-DD') and
 	// c_date <= TO_DATE(#{date}, 'YYYY-MM-DD')+1")
 	// ("select * from consume where c_date >= TO_DATE( #{date}, 'YYYY-MM-DD') and
