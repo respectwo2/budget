@@ -102,8 +102,21 @@ public class ConsumeController {
 		// String csm_date_modify = date.substring(0, 10); //�떆媛� �젙蹂� �젣嫄�
 		// String csm_date_modify = csm.getC_date().substring(0, 10); //�떆媛� �젙蹂� �젣嫄�
 //		model.addAttribute("csm_date_modify", csm_date_modify); //�궇吏쒕쭔 �꽆寃⑥＜湲�
-		model.addAttribute("csm_date_modify", date); // �궇吏쒕쭔 �꽆寃⑥＜湲�
+		//model.addAttribute("csm_date_modify", date); // �궇吏쒕쭔 �꽆寃⑥＜湲�
 		model.addAttribute("categoryMap", categoryMap); // 移댄뀒怨좊━ 留� �꽆寃⑥＜湲�
+		
+		String[] dateParts = date.split("-");
+		int year = Integer.parseInt(dateParts[0]);
+		int month = Integer.parseInt(dateParts[1]);
+		int day = Integer.parseInt(dateParts[2]);
+
+		// 월과 일이 1자리인 경우 앞에 0을 추가
+		String monthStr = (month < 10) ? String.valueOf(month) : String.format("%02d", month);
+		String dayStr = (day < 10) ? String.valueOf(day) : String.format("%02d", day);
+		model.addAttribute("year", year);
+		model.addAttribute("month", monthStr);
+		model.addAttribute("day", dayStr);
+		
 		return "consume/consume_detail";
 	}
 
@@ -118,6 +131,19 @@ public class ConsumeController {
 		model.addAttribute("csmList", csmList);
 		model.addAttribute("c_date", c_date);
 		model.addAttribute("categoryMap", categoryMap);
+		///////////////////
+		String[] dateParts = c_date.split("-");
+		int year = Integer.parseInt(dateParts[0]);
+		int month = Integer.parseInt(dateParts[1]);
+		int day = Integer.parseInt(dateParts[2]);
+
+		// 월과 일이 1자리인 경우 앞에 0을 추가
+		String monthStr = (month < 10) ? String.valueOf(month) : String.format("%02d", month);
+		String dayStr = (day < 10) ? String.valueOf(day) : String.format("%02d", day);
+		model.addAttribute("year", year);
+		model.addAttribute("month", monthStr);
+		model.addAttribute("day", dayStr);
+		///////////////////
 //		for (Consume csm : csmList) {
 //			String csm_date_modify = csm.getC_date().substring(0, 10);
 //			csm.setC_date(csm_date_modify);
@@ -138,21 +164,7 @@ public class ConsumeController {
 	@PostMapping("/create")
 	public String create(@RequestParam String date, @RequestParam int amount, @RequestParam int category,
 			@RequestParam String memo, HttpSession session, @RequestParam MultipartFile photo) {
-		// @RequestParam MultipartFile file
-		/*
-		 * SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); Date date2
-		 * = null; try { date2 = dateFormat.parse(date); } catch (ParseException e) { //
-		 * �궇吏� 蹂��솚 �떎�뙣 泥섎━ e.printStackTrace(); }
-		 */
-//		String fileName = date + file.getOriginalFilename();
-//		String filePath = "src/main/webapp/resources/" + fileName;
-//		try {
-//			file.transferTo(new File(filePath));
-//		} catch (IllegalStateException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		
 		String photo_path="none";
 		if (!photo.isEmpty()) {
 			UUID uuid = UUID.randomUUID();

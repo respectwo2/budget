@@ -11,7 +11,8 @@
 <body>
 	<%@ include file="../navbar.jsp"%>
 	<h1>상세 내역</h1>
-	<h2>${csm_date_modify }</h2>
+	<%-- <h2>${csm_date_modify }</h2> --%>
+	<h2>${year}년 ${month}월 ${day}일</h2>  
 	<c:forEach var="entry" items="${categoryMap}">
 		<c:set var="key" value="${entry.key}" />
 		<c:set var="value" value="${entry.value}" />
