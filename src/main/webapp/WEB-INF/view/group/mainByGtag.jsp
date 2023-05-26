@@ -68,9 +68,9 @@
 
     <c:forEach items="${groupsWithMemberCount}" var="userGroup">
         <div id="myGroup" onclick="goToGroupFeed(${userGroup.g_no})">
-            ${userGroup.g_name}&nbsp;&nbsp;&nbsp;
+            <b>${userGroup.g_name}&nbsp;&nbsp;&nbsp;</b>
             <small id="peopleNum">${userGroup.memberCount}/${userGroup.g_maxpeople}명</small>&nbsp;&nbsp;&nbsp;
-            <b>#${userGroup.g_tag}</b>
+            <small>#${userGroup.g_tag}</small>
         </div>
         <br>
     </c:forEach>
@@ -137,6 +137,23 @@
     //그룹정보 페이지로 이동
     function goToGroupInfoPage(groupNo) {
         location.href = "/group/info?groupNo=" + groupNo;
+    }
+
+    //그룹 가입하기
+    function groupJoin(gNo) {
+            var groupNo = gNo;
+            var form = document.createElement("form");
+            form.method = "POST";
+            form.action = "/group/join";
+
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "groupNo";
+            input.value = groupNo;
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+            form.submit();
     }
     </script>
 </body>

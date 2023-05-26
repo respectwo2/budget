@@ -28,7 +28,7 @@ public interface ConsumeMapper {
             "LEFT JOIN Bcomment bc ON c.c_no = bc.c_no " +
             "WHERE ug.g_no = #{groupNo} " +
             "GROUP BY c.c_no, c.user_no, c.c_date, c.c_money, c.c_categoryid, c.c_image, c.c_content, bu.user_name, c.c_like " +
-            "ORDER BY c.c_date ASC")
+            "ORDER BY c.c_date DESC")
     public List<ConsumeForFeed> selectConsumesWithCommentNumByGroupNo(@Param("groupNo") int groupNo);
 
     /*

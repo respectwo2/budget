@@ -24,7 +24,7 @@ public interface CommentMapper {
      */
     @Select("SELECT C.*, B.user_name FROM Bcomment C JOIN Buser B ON C.user_no = B.user_no " +
             "WHERE C.c_no = #{consumeNo} " +
-            "ORDER BY C.cmn_date ASC")
+            "ORDER BY C.cmn_date DESC")
     List<CommentWithUserName> selectByConsumeNo(@Param("consumeNo") int consumeNo);
 }
 

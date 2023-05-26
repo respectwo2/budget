@@ -10,5 +10,5 @@ public interface GroupMissionService {
     /*
     그룹의 그룹미션 번호 가져오기
      */
-    public int getGroupMissionNoByGroupNo(int gNo);
+    public Integer getGroupMissionNoByGroupNo(int gNo);
 }

@@ -17,13 +17,12 @@
         그룹설명: ${groupInfo.g_content}
         <div id="groupJoinButton" onclick="groupJoin(${groupInfo.g_no})">가입하기</div>
 
-        <script>
-            function groupJoin(gNo) {
-
+    <script>
+         function groupJoin(gNo) {
                 var groupNo = gNo;
                 var form = document.createElement("form");
                 form.method = "POST";
-                form.action = "/group/create";
+                form.action = "/group/join";
 
                 var input = document.createElement("input");
                 input.type = "hidden";
@@ -33,7 +32,7 @@
 
                 document.body.appendChild(form);
                 form.submit();
-            }
-        </script>
+         }
+    </script>
     </body>
 </html>

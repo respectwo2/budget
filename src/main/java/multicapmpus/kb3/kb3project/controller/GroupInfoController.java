@@ -1,6 +1,7 @@
 package multicapmpus.kb3.kb3project.controller;
 
 import multicapmpus.kb3.kb3project.entity.Bgroup;
+import lombok.extern.log4j.Log4j2;
 import multicapmpus.kb3.kb3project.entity.necessary.GroupInfo;
 import multicapmpus.kb3.kb3project.service.GroupService;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@Log4j2
 public class GroupInfoController {
 
     private final GroupService groupService;
@@ -28,6 +30,7 @@ public class GroupInfoController {
     public String info(@RequestParam("groupNo") int groupNo, Model model) {
 
         GroupInfo groupInfo = groupService.getGroupInfo(groupNo);
+        System.out.println("groupNo=" + groupNo);
         System.out.println("groupInfo=" + groupInfo);
         model.addAttribute("groupInfo", groupInfo);
 
@@ -39,8 +42,6 @@ public class GroupInfoController {
      */
     @PostMapping("/group/join")
     public String join(@RequestParam("groupNo") int groupNo) {
-//      HttpSession session = request.getSession();
-//      int userNo = (int) session.getAttribute("user_no");
         int userNo = 1;
 
         // 그룹 가입 처리

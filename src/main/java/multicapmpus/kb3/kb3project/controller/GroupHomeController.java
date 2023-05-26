@@ -33,17 +33,10 @@ import java.util.List;
             this.consumeService = consumeService;
         }
 
-        /*
-        洹몃９ 硫붿씤 �솕硫�
-         */
         @GetMapping("/group")
         public String main(Model model, HttpServletRequest request) {
-            // �꽭�뀡�뿉 �떞湲� �쉶�썝no媛��졇�삤湲�
         HttpSession session = request.getSession();
         int userNo = (int) session.getAttribute("user_no");
-//        int gNo = (int) session.getAttribute("g_no");
-//        int groupNo = (int) session.getAttribute("gNo");
-            // �쉶�썝�씠 媛��엯�븳 洹몃９�뱾 (+�쁽�옱 �씤�썝)
             List<GroupWithMemberCount> groupsWithMemberCount = groupService.getGroupsWithMemeberCount(userNo);
             System.out.println("groupsWithMemberCount=" + groupsWithMemberCount);
             model.addAttribute("groupsWithMemberCount", groupsWithMemberCount);
@@ -52,7 +45,7 @@ import java.util.List;
 //            model.addAttribute("g_no",gNo);
 //            model.addAttribute("gNo",groupNo);
 
-            // �쁽�옱 �벑濡앸맂 洹몃９�뱾
+            // 현재 등록된 그룹들
             List<Bgroup> groupList = groupService.getGroupList();
             System.out.println("groups=" + groupList);
             model.addAttribute("groupList", groupList);
@@ -60,9 +53,6 @@ import java.util.List;
             return "group/main";  // group/main�쑝濡� 由щ떎�씠�젆�듃
         }
 
-        /*
-        寃��깋�맂 洹몃９
-         */
         @GetMapping("/group/search")
         public String main(@RequestParam("q") String searchValue, Model model, HttpServletRequest request) {
 
@@ -73,29 +63,21 @@ import java.util.List;
             return "group/search";
         }
 
-        /*
-        洹몃９ 留뚮뱾湲� �럹�씠吏�濡� �씠�룞
-         */
         @GetMapping("/group/create")
         private String createbgroup(Model model) {
             return "group/createGroup";
         }
 
-        /*
-        洹몃９ 留뚮뱾湲� 泥섎━ �썑 洹몃９�솃 �럹�씠吏�濡� �씠�룞
-         */
         @PostMapping("/group/create")
         public String createBgroup(@RequestParam("g_name") String gName,
                                    @RequestParam("g_maxpeople") int gPeople,
                                    @RequestParam("g_content") String gContent,
                                    @RequestParam("g_tag") String gTag,
                                    @RequestParam("g_rtag") String gRTag) {
-            // �꽭�뀡�뿉 �떞湲� �쉶�썝no媛��졇�삤湲�
 //        HttpSession session = request.getSession();
 //        int userNo = (int) session.getAttribute("user_no");
             int userNo = 1;
 
-            // 洹몃９ �깮�꽦
             Bgroup group = new Bgroup();
             group.setG_name(gName);
             group.setG_leader(userNo);
@@ -105,34 +87,26 @@ import java.util.List;
             group.setG_content(gContent);
             groupService.createGroup(group);
 
-            // �깮�꽦�맂 洹몃９�쓽 groupNo瑜� 諛쏆븘���꽌, user_group�뀒�씠釉붿뿉 userNo�� groupNo瑜� �궫�엯�빐二쇨린
             int groupNo = groupService.getGroupNoByGname(gName);
             groupService.joinGroup(userNo, groupNo);
 
             return "redirect:/group";
         }
 
-        /*
-        g_requiredTag濡� 洹몃９ 議고쉶�븯湲�
-         */
         @GetMapping("/group/list")
         public String showGroupsByGTag(@RequestParam("tag") String selectedTag, Model model, HttpServletRequest request) {
-            // �꽭�뀡�뿉 �떞湲� �쉶�썝no媛��졇�삤湲�
         HttpSession session = request.getSession();
         	int userNo = (int) session.getAttribute("user_no");
            
 
-            // �쉶�썝�씠 媛��엯�븳 洹몃９�뱾 (+�쁽�옱 �씤�썝)
             List<GroupWithMemberCount> groupsWithMemberCount = groupService.getGroupsWithMemeberCount(userNo);
             System.out.println("groupsWithMemberCount=" + groupsWithMemberCount);
             model.addAttribute("groupsWithMemberCount", groupsWithMemberCount);
 
-            // �꽑�깮�맂 �깭洹몄쓽 洹몃９�뱾
             List<Bgroup> groupsByGtag = groupService.getGroupsByGtag(selectedTag);
             System.out.println("groupsByGtag=" + groupsByGtag);
             model.addAttribute("groupsByGtag", groupsByGtag);
 
-            // �꽑�깮�맂 �깭洹� model�뿉 �떞�븘二쇨린
             model.addAttribute("selectedTag", selectedTag);
 
             return "group/mainByGtag";

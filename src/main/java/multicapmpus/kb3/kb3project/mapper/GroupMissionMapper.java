@@ -18,6 +18,6 @@ public interface GroupMissionMapper {
     그룹no으로 그룹미션no 조회
      */
     @Select("SELECT bgm_no FROM Bgroupmission WHERE g_no = #{groupNo}")
-    public int selectBgmNoByGroupNo(@Param("groupNo") int groupNo);
+    public Integer selectBgmNoByGroupNo(@Param("groupNo") int groupNo);
 }
 

@@ -78,7 +78,6 @@ public class GroupFeedController {
     }
 
 
-
     /*
         그룹피드 댓글 화면
      */
