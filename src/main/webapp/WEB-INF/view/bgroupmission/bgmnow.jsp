@@ -49,7 +49,7 @@
         </c:forEach>
     <script>
 					var container = document.querySelector('.container');
-			        var budgetList = document.querySelector('.budget-list');
+			        var budgetList = document.querySelector('.membercs');
 			        var itemCount = <%= itemCount %>;
 			        container.style.height = budgetList.offsetHeight + (itemCount - 1) * 100 + 'px';
 				</script>

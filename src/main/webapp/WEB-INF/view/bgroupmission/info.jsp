@@ -7,6 +7,7 @@
 <title>그룹 정보</title>
 </head>
 <body>
+
 <div class="top-rectangle">
       <div class="time">9:40</div>
       <div class="data">

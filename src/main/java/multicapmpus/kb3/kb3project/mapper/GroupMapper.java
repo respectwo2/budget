@@ -30,11 +30,10 @@ public interface GroupMapper {
     /*
     g_no으로 그룹정보 가져오기 (그룹, 리더이름, 현재인원)
      */
-    @Select("SELECT bg.*, COUNT(ug.user_no) AS memberCount, bu.user_name AS g_leaderName " +
-            "FROM Bgroup bg " +
-            "JOIN user_group ug ON bg.g_no = ug.g_no " +
-            "JOIN Buser bu ON bg.g_leader = bu.user_no " +
-            "WHERE bg.g_no = #{groupNo} " +
+    @Select("SELECT bg.g_no, bg.g_name, bg.g_maxpeople, bg.g_content, bg.g_requiredTag, bg.g_tag, bg.g_leader, bg.g_date, bg.g_private, " +
+            "COUNT(ug.user_no) AS memberCount, bu.user_name AS g_leaderName " +
+            "FROM Bgroup bg LEFT JOIN user_group ug ON bg.g_no = ug.g_no " +
+            "JOIN Buser bu ON bg.g_leader = bu.user_no WHERE bg.g_no = #{groupNo} " +
             "GROUP BY bg.g_no, bg.g_name, bg.g_maxpeople, bg.g_content, bg.g_requiredTag, bg.g_tag, bg.g_leader, bg.g_date, bg.g_private, bu.user_name")
     public GroupInfo selectGroupInfo(@Param("groupNo") int groupNo);
 
