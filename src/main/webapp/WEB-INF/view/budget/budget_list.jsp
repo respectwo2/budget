@@ -12,6 +12,7 @@
 </style>
 <link href="${path}/resources/css/budget_list.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<jsp:include page="${path}/WEB-INF/view/navbar-budget.jsp" />
 </head>
 <body>
 		<div class="top-rectangle">
@@ -40,7 +41,7 @@
 							<img src="/resources/images/cherry.png">
 						</div>
 						<div class="budget-name">${bd.bd_name}</div><br>
-						<div class="budget-detail">목표금액:${bd.bd_goal} 남은금액:${bd.bd_goalleft} 남은기간:${bd.bd_dateleft}</div>
+						<div class="budget-detail">목표금액:${bd.bd_goal} 남은금액:${bd.bd_goalleft} 남은기간:${bd.bd_dateleft}일</div>
 						<div class="line"></div>
 					</button>
 				</div>	
@@ -57,6 +58,5 @@
 		<button class="button2" type="button" onclick="location.href='/budget/budget_register'">
 			<img src="${pageContext.request.contextPath}/resources/images/budgetbtn.svg" alt="SVG">
 		</button>
-		<div class="footer"></div>
 </body>
 </html>

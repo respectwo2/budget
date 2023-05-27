@@ -144,7 +144,7 @@ body {
 
 
 /* 버찌등록버튼 */
-button{
+.registerbtn{
 		
 	position: absolute;
 	width: 72px;

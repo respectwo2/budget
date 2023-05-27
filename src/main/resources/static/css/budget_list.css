@@ -168,10 +168,11 @@ body {
 
 /* 목표 금액: 10만원 남은 금액: 5만원 남은 기간: 3일 */
 .budget-detail{
-	position: relative;
-	left: -3%;
+	display:flex;
+	position: absolute;
+	left: 8%;
 	right: -2.93%;
-	top: 37%;
+	top:75%;
 	/* bottom: 72.78%; */
 	
 	font-family: 'Inter';

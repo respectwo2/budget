@@ -14,15 +14,17 @@ public interface BudgetService {
 	//public List<Budget> getBudgetList();
 	//Budget getBudgetByNo(int user_No);
 	
-	//¹öÂî µî·Ï
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	int saveBudget(Budget budget);
-	//¹öÁö ¸®½ºÆ® º¸¿©ÁÖ±â
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
 	List<BudgetList> findbudgetAll(int user_No);
-	//¹öÂî º° ¼Òºñ ¸®½ºÆ® º¸¿©ÁÖ±â
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Òºï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
 	List<ConsumePlusCategory> findbudgetC(int user_No, int bd_No);
-	//¹öÂî Á¤º¸
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	BudgetList getBudgetByNo(int bd_No);
-	//¹öÂî ¼öÇà ³¯Â¥ º¸¿©ÁÖ±â
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
 	Budget getBdByNo(int bd_No);
+	//ë²„ì°Œë³„ ì†Œë¹„ maxê°’
+	ConsumePlusCategory getCategoryByNo(int user_No, int bd_No);
 
 }

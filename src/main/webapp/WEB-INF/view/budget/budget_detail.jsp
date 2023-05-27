@@ -9,10 +9,12 @@
 <title>budget_detail</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&display=swap');
 </style>
 <link href="${path}/resources/css/budget_detail.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<jsp:include page="${path}/WEB-INF/view/navbar-budget.jsp" />
 </head>
 <body>
 	<script type="text/javascript">
@@ -26,11 +28,16 @@
     			,['${c.c_category}', ${c.c_money}]
     		</c:forEach>
     	];
+    	var categoryColors=[];
+    	<c:forEach items="${consumeList}" var="c" varStatus="status">
+        	categoryColors.push(getCategoryColor(${c.c_categoryid}-1));
+        </c:forEach>
+        
     	var data = google.visualization.arrayToDataTable(dataArray);
         var options = {
-          colors: ['#3B82A1', '#43B8B1', '#4D97ED', '#FF9900', '#FFA8A4'],
+          colors: categoryColors,
           backgroundColor: 'transparent',
-          chartArea: {width: '100%', height: '100%'},
+          chartArea: {width: '90%', height: '100%', left:'10%'},
           legend: {position: 'right'}
         };
 
@@ -38,7 +45,13 @@
 
         chart.draw(data, options);
       }
+      function getCategoryColor(index) {
+    	 var colors = ['#3B82A1', '#43B8B1', '#4D97ED', '#FF9900', '#FFA8A4']; 
+    	 return colors[index % colors.length];
+    }
     </script>
+    
+    
     <div class="top-rectangle">
 		<div class="time">9:40</div>
 		<div class="data">
@@ -61,20 +74,56 @@
 				<img src="/resources/images/cherry.png">
 			</div>
 			<div class="budget-name">${bd_name}</div><br>
-			<div class="budget-detail">목표금액:${bd_goal} 남은금액:${bd_goalleft} 남은기간:${bd_dateleft}</div>
+			<div class="budget-detail">목표금액:${bd_goal} 남은금액:${bd_goalleft} 남은기간:${bd_dateleft}일</div>
 		</div>
 	</div>	
 	
-	<h3>나의 지출</h3>
-	<c:forEach items="${consumeList}" var="c">
-      <p>${c.c_money}</p>
-      <p>${c.c_category}</p>
-    </c:forEach>
- 	<div id="piechart" style="width: 200px; height: 200px;"></div>
- 	
-	<div>${bd_start}</div>
-	<div>${bd_end}</div>
-	<div>${bd_goalnow}</div>
+	<div class="my-consume">나의 지출</div>
+	<div class="budget-date">${bd_start}~${bd_end}</div>
+	
+	<div class="container">
+		<div class="consume-list">
+			<% int itemCount=0; %>
+			<c:forEach items="${consumeList}" var="c">
+			<div class="list">
+				<div class="consume-rectangle">
+					<div class="consume-name-rectangle${c.c_categoryid}">
+				      <div class="consume-name">${c.c_category}</div>
+					</div>
+					<div class="money">
+						<img src="${pageContext.request.contextPath}/resources/images/money.svg" alt="SVG">
+					</div>
+			        <div class="consume-money">${c.c_money}</div>
+				</div>
+			</div>
+				<% itemCount++; %>
+		    </c:forEach>
+	   </div>
+   </div>
+   <div class="my-pattern">
+	   	내 소비패턴
+	   <div id="piechart" style="width: 300px; height: 230px; left:10px; margin:10px;"></div>
+	   <div class="result-wrapper">
+		   <div class="result"></div>
+		   <div class="tree">
+			   	<img src="${pageContext.request.contextPath}/resources/images/pin.svg" alt="SVG">
+		   </div>
+		   <div class="result-name">총 소비 금액 : ${bd_goalnow}원</div>
+		   <div class="result-name2">지금까지 <span>"${categorymax}"</span>에 가장 많이 쓰셨네요 !</div>
+	   </div>
+   </div>	  
+  
+   <script>
+		var container = document.querySelector('.container');
+	    var consumeList = document.querySelector('.consume-list');
+		var itemCount = <%= itemCount %>;
+	    container.style.height = consumeList.offsetHeight + (itemCount - 1) * 80 + 'px';
+	    
+	    var myPattern = document.querySelector('.my-pattern');
+	    myPattern.style.position = 'absolute';
+		myPattern.style.top = container.offsetHeight + 235+ 'px';
+   </script>
+ 
   
 </body>
 </html>

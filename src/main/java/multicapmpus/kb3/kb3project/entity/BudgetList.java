@@ -1,5 +1,7 @@
 package multicapmpus.kb3.kb3project.entity;
 
+import java.time.LocalDate;
+
 public class BudgetList {
 	private int bd_no;
 	private String bd_name;
@@ -25,6 +27,8 @@ public class BudgetList {
 	public void setBd_goalleft(int bd_goalleft) {
 		this.bd_goalleft = bd_goalleft;
 	}
+	
+	
 	public String getBd_dateleft() {
 		return bd_dateleft;
 	}
@@ -42,5 +46,7 @@ public class BudgetList {
 		return "BudgetList [bd_no=" + bd_no + ", bd_name=" + bd_name + ", bd_goal=" + bd_goal + ", bd_goalleft="
 				+ bd_goalleft + ", bd_dateleft=" + bd_dateleft + "]";
 	}
+	
+	
 	
 }

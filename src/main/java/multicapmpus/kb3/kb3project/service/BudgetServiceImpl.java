@@ -19,32 +19,38 @@ public class BudgetServiceImpl implements BudgetService {
 	@Autowired 
 	public BudgetServiceImpl(BudgetMapper budgetMapper) {	
 		this.budgetMapper = budgetMapper; }
-	//¹öÂî µî·Ï
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	@Override 
 	public int saveBudget(Budget budget) {
 		int bbudget=budgetMapper.save(budget);
 		return bbudget;
 	}
-	//¹öÂî ¸®½ºÆ®
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	@Override
 	public List<BudgetList> findbudgetAll(int user_No) {
 		return budgetMapper.findbudgetAll(user_No);
 	}
-	//¹öÂî º° ¼Òºñ ¸®½ºÆ®
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Òºï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	@Override
 	public List<ConsumePlusCategory> findbudgetC(int user_No, int bd_No){
 		return budgetMapper.findbudgetC(user_No, bd_No);
 	}
-	//¹öÂî Á¤º¸
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override 
 	public BudgetList getBudgetByNo(int bd_No) { 
 		BudgetList bgl=budgetMapper.getBudgetByNo(bd_No); 
 		return bgl; 
 	}
-	//¹öÂî ³¯Â¥
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥
 	@Override
 	public Budget getBdByNo(int bd_No) {
 		Budget bd=budgetMapper.getBdByNo(bd_No);
 		return bd;
+	}
+	//ë²„ì°Œë³„ ì†Œë¹„ max ê°’
+	@Override
+	public ConsumePlusCategory getCategoryByNo(int user_No, int bd_No) {
+		ConsumePlusCategory cp=budgetMapper.getCategoryByNo(user_No, bd_No);
+		return cp;
 	}
 }
