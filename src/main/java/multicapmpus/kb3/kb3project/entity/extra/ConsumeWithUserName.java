@@ -1,8 +1,11 @@
-package multicapmpus.kb3.kb3project.entity.necessary;
+package multicapmpus.kb3.kb3project.entity.extra;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-public class ConsumeForFeed {
+public class ConsumeWithUserName {
     private int c_no;
     private int user_no;
     private String user_name;
@@ -12,7 +15,6 @@ public class ConsumeForFeed {
     private String c_content;
     private String c_image;
     private int c_like;
-    private int commentNum;  //댓글 개수
 
     public int getC_no() {
         return c_no;
@@ -84,29 +86,5 @@ public class ConsumeForFeed {
 
     public void setC_like(int c_like) {
         this.c_like = c_like;
-    }
-
-    public int getCommentNum() {
-        return commentNum;
-    }
-
-    public void setCommentNum(int commentNum) {
-        this.commentNum = commentNum;
-    }
-
-    @Override
-    public String toString() {
-        return "ConsumeForFeed{" +
-                "c_no=" + c_no +
-                ", user_no=" + user_no +
-                ", user_name='" + user_name + '\'' +
-                ", c_date=" + c_date +
-                ", c_money=" + c_money +
-                ", c_categoryid=" + c_categoryid +
-                ", c_content='" + c_content + '\'' +
-                ", c_image='" + c_image + '\'' +
-                ", c_like=" + c_like +
-                ", commentNum=" + commentNum +
-                '}';
     }
 }

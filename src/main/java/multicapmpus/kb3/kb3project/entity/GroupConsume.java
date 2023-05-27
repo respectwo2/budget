@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 
 public class GroupConsume {
+<<<<<<< HEAD
 	private int c_no;
 	private int c_money;
 	private int user_no;
@@ -27,6 +28,16 @@ public class GroupConsume {
 	public void setC_category(String c_category) {
 		this.c_category = c_category;
 	}
+=======
+	private int c_money;
+	private int user_no;
+	private String user_nickname;
+	private LocalDate c_date;
+	private String c_content;
+	private int c_like;
+	private int c_categoryId;
+	
+>>>>>>> refs/heads/master
 	public int getC_categoryId() {
 		return c_categoryId;
 	}

@@ -16,7 +16,7 @@
 <link href="${path}/resources/css/calendar.css" rel="stylesheet">
 </head>
 <body style="margin-bottom: 100px;">
-	<%@ include file="../navbar.jsp"%>
+	<%@ include file="../navbar-home.jsp"%>
 	<div class="container">
 		<div class="box">
 			<div class="month">

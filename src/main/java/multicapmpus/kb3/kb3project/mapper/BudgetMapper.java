@@ -37,5 +37,16 @@ public interface BudgetMapper {
 
    @Select("select bd_start, bd_end, bd_goalnow from budget where bd_no=#{bd_no}")
    Budget getBdByNo(@Param("bd_no") int bd_No);
+   
+   @Select("SELECT c.c_categoryid\r\n" + 
+   		"FROM (\r\n" + 
+   		"    SELECT c.c_categoryid, SUM(c.c_money) AS total_money\r\n" + 
+   		"    FROM consume c, budget b\r\n" + 
+   		"    WHERE c.user_no = #{user_no} AND b.bd_no = #{bd_no} AND c.c_date BETWEEN b.bd_start AND b.bd_end\r\n" + 
+   		"    GROUP BY c.c_categoryid\r\n" + 
+   		"    ORDER BY SUM(c.c_money) DESC\r\n" + 
+   		") c\r\n" + 
+   		"WHERE ROWNUM = 1")
+   ConsumePlusCategory getCategoryByNo(@Param("user_no") int user_no, @Param("bd_no") int bd_no);
 
 }

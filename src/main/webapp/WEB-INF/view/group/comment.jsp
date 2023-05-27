@@ -9,7 +9,7 @@
 <body>
     <td>${consume.user_name}</td>
     <td>${consume.c_date}</td>
-	<td>${consume.c_money}원</td>
+	<td>${consume.c_money}</td>
 	<td>${categoryMap.get(consume.c_categoryid)}</td>
 	<td>${consume.c_content}</td>
 	<td>${consume.c_image}</td>
@@ -19,6 +19,7 @@
 	    <input type="text" name="inputComment">
 	</form>
 
+
     <c:forEach items="${comments}" var="comment">
         <p>${comment.user_name}, 작성일: ${comment.cmn_date}, ${comment.cmn_content}</p>
     </c:forEach>
@@ -26,7 +27,6 @@
     <span onclick="goBack()" class="btn btn-primary" style="background-color: green">뒤로가기</span>
 
     <script>
-        // 뒤로가기
         function goBack() {
             window.history.back();
         }

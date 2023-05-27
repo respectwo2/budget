@@ -2,7 +2,6 @@ package multicapmpus.kb3.kb3project.mapper;
 
 import multicapmpus.kb3.kb3project.entity.Bcomment;
 import multicapmpus.kb3.kb3project.entity.necessary.CommentWithUserName;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

@@ -44,8 +44,8 @@ public class BudgetController {
 	//post占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 insert
 	@PostMapping("/budget/create")
 	public String createBudgetPost(@RequestParam("title") String bd_name,
-			@RequestParam("start_date") LocalDate bd_start,
-			@RequestParam("end_date") LocalDate bd_end,
+			@RequestParam("start_date") String bd_start,
+			@RequestParam("end_date") String bd_end,
 			@RequestParam("goal") int bd_goal,
 			@RequestParam("comment") String bd_comment,
 			@RequestParam("user_no") int user_no,
