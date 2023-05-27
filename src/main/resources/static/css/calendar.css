@@ -89,6 +89,14 @@ body {
 	
 }
 
+.close{
+	position: absolute;
+width: 11px;
+height: 11px;
+left: 316px;
+top: 142px;
+}
+
 
 /* 이전페이지로 */
 .back-page{
@@ -132,7 +140,7 @@ body {
 
 }
 
-.box {
+ .box {
 	position: relative;
 	
 	margin: auto;
@@ -143,7 +151,10 @@ body {
 	justify-content: center;
 	align-items: center;
 	padding-top: 60px;
-}
+	border-radius: 40px;
+} 
+
+
 
 .year {
 	text-align: center;
@@ -254,6 +265,7 @@ body {
 	margin: auto;
 	width: 100%;
 	max-width: 880px;
+  padding-bottom: 10px;
 }
 
  .dayconsumes {
@@ -262,7 +274,6 @@ body {
 	margin: auto;
 	width: 100%;
 	max-width: 880px;
-<<<<<<< HEAD
 }
 
 /* 5월 4일 */
@@ -282,7 +293,7 @@ font-style: normal;
 font-weight: 800;
 font-size: 18px;
 line-height: 21px;
-
+margin-left: 20px;
 color: #363636;
 }
 
@@ -293,12 +304,14 @@ color: #363636;
 
 .detailbtn {
 	margin-left: auto;
-  width: 18.98px;
+/*   width: 18.98px;
   height: 18.9px;
   left: calc(100% - 18.98px);
   top: 506px;
-  background: url(image.png);
-  transform: rotate(0.2deg);
+ */  background: url(image40.png);
+/*   transform: rotate(0.2deg);
+ */
+ margin-right: 20px;
 }
 
 
@@ -312,9 +325,10 @@ top: 556px;
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 700;
-font-size: 18px;
+font-size: 21px;
 line-height: 22px;
-
+margin-right: 15px;
+margin-left: 25px;
 color: #79CCB8;
 }
 
@@ -328,10 +342,12 @@ top: 553px;
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 400;
-font-size: 16px;
+font-size: 21px;
 line-height: 20px;
+margin-left: 15px;
 
 color: #F96D6B;
 	
 }
+
 

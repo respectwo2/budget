@@ -40,7 +40,7 @@
       }
     </script>
     <div class="top-rectangle">
-		<div class="time">9:40</div>
+		<div class="time">9:40</div>s
 		<div class="data">
 			<img src="${pageContext.request.contextPath}/resources/images/data.svg" alt="SVG">
 		</div>
