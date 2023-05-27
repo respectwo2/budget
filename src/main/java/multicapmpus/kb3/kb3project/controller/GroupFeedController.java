@@ -1,8 +1,9 @@
 package multicapmpus.kb3.kb3project.controller;
 
 import multicapmpus.kb3.kb3project.entity.Bcomment;
+import multicapmpus.kb3.kb3project.entity.extra.GroupWithLeaderName;
 import multicapmpus.kb3.kb3project.entity.necessary.CommentWithUserName;
-import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
+import multicapmpus.kb3.kb3project.entity.necessary.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.necessary.ConsumeForFeed;
 import multicapmpus.kb3.kb3project.service.CommentService;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
@@ -40,6 +41,9 @@ public class GroupFeedController {
     */
     @GetMapping("/group/feed")
     public String feed(@RequestParam("groupNo") int groupNo, Model model, HttpServletRequest request) {
+
+        GroupWithLeaderName group = groupService.getGroupByGroupNo(groupNo);
+        model.addAttribute("groupName", group.getG_name());
 
         String groupMissionBanner = groupMissionService.getGroupMissionBanner(groupNo);
         System.out.println("groupMissionBanner=" + groupMissionBanner);

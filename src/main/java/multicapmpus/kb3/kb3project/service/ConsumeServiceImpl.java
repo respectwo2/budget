@@ -1,6 +1,6 @@
 package multicapmpus.kb3.kb3project.service;
 
-import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
+import multicapmpus.kb3.kb3project.entity.necessary.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.necessary.ConsumeForFeed;
 import multicapmpus.kb3.kb3project.mapper.ConsumeMapper;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,6 @@ public class ConsumeServiceImpl implements ConsumeService {
     }
 
 
-    ///////////////////////////////////minjoo
     @Override
     public List<ConsumeForFeed> getConsumesForFeed(int groupNo) {
         List<ConsumeForFeed> consumesForFeed = consumeMapper.selectConsumesWithCommentNumByGroupNo(groupNo);

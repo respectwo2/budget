@@ -51,7 +51,7 @@ import java.util.List;
             System.out.println("groups=" + groupList);
             model.addAttribute("groupList", groupList);
 
-            return "group/main";  // group/main으로 리다이렉트
+            return "group/home";  // group/main으로 리다이렉트
         }
 
         /*
@@ -129,7 +129,7 @@ import java.util.List;
             // 선택된 태그 model에 담아주기
             model.addAttribute("selectedTag", selectedTag);
 
-            return "group/mainByGtag";
+            return "group/homeByGtag";
         }
 
 

@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=yes;">
+    <link href="${path}/resources/css/groupHome.css" rel="stylesheet" type="text/css">
+    <script src="${path}/resources/js/groupHome.js" type="text/javascript"></script>
     <style>
-        /* 모달 스타일 */
+
+    /* 모달 스타일 */
         .modal {
             display: none;
             position: fixed;
@@ -40,24 +44,9 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+
     </style>
-    <script>
-                    function groupJoin(gNo) {
-                        var groupNo = gNo;
-                        var form = document.createElement("form");
-                        form.method = "POST";
-                        form.action = "/group/join";
-
-                        var input = document.createElement("input");
-                        input.type = "hidden";
-                        input.name = "groupNo";
-                        input.value = groupNo;
-                        form.appendChild(input);
-
-                        document.body.appendChild(form);
-                        form.submit();
-                    }
-        </script>
 </head>
 <body>
     <!-- 모달 창 -->
@@ -71,6 +60,7 @@
         </div>
     </div>
 
+    <!-- 그룹 홈 페이지 -->
     <span>
         <form>
             <input type="search" id="searchInput">
@@ -104,12 +94,36 @@
 
     <div>
         <c:forEach items="${groupList}" var="group">
-            <b onclick="openModal(${group.g_no})">${group.g_name}</b>&nbsp;&nbsp;&nbsp; <small>#${group.g_tag}</small>
+            <b onclick="openModal(${group.g_no})">
+                ${group.g_name}</b>&nbsp;&nbsp;&nbsp;<small>#${group.g_tag}</small>
             <br><br>
         </c:forEach>
     </div>
 
     <script>
+        // 검색된 그룹 보여주는 페이지로 이동하기
+        function goToSearchPage(searchInput) {
+            var searchTmp = document.getElementById(searchInput);
+            var searchValue = searchTmp.value;
+
+            location.href = "/group/search?q=" + searchValue;
+        }
+
+        // 그룹 만들기 페이지로 이동
+        function goToGroupCreationPage() {
+            location.href = "/group/create";
+        }
+
+        // 그룹의 피드로 이동
+        function goToGroupFeed(gNo) {
+            location.href = "/group/feed?groupNo=" + gNo;
+        }
+
+        // 태그로 그룹 조회해서 그룹 메인 보여주기
+        function showGroupsByTag(tag) {
+            location.href = "/group/list?tag=" + tag;
+        }
+
         // 모달 열기
         function openModal(groupNo) {
             var modal = document.getElementById("groupModal");
@@ -133,27 +147,21 @@
             modal.style.display = "none";
         }
 
-        // 검색된 그룹 보여주는 페이지로 이동하기
-        function goToSearchPage(searchInput) {
-            var searchTmp = document.getElementById(searchInput);
-            var searchValue = searchTmp.value;
+        // 그룹 가입하기
+        function groupJoin(gNo) {
+            var groupNo = gNo;
+            var form = document.createElement("form");
+            form.method = "POST";
+            form.action = "/group/join";
 
-            location.href = "/group/search?q=" + searchValue;
-        }
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "groupNo";
+            input.value = groupNo;
+            form.appendChild(input);
 
-        // 그룹 만들기 페이지로 이동
-        function goToGroupCreationPage() {
-            location.href = "/group/create";
-        }
-
-        // 그룹의 피드로 이동
-        function goToGroupFeed(gNo) {
-            location.href = "/group/feed?groupNo=" + gNo;
-        }
-
-        // 태그로 그룹 조회해서 그룹 메인 보여주기
-        function showGroupsByTag(tag) {
-            location.href = "/group/list?tag=" + tag;
+            document.body.appendChild(form);
+            form.submit();
         }
     </script>
 </body>
