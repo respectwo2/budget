@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../navbar.jsp"%>
+	<%@ include file="../navbar-home.jsp"%>
 	<!-- 홈화면에서 총소비 누르면 보여줄 리스트 -->
 	<h1>날짜별 소비 내역 리스트</h1>
 	<%-- <h2>${c_date}</h2>

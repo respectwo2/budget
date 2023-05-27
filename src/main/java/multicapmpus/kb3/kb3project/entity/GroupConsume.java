@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 
 public class GroupConsume {
+	private int c_no;
 	private int c_money;
 	private int user_no;
 	private String user_nickname;
@@ -11,7 +12,21 @@ public class GroupConsume {
 	private String c_content;
 	private int c_like;
 	private int c_categoryId;
+	private String c_category;
 	
+	
+	public int getC_no() {
+		return c_no;
+	}
+	public void setC_no(int c_no) {
+		this.c_no = c_no;
+	}
+	public String getC_category() {
+		return c_category;
+	}
+	public void setC_category(String c_category) {
+		this.c_category = c_category;
+	}
 	public int getC_categoryId() {
 		return c_categoryId;
 	}

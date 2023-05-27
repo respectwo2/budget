@@ -60,7 +60,7 @@ position: relative;
 				<button style="margin-left: 60px" onclick="next(${start.getYear()}, ${start.getMonthValue()}, 1)">
 					<img alt="" src="${path}/resources/images/Polygon2.svg">
 				</button>
-				<div class="total">${arr[0]}</div>
+				<%-- <div class="total">${arr[0]}</div> --%>
 			</div>
 			
 			
@@ -115,7 +115,8 @@ position: relative;
 <div>
     <div class="current-date">
         <span>${month}월</span> <span>${day}일</span> 
-        <button class="detailbtn" onclick="viewEvent('${start.getYear()}-${String.format('%02d', start.getMonthValue())}-${String.format('%02d', day)}')">+</button>
+        <div class="detailbtn" onclick="viewEvent('${start.getYear()}-${String.format('%02d', start.getMonthValue())}-${String.format('%02d', day)}')">
+        <img src="${pageContext.request.contextPath}/resources/images/details.svg" alt="SVG">></div>
     </div>
     <br>
     <c:forEach var="member" items="${member}" varStatus="i">

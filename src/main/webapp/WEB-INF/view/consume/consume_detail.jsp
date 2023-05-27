@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../navbar.jsp"%>
+	<%@ include file="../navbar-home.jsp"%>
 	<h1>상세 내역</h1>
 	<%-- <h2>${csm_date_modify }</h2> --%>
 	<h2>${year}년 ${month}월 ${day}일</h2>  

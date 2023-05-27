@@ -2,8 +2,8 @@ package multicapmpus.kb3.kb3project.controller;
 
 import multicapmpus.kb3.kb3project.entity.Bcomment;
 import multicapmpus.kb3.kb3project.entity.necessary.CommentWithUserName;
-import multicapmpus.kb3.kb3project.entity.extra.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.entity.necessary.ConsumeForFeed;
+import multicapmpus.kb3.kb3project.entity.necessary.ConsumeWithUserName;
 import multicapmpus.kb3.kb3project.service.CommentService;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
 import multicapmpus.kb3.kb3project.service.GroupMissionService;

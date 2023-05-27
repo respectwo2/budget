@@ -42,7 +42,7 @@
 	  		<img src="${pageContext.request.contextPath}/resources/images/colorhome.svg" alt="SVG">  
 	    </button>
     </a>
-    <a href="/bgroup/calendar">
+    <a href="/group">
 	    <button type="button" class="navbtn">
 	  		<img src="${pageContext.request.contextPath}/resources/images/group.svg" alt="SVG">  
 	    </button>
@@ -52,12 +52,12 @@
     	<img id="plusImage" src="${pageContext.request.contextPath}/resources/images/plus.svg" alt="SVG">  
     </button>
     </a>
-    <a href="/budget/budget_start">
+    <a href="/budget/budget_list">
 	    <button type="button" class="navbtn">
 	    	<img src="${pageContext.request.contextPath}/resources/images/cherry2.svg" alt="SVG">  
 	    </button>
     </a>
-    <a href="/home/mypage">
+    <a href="/Buser/mypage">
 	    <button class="navbtn" type="button">
 	    	<img src="${pageContext.request.contextPath}/resources/images/mypage.svg" alt="SVG">  
 	    </button>

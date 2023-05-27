@@ -26,7 +26,7 @@
 			<div class="battery">
 				<img src="${pageContext.request.contextPath}/resources/images/battery.svg" alt="SVG">
 			</div>
-			<div class="back-page">
+			<div class="back-page" onclick="history.back()">
 				<img src="${pageContext.request.contextPath}/resources/images/back-page.svg" alt="SVG">
 			</div>
 			<h1 class="make-budget">버찌 만들기</h1>

@@ -1,0 +1,380 @@
+/* @charset "UTF-8";
+/* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+
+
+        /* 그룹 홈화면 */
+        body {
+        	width: 375px;
+        	height: 812px;
+        }
+        /* 화면 */
+        .container {
+        	position: relative;
+        	width: 375px;
+        	height: 812px;
+        	bottom: 1%;
+            right: 2%;
+        	background: #F9F9F9;
+        }
+
+
+        /* header */
+        .header {
+        position: absolute;
+        	left: 0%;
+        	right: 0%;
+        	top: 0%;
+        	bottom: 88.18%;
+
+        	background: #FFFFFF;
+        	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 와이파이 */
+        .wifi{
+        	position: absolute;
+        	left: 81.07%;
+        	right: 13.6%;
+        	top: 8%;
+        	/* bottom: 96.31%;
+
+        	background: #000000; */
+        }
+        .wifi img{
+        	width:100%;
+        	height:100%;
+        }
+
+        /* 배터리 */
+        .battery{
+        	position: absolute;
+        	left: 88%;
+        	right: 6.67%;
+        	top: 8%;
+        	/* bottom: 96.43%;
+
+        	background: #000000; */
+        }
+        .battery img{
+        	width:100%;
+        	height:100%;
+        }
+
+        /* 데이터 */
+        .data{
+        	position: absolute;
+        	left: 74.67%;
+        	right: 20.53%;
+        	top: 8%;
+        }
+        .data img{
+        	width:100%;
+        	height:100%;
+        }
+
+        /* 9:40 */
+        .time{
+        	position: absolute;
+        	left: 8.53%;
+        	right: 78.13%;
+        	top: 8%;
+        	bottom: 96.8%;
+
+        	font-family: 'Inter', sans-serif;
+        	font-style: normal;
+        	font-weight: 700;
+        	font-size: 18px;
+        	line-height: 22px;
+
+        	color: #000000;
+        }
+
+        .groupLetter {
+            position: absolute;
+            width: 37px;
+            height: 24px;
+            left: 169px;
+            top: 50px;
+
+            font-family: 'Abhaya Libre ExtraBold';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 24px;
+            /* identical to box height */
+
+            color: #363636;
+        }
+
+    /* main-box */
+    .main {
+        position: absolute;
+        width: 375px;
+        height: 649px;
+        left: 0px;
+        top: 98px;
+    }
+
+
+    /* 검색 박스 */
+    .search-box {
+    position: absolute;
+    width: 375px;
+    height: 101px;
+    left: 0px;
+    top: 0px;
+    }
+
+    /* 검색창 박스 */
+    .search {
+    position: absolute;
+    left: 8.8%;
+    right: 18.67%;
+    top: 28.93%;
+    bottom: 31.4%;
+
+    background: #FFFFFF;
+    box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.25);
+    border-radius: 20px;
+    }
+
+    /* 돋보기 */
+    /* image 54 */
+    .dodbogi {
+        position: absolute;
+        left: 86.13%;
+        right: 7.47%;
+        top: 37.38%;
+        bottom: 40%;
+    }
+
+
+    /* 하단 네비게이터 */
+        .footer-nav {
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 92%;
+            bottom: 0%;
+
+            background: #FFFFFF;
+            border-radius: 25px 25px 0px 0px;
+        }
+
+
+
+    /* 나의그룹 박스 */
+    .myGroup-box {
+        position: absolute;
+        width: 375px;
+        height: 290px;
+        left: 0px;
+        top: 101px;
+    }
+
+     /* 나의그룹 글씨 */
+     .myGroup-letter {
+         position: absolute;
+         left: 11.16%;
+         right: 73.86%;
+         top: 2.64%;
+         bottom: 91.56%;
+
+         font-family: 'Abhaya Libre ExtraBold';
+         font-style: normal;
+         font-weight: 800;
+         font-size: 14px;
+         line-height: 17px;
+         /* identical to box height */
+
+         color: #363636;
+     }
+
+     /* 만들기 버튼 */
+     .createBtn {
+         box-sizing: border-box;
+
+         position: absolute;
+         left: 77.05%;
+         right: 7.7%;
+         top: 1.28%;
+         bottom: 90.53%;
+
+         background: #F3F3F3;
+         border: 0.5px solid #ACACAC;
+         box-shadow: 0px 1px 3px rgba(154, 154, 154, 0.25);
+         border-radius: 30px;
+
+          font-family: 'inter';
+          font-style: normal;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 20px;
+          line-
+
+
+          color: #ACACAC;
+     }
+
+
+
+
+
+
+
+
+
+
+    /* 나의그룹 버튼 */
+
+    position: absolute;
+    width: 326.72px;
+    height: 79.14px;
+    left: 25px;
+    top: 41px;
+
+
+
+    /* 버튼 */
+
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 6.67%;
+    right: 6.21%;
+    top: 14.14%;
+    bottom: 58.57%;
+
+    background: #EFF4F4;
+    border: 0.5px solid #3DAA9D;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+
+
+    /* 나의그룹 이름 */
+
+    position: absolute;
+    left: 30.35%;
+    right: 33.43%;
+    top: 21.64%;
+    bottom: 71.88%;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+    color: #3DAA9D;
+
+
+
+    /* 나의그룹 인원 */
+
+    position: absolute;
+    width: 38px;
+    height: 14px;
+    left: 260.41px;
+    top: 67.74px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    /* identical to box height */
+
+    color: #524E4E;
+
+
+
+    /* 나의그룹 해시태그 */
+
+    position: absolute;
+    width: 37px;
+    height: 13px;
+    left: 118.41px;
+    top: 94.74px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    /* identical to box height */
+
+    color: #FDA671;
+
+
+
+    /* 나의그룹 바구니 아이콘 */
+
+    position: absolute;
+    width: 44px;
+    height: 37px;
+    left: 45.41px;
+    top: 64.74px;
+
+
+
+    /* 바구니 */
+
+    position: absolute;
+    width: 39.04px;
+    height: 35.68px;
+    left: 50.37px;
+    top: 64.74px;
+
+    background: url(image.png);
+
+
+    /* 버찌 */
+
+    position: absolute;
+    width: 19.06px;
+    height: 17.42px;
+    left: 45.41px;
+    top: 84.32px;
+
+    background: url(image.png);
+
+
+*/
+
+

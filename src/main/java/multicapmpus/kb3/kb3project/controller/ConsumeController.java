@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import ch.qos.logback.core.Context;
 import multicapmpus.kb3.kb3project.entity.Consume;
+import multicapmpus.kb3.kb3project.entity.ConsumePlusCategory;
 import multicapmpus.kb3.kb3project.entity.GroupConsume;
 import multicapmpus.kb3.kb3project.mapper.ConsumeMapper;
 import multicapmpus.kb3.kb3project.service.ConsumeService;
@@ -191,44 +192,76 @@ public class ConsumeController {
 
 	@GetMapping("/grouplist/{date}")
 	public String grouplist(@PathVariable("date") String date, HttpServletRequest request, Model model) {
+	    int gNo = (int) request.getSession().getAttribute("g_no");
+	    model.addAttribute("g_no", gNo);
 
-		int gNo = (int) request.getSession().getAttribute("g_no");
-		model.addAttribute("g_no",gNo);
-		
-		List<Integer> totalmoney = csmMapper.getTotalMoneyList(gNo, date);
-		List<String> usernick = csmMapper.getUserNicknames(gNo, date);
+	    List<Integer> totalmoney = csmMapper.getTotalMoneyList(gNo, date);
+	    List<String> usernick = csmMapper.getUserNicknames(gNo, date);
 
-		model.addAttribute("membercs", totalmoney);
-		model.addAttribute("member", usernick);
+	    model.addAttribute("membercs", totalmoney);
+	    model.addAttribute("member", usernick);
 
-		LocalDate parsedDate = LocalDate.parse(date);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
-		String formattedDate = parsedDate.format(formatter);
+	    LocalDate parsedDate = LocalDate.parse(date);
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
+	    String formattedDate = parsedDate.format(formatter);
 
-		model.addAttribute("parsedDate", formattedDate);
+	    model.addAttribute("parsedDate", formattedDate);
 
-		List<GroupConsume> groupConsumeByDate = groupservice.getGroupConsumeByDate(gNo, date);
+	    List<GroupConsume> groupConsumeByDate = groupservice.getGroupConsumeByDate(gNo, date);
 
-		model.addAttribute("list", groupConsumeByDate);
+	    model.addAttribute("list", groupConsumeByDate);
 
-		List<String> consumeList = new ArrayList<>();
-		Map<String, List<GroupConsume>> consumeMap = new HashMap<>();
+	    List<String> consumeList = new ArrayList<>();
+	    Map<String, List<GroupConsume>> consumeMap = new HashMap<>();
 
-		for (GroupConsume consume : groupConsumeByDate) {
-			String nickname = consume.getUser_nickname();
-			if (!consumeList.contains(nickname)) {
-				consumeList.add(nickname);
-			}
-			if (!consumeMap.containsKey(nickname)) {
-				consumeMap.put(nickname, new ArrayList<>());
-			}
-			consumeMap.get(nickname).add(consume);
-		}
+	    for (GroupConsume consume : groupConsumeByDate) {
+	        String nickname = consume.getUser_nickname();
+	        if (!consumeList.contains(nickname)) {
+	            consumeList.add(nickname);
+	        }
+	        if (!consumeMap.containsKey(nickname)) {
+	            consumeMap.put(nickname, new ArrayList<>());
+	        }
+	        consumeMap.get(nickname).add(consume);
+	    }
 
-		model.addAttribute("consumeList", consumeList);
-		model.addAttribute("consumeMap", consumeMap);
+	    model.addAttribute("consumeList", consumeList);
+	    model.addAttribute("consumeMap", consumeMap);
 
-		return "consume/grouplist";
+	    // Adding category mapping
+	    HashMap<Integer, String> categoryMap = getCategoryMap();
+	    for (GroupConsume consume : groupConsumeByDate) {
+	        int categoryId = consume.getC_categoryId();
+	        String category = categoryMap.get(categoryId);
+	        consume.setC_category(category);
+	    }
+
+	    return "consume/grouplist";
 	}
 
+	 private HashMap<Integer, String> getCategoryMap() {
+		 HashMap<Integer,String> categoryMap= new HashMap<>();
+	        categoryMap.put(1,"식비");
+	           categoryMap.put(2,"카페/간식");
+	           categoryMap.put(3,"술/유흥");
+	           categoryMap.put(4,"생활");
+	           categoryMap.put(5,"패션쇼핑");
+	           categoryMap.put(6,"뷰티/미용");
+	           categoryMap.put(7,"교통비");
+	           categoryMap.put(8,"주거비");
+	           categoryMap.put(9,"의료/건강");
+	           categoryMap.put(10,"문화");
+	           categoryMap.put(11,"금융");
+	           categoryMap.put(12,"여행/숙박");
+	           categoryMap.put(13,"교육/학습");
+	           categoryMap.put(14,"가족");
+	           categoryMap.put(15,"반려동물");
+	           categoryMap.put(16,"경조사/선물");
+	           categoryMap.put(17,"멍청비용");
+	           categoryMap.put(18,"기타");
+
+         return categoryMap;
+	    }
+	
+	
 }

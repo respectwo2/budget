@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=yes;">
+    
     <style>
         /* 모달 스타일 */
         .modal {
@@ -60,6 +61,7 @@
         </script>
 </head>
 <body>
+	<%@ include file="../navbar-group.jsp"%>
     <!-- 모달 창 -->
     <div id="groupModal" class="modal">
         <div class="modal-content">
