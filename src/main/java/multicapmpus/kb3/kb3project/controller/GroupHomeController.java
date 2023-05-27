@@ -51,7 +51,7 @@ import java.util.List;
             System.out.println("groups=" + groupList);
             model.addAttribute("groupList", groupList);
 
-            return "group/main";  // group/main�쑝濡� 由щ떎�씠�젆�듃
+            return "group/home";  // group/main�쑝濡� 由щ떎�씠�젆�듃
         }
 
         /*

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class GroupMissionServiceImpl implements GroupMissionService {
@@ -19,7 +20,7 @@ public class GroupMissionServiceImpl implements GroupMissionService {
 
 
     @Override
-    public String getGroupMissionBanner(int gNo) {  //param: g_no in GroupMission table
+    public String getGroupMissionBanner(int gNo) {
         Bgroupmission bGroupMission = groupMissionMapper.selectOne(gNo);
 
         if (bGroupMission == null) {
@@ -30,7 +31,11 @@ public class GroupMissionServiceImpl implements GroupMissionService {
         LocalDate gmEndDate = bGroupMission.getBgm_end();
         int gmGoal = bGroupMission.getBgm_goal();
 
-        String groupMissionName = gmStartDate + "~" + gmEndDate + "  " + gmGoal + "원만 소비 목표";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
+        String formattedStartDate = gmStartDate.format(formatter);
+        String formattedEndDate = gmEndDate.format(formatter);
+
+        String groupMissionName = formattedStartDate + " ~ " + formattedEndDate + "  " + gmGoal + "원만 소비 목표";
         return groupMissionName;
     }
 

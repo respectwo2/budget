@@ -1,12 +1,13 @@
 package multicapmpus.kb3.kb3project.entity.necessary;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class ConsumeForFeed {
     private int c_no;
     private int user_no;
     private String user_name;
-    private LocalDate c_date;
+    private String c_date;
     private int c_money;
     private int c_categoryid;
     private String c_content;
@@ -38,11 +39,11 @@ public class ConsumeForFeed {
         this.user_name = user_name;
     }
 
-    public LocalDate getC_date() {
+    public String getC_date() {
         return c_date;
     }
 
-    public void setC_date(LocalDate c_date) {
+    public void setC_date(String c_date) {
         this.c_date = c_date;
     }
 
