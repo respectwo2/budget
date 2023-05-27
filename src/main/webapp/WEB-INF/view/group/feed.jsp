@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 
 
 <html>
@@ -18,7 +19,7 @@
 	<td>${consume.c_money}</td>
 	<td>${categoryMap.get(consume.c_categoryid)}</td>
 	<td>${consume.c_content}</td>
-	<td>${consume.c_image}</td>
+	<c:if test="${not empty consume.c_image}"><img src="${path}/resources/jpg/${consume.c_image}" width="20" height="20"></c:if>
 	<div onclick="goToComment(${consume.c_no})">댓글(${consume.commentNum})</div>
 	<div data-consume-no="${consume.c_no}" onclick="increaseLikeCount(${consume.c_no})">
 	    like ${consume.c_like}
