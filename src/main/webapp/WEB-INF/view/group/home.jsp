@@ -22,35 +22,6 @@
     </div>
 
     <!-- 그룹 홈 페이지 -->
-    <div class="container">
-        <div class="header">
-            <div class="time">9:40</div>
-            <div class="data">
-                <img src="${path}/resources/images/data.svg" alt="SVG">
-            </div>
-            <div class="wifi">
-                <img src="${path}/resources/images/wifi.svg" alt="SVG">
-            </div>
-            <div class="battery">
-                <img src="${path}/resources/images/battery.svg" alt="SVG">
-            </div>
-            <h1 class="groupLetter">그룹</h1>
-        </div>
-
-        <div class="main">
-            <div class="search-box">
-                <div class="search"></div>
-                <img class="dodbogi" src="${path}/resources/images/돋보기.svg" alt="SVG">
-            </div>
-            <div
-
-        </div>
-
-        <div class="footer-nav">
-
-        </div>
-    </div>
-
     <span>
         <form>
             <input type="search" id="searchInput">
