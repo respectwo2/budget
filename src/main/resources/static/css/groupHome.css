@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 /* 모달 스타일 */
         .modal {
             display: none;
@@ -34,3 +33,205 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+
+
+
+        /* 그룹 홈화면 */
+        body {
+        	width: 375px;
+        	height: 812px;
+        }
+        /* 화면 */
+        .container {
+        	position: relative;
+        	width: 375px;
+        	height: 812px;
+        	bottom: 1%;
+            right: 2%;
+        	background: #F9F9F9;
+        }
+
+        /* header */
+        .header {
+        position: absolute;
+        	left: 0%;
+        	right: 0%;
+        	top: 0%;
+        	bottom: 88.18%;
+
+        	background: #FFFFFF;
+        	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 와이파이 */
+        .wifi{
+        	position: absolute;
+        	left: 81.07%;
+        	right: 13.6%;
+        	top: 8%;
+        	/* bottom: 96.31%;
+
+        	background: #000000; */
+        }
+        .wifi img{
+        	width:100%;
+        	height:100%;
+        }
+
+        /* 배터리 */
+        .battery{
+        	position: absolute;
+        	left: 88%;
+        	right: 6.67%;
+        	top: 8%;
+        	/* bottom: 96.43%;
+
+        	background: #000000; */
+        }
+        .battery img{
+        	width:100%;
+        	height:100%;
+        }
+
+        /* 데이터 */
+        .data{
+        	position: absolute;
+        	left: 74.67%;
+        	right: 20.53%;
+        	top: 8%;
+        }
+        .data img{
+        	width:100%;
+        	height:100%;
+        }
+
+        /* 9:40 */
+        .time{
+        	position: absolute;
+        	left: 8.53%;
+        	right: 78.13%;
+        	top: 8%;
+        	bottom: 96.8%;
+
+        	font-family: 'Inter', sans-serif;
+        	font-style: normal;
+        	font-weight: 700;
+        	font-size: 18px;
+        	line-height: 22px;
+
+        	color: #000000;
+        }
+
+        /* 상단바 그룹 글자 */
+        .groupLetter {
+            position: absolute;
+            width: 37px;
+            height: 24px;
+            left: 169px;
+            top: 45px;
+
+            font-family: 'Abhaya Libre ExtraBold';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 24px;
+            /* identical to box height */
+
+            color: #363636;
+        }
+
+        /* main-box */
+        .main {
+        position: absolute;
+        width: 375px;
+        height: 649px;
+        left: 0px;
+        top: 98px;
+        }
+
+        /* 검색 박스 */
+        .search-box {
+        position: absolute;
+        width: 375px;
+        height: 121px;
+        left: 0px;
+        top: 0px;
+        }
+
+
+        /* 검색창 박스 */
+        .search {
+        position: absolute;
+        left: 8.8%;
+        right: 18.67%;
+        top: 28.93%;
+        bottom: 31.4%;
+
+        background: #FFFFFF;
+        box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.25);
+        border-radius: 20px;
+        }
+
+        /* 돋보기 */
+        .dodbogi {
+        position: absolute;
+        left: 86.93%;
+        right: 6.67%;
+        top: 38.84%;
+        bottom: 41.32%;
+        }
+
+
+        /* image 54 */
+
+        position: absolute;
+        left: 86.93%;
+        right: 6.67%;
+        top: 38.84%;
+        bottom: 41.32%;
+
+        background: url(image.png);
+
+
+        /* Rectangle 189 */
+
+        position: absolute;
+        left: 86.93%;
+        right: 6.67%;
+        top: 38.84%;
+        bottom: 41.32%;
+
+        background: #ACACAC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .footer-nav {
+        position: absolute;
+        left: -1.07%;
+        right: 1.07%;
+        top: 91.75%;
+        bottom: 0.25%;
+
+        background: #FFFFFF;
+        border-radius: 25px 25px 0px 0px;
+
+        }
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-// 검색된 그룹 보여주는 페이지로 이동하기
+        // 검색된 그룹 보여주는 페이지로 이동하기
         function goToSearchPage(searchInput) {
             var searchTmp = document.getElementById(searchInput);
             var searchValue = searchTmp.value;
