@@ -7,22 +7,23 @@ public class Budget {
 	private String bd_name;
 	private int bd_goal;
 	private String bd_content;
-	private LocalDate bd_start;
-	private LocalDate bd_end;
+	private String bd_start;
+	private String bd_end;
 	private int bd_goalnow;
 	private int user_no;
 	
 	
-	public LocalDate getBd_start() {
+	
+	public String getBd_start() {
 		return bd_start;
 	}
-	public void setBd_start(LocalDate bd_start) {
+	public void setBd_start(String bd_start) {
 		this.bd_start = bd_start;
 	}
-	public LocalDate getBd_end() {
+	public String getBd_end() {
 		return bd_end;
 	}
-	public void setBd_end(LocalDate bd_end) {
+	public void setBd_end(String bd_end) {
 		this.bd_end = bd_end;
 	}
 	public int getBd_no() {
@@ -68,6 +69,5 @@ public class Budget {
 				+ ", bd_start=" + bd_start + ", bd_end=" + bd_end + ", bd_goalnow=" + bd_goalnow + ", user_no="
 				+ user_no + "]";
 	}
-	
 	
 }	

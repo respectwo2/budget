@@ -44,8 +44,8 @@ public class BudgetController {
 	//post占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 insert
 	@PostMapping("/budget/create")
 	public String createBudgetPost(@RequestParam("title") String bd_name,
-			@RequestParam("start_date") LocalDate bd_start,
-			@RequestParam("end_date") LocalDate bd_end,
+			@RequestParam("start_date") String bd_start,
+			@RequestParam("end_date") String bd_end,
 			@RequestParam("goal") int bd_goal,
 			@RequestParam("comment") String bd_comment,
 			@RequestParam("user_no") int user_no,
@@ -88,15 +88,16 @@ public class BudgetController {
 		
 		BudgetList bgl=budgetService.getBudgetByNo(bd_No);
 		Budget bg=budgetService.getBdByNo(bd_No);
-		LocalDate bd_start=bg.getBd_start();
-		LocalDate bd_end=bg.getBd_end();
+		List<ConsumePlusCategory> consumeList=budgetService.findbudgetC(user_No,bd_No);
+		ConsumePlusCategory cpc=budgetService.getCategoryByNo(user_No,bd_No);
+		String bd_start=bg.getBd_start().substring(0,10);
+		String bd_end=bg.getBd_end().substring(0,10);
 		int bd_goalnow=bg.getBd_goalnow();
 		int bd_no=bgl.getBd_no();
 		String bd_name=bgl.getBd_name();
 		int bd_goal=bgl.getBd_goal();
 		int bd_goalleft=bgl.getBd_goalleft();
 		String bd_dateleft=bgl.getBd_dateleft();
-		List<ConsumePlusCategory> consumeList=budgetService.findbudgetC(user_No,bd_No);
 		
 		HashMap<Integer, String> categoryMap=getCategoryMap();
 		for(ConsumePlusCategory consume : consumeList) {
@@ -105,6 +106,11 @@ public class BudgetController {
 			consume.setC_category(category);
 		}
 		
+		int categoryidmax=cpc.getC_categoryid();
+		String categorymax=categoryMap.get(categoryidmax);
+		cpc.setC_category(categorymax);
+		
+		model.addAttribute("categorymax",categorymax);
 		model.addAttribute("bd_goalnow",bd_goalnow);
 		model.addAttribute("bd_start",bd_start);
 		model.addAttribute("bd_end",bd_end);

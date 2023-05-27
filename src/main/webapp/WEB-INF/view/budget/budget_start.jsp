@@ -12,6 +12,7 @@
 </style>
 <link href="${path}/resources/css/budget_start.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<jsp:include page="${path}/WEB-INF/view/navbar-budget.jsp" />
 </head>
 <body>
 	<div class="top-rectangle">
@@ -35,7 +36,7 @@
 		<p>핑크색 플러스 버튼을 눌러</p>
 		<p>버찌를 생성해 보세요!</p>
 	</div>
-	<button type="button" onclick="location.href='/budget/budget_register'">
+	<button class="registerbtn" type="button" onclick="location.href='/budget/budget_register'">
 		<img src="${pageContext.request.contextPath}/resources/images/budgetbtn.svg" alt="SVG">
 	</button>
 </body>
