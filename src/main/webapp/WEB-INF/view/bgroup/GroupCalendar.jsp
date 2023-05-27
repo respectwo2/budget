@@ -7,10 +7,18 @@
 <!DOCTYPE html>
 <html>
 <style>
+<style>
 .daytotal {
-	width:18px;
+position: relative;
+    padding: 15px;
 }
 
+.daytotal span {
+    position: absolute;
+    left: 0;
+        top: -5px; /* Adjust the value to raise the position */
+    font-size: 15px;
+}
 </style>
 
 <head>
@@ -92,7 +100,7 @@
 							</c:choose>
 							<c:if test="${arr[k] != 0}">
 								<div class="daytotal">
-								<span style="font-size: 10px;">${arr[k]}</span>
+								<span>${arr[k]}</span>
 								</div>
 							</c:if>
 						</div>
@@ -107,17 +115,15 @@
 <div>
     <div class="current-date">
         <span>${month}월</span> <span>${day}일</span> 
-    </div>
         <button class="detailbtn" onclick="viewEvent('${start.getYear()}-${String.format('%02d', start.getMonthValue())}-${String.format('%02d', day)}')">+</button>
-    
+    </div>
+    <br>
     <c:forEach var="member" items="${member}" varStatus="i">
         <div class="consumebox">
             <a class="memcss">${member}</a><a class="memcssidx">${membercs[i.index]}</a>
         </div>
     </c:forEach>
-    <script>
-    </script>
-        <div style="margin-bottom: 100px;"></div>
+        <div style="margin-bottom: 150px;"></div>
 </div>
 	
 	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>

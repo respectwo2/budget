@@ -133,6 +133,8 @@ body {
 }
 
 .box {
+	position: relative;
+	
 	margin: auto;
 	width: 100%;
 	max-width: 880px;
@@ -266,11 +268,14 @@ body {
 /* 5월 4일 */
 
 .current-date{
-position: absolute;
+/* position: absolute; */
 left: 10.13%;
 right: 74.93%;
 top: 62.32%;
 bottom: 35.1%;
+
+display: flex;
+align-items: center;
 
 font-family: 'Abhaya Libre ExtraBold';
 font-style: normal;
@@ -281,20 +286,24 @@ line-height: 21px;
 color: #363636;
 }
 
-.detailbtn{
-	position: absolute;
-width: 18.98px;
-height: 18.9px;
-left: 299.07px;
-top: 506px;
-
-background: url(image.png);
-transform: rotate(0.2deg);
-	
+.current-date span {
+  margin-right: 5px;
 }
 
+
+.detailbtn {
+	margin-left: auto;
+  width: 18.98px;
+  height: 18.9px;
+  left: calc(100% - 18.98px);
+  top: 506px;
+  background: url(image.png);
+  transform: rotate(0.2deg);
+}
+
+
 .memcss{
-	position: absolute;
+	/* position: absolute; */
 width: 40px;
 height: 27px;
 left: 47px;
@@ -310,7 +319,7 @@ color: #79CCB8;
 }
 
 .memcssidx{
-	position: absolute;
+	/* position: absolute; */
 width: 53px;
 height: 20px;
 left: 275px;
@@ -322,14 +331,7 @@ font-weight: 400;
 font-size: 16px;
 line-height: 20px;
 
-
 color: #F96D6B;
 	
 }
 
-.calendar-details {
-   margin-top: 20px; /* Adjust the margin-top value as needed */
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-}
