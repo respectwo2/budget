@@ -40,6 +40,7 @@ public class BuserServiceImpl implements BuserService {
 		buser.setUser_name(user_name);
 		buser.setUser_nickname(user_nickname);
 		buser.setUser_pwd(user_pwd);
+		this.bMapper.save(buser);
 	}
 
 	@Override

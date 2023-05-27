@@ -1,40 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <style>
-.form-group {
-	margin-bottom: 20px;
-}
-
-.form-group label {
-	display: block;
-}
-
-.form-group input, .form-group textarea {
-	width: 100%;
-	padding: 5px;
-}
+ @import
+	url('https://fonts.googleapis.com/css2?family=Inter&display=swap'); 
 </style>
+<link href="${path}/resources/css/consume_form.css" rel="stylesheet">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 </head>
 <body>
-	<%@ include file="../navbar.jsp"%>
-	<div>
-		<h5>소비 등록</h5>
+	<div class="container">
+		<div class="top-rectangle">
+			<div class="time">9:40</div>
+			<div class="data">
+				<img
+					src="${pageContext.request.contextPath}/resources/images/data.svg"
+					alt="SVG">
+			</div>
+			<div class="wifi">
+				<img
+					src="${pageContext.request.contextPath}/resources/images/wifi.svg"
+					alt="SVG">
+			</div>
+			<div class="battery">
+				<img
+					src="${pageContext.request.contextPath}/resources/images/battery.svg"
+					alt="SVG">
+			</div>
+			<button class="back-page" type="button" onclick="history.back()">
+				<img
+					src="${pageContext.request.contextPath}/resources/images/back-page.svg"
+					alt="SVG">
+			</button>
+			<h1 class="title">소비 등록</h1>
+		</div>
+		<%-- <%@ include file="../navbar.jsp"%> --%>
+
+		<!-- <h5>소비 등록</h5> -->
 		<form action="${pageContext.request.contextPath}/consume/create"
 			method="post" enctype="multipart/form-data">
-			<div class="form-group">
-				<label for="date">소비일</label> <input type="date" name="date"
-					id="date">
-			</div>
-			<div class="form-group">
-				<label for="amount">소비 금액</label> <input type="text" name="amount"
-					id="amount">
-			</div>
-			<div class="form-group">
-				<label for="category">카테고리 설정</label> <select name="category"
+			<div class="register-form">
+				<div class="date">
+					 <div class="date-title"><!-- <label for="date2"> --> 소비일 <!-- </label>  --></div><br>
+					  <input class="date-box" type="date" name="date"  id="date" >
+				</div>
+				<div>
+					<label for="amount">소비 금액</label> <input
+					type="text" name="amount" id="amount"> <label
+					for="category">카테고리 설정</label> <select name="category"
 					id="category">
 					<option value="1">식비</option>
 					<option value="2">카페/간식</option>
@@ -56,17 +74,24 @@
 					<option value="18">기타</option>
 
 				</select>
-			</div>
-			<div class="form-group">
-				<label for="memo">소비 메모</label>
+				</div>
+				<div>
+				 <label for="memo">소비 메모</label>
 				<textarea name="memo" id="memo" rows="5"></textarea>
-			</div>
-			<div class="form-group">
+				</div>
+				
+				<div>
 				<label for="photo">사진</label> <input type="file" name="photo"
 					id="photo">
+				</div> 
 			</div>
-			<input type="submit" value="등록">
+			<button class="submit-rectangle" type="submit" name="budgetcommit">
+				<div class="submit-rectangle-text">저장</div>
+			</button>
+					<!-- <input type="submit" value="등록"> -->
 		</form>
 	</div>
+
+
 </body>
 </html>
