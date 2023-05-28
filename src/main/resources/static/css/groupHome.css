@@ -47,8 +47,7 @@
         	position: relative;
         	width: 375px;
         	height: 812px;
-        	bottom: 1%;
-            right: 2%;
+
         	background: #F9F9F9;
         }
 
@@ -160,7 +159,7 @@
     top: 0px;
     }
 
-    /* 검색창 박스 */
+    /* 검색창 rec */
     .search {
     position: absolute;
     left: 8.8%;
@@ -173,30 +172,35 @@
     border-radius: 20px;
     }
 
+    /* searchInput */
+    #searchInput {
+    position: absolute;
+    left: 12.53%;
+    right: 22.4%;
+    top: 30.69%;
+    bottom: 34.65%;
+
+    border: none;
+    background: #FFFFFF;
+    }
+
+    /* Hide the "x" symbol */
+    #searchInput::-webkit-search-cancel-button,
+    #searchInput::-webkit-search-decoration,
+    #searchInput::-webkit-search-results-button,
+    #searchInput::-webkit-search-results-decoration {
+      display: none;
+    }
+
     /* 돋보기 */
     /* image 54 */
-    .dodbogi {
+    .searchIcon {
         position: absolute;
         left: 86.13%;
         right: 7.47%;
         top: 37.38%;
         bottom: 40%;
     }
-
-
-    /* 하단 네비게이터 */
-        .footer-nav {
-            position: absolute;
-            left: 0%;
-            right: 0%;
-            top: 92%;
-            bottom: 0%;
-
-            background: #FFFFFF;
-            border-radius: 25px 25px 0px 0px;
-        }
-
-
 
     /* 나의그룹 박스 */
     .myGroup-box {
@@ -208,7 +212,7 @@
     }
 
      /* 나의그룹 글씨 */
-     .myGroup-letter {
+     .myGroupLetter {
          position: absolute;
          left: 11.16%;
          right: 73.86%;
@@ -245,33 +249,38 @@
           font-weight: 600;
           font-size: 12px;
           line-height: 20px;
-          line-
-
-
           color: #ACACAC;
      }
 
+    /* 만들기 글씨 */
+    .createLetter {
+        position: absolute;
+        left: 80.53%;
+        right: 10.93%;
+        top: 3.1%;
+        bottom: 92.07%;
+
+        font-family: 'inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 14px;
+
+        color: #ACACAC;
+    }
 
 
-
-
-
-
-
-
-
-    /* 나의그룹 버튼 */
-
+    /* 나의그룹 버튼 박스 */
+    .userGroupBtn-box {
     position: absolute;
     width: 326.72px;
     height: 79.14px;
     left: 25px;
     top: 41px;
+    }
 
-
-
-    /* 버튼 */
-
+    /* 버튼 rec */
+    .userGroupBtnRec {
     box-sizing: border-box;
 
     position: absolute;
@@ -284,17 +293,26 @@
     border: 0.5px solid #3DAA9D;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
+    }
 
+    /* 바구니 */
+    .budgetBucketIcon {
+    position: absolute;
+    width: 39.04px;
+    height: 35.68px;
+    left: 50.37px;
+    top: 64.74px;
+    }
 
     /* 나의그룹 이름 */
-
+    .userGroupName {
     position: absolute;
     left: 30.35%;
     right: 33.43%;
     top: 21.64%;
     bottom: 71.88%;
 
-    font-family: 'Pretendard';
+    font-family: 'inter';
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -302,79 +320,88 @@
     /* identical to box height */
 
     color: #3DAA9D;
-
-
-
-    /* 나의그룹 인원 */
-
-    position: absolute;
-    width: 38px;
-    height: 14px;
-    left: 260.41px;
-    top: 67.74px;
-
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 13px;
-    /* identical to box height */
-
-    color: #524E4E;
-
-
-
-    /* 나의그룹 해시태그 */
-
-    position: absolute;
-    width: 37px;
-    height: 13px;
-    left: 118.41px;
-    top: 94.74px;
-
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 12px;
-    /* identical to box height */
-
-    color: #FDA671;
-
-
+    }
 
     /* 나의그룹 바구니 아이콘 */
-
+    .budgetBucketIcon {
     position: absolute;
     width: 44px;
     height: 37px;
     left: 45.41px;
     top: 64.74px;
+    }
 
-
-
-    /* 바구니 */
-
-    position: absolute;
-    width: 39.04px;
-    height: 35.68px;
-    left: 50.37px;
-    top: 64.74px;
-
-    background: url(image.png);
-
-
-    /* 버찌 */
+    /* 그룹 해시태그 */
+    .userGroupTag {
+    box-sizing: border-box;
 
     position: absolute;
-    width: 19.06px;
-    height: 17.42px;
-    left: 45.41px;
-    top: 84.32px;
+    height: 18px;
+    left: 114px;
+    top: 90px;
 
-    background: url(image.png);
+    width: auto; /* 내용에 맞게 너비를 자동 조정 */
+    height: 18px; /* 높이를 18px로 고정 */
+    padding: 0 5px; /* 좌우로 5px의 여백 설정 */
+
+    background: #FFEACF;
+    border: 0.3px solid #FCB860;
+    border-radius: 5px;
+
+    font-size: 12px; /* 원하는 글씨 크기로 설정 */
+    text-align: center; /* 글씨 가우데 정렬 */
+    color: #FCB860; /* 원하는 색상으로 설정 */
+
+    }
+
+    /* 나의그룹 인원 */
+    .userGroupPeopleNum {
+    position: absolute;
+    width: 38px;
+    height: 14px;
+    left: 216px;
+    top: 93px;
+
+    font-family: 'inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 13px;
+    /* identical to box height */
+
+    color: #524E4E;
+
+    }
 
 
-*/
+
+
+
+
+
+
+
+
+
+
+
+/* 하단 네비게이터 */
+        .footer-nav {
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 92%;
+            bottom: 0%;
+
+            background: #FFFFFF;
+            border-radius: 25px 25px 0px 0px;
+        }
+
+
+
+
+
+
+
 
 

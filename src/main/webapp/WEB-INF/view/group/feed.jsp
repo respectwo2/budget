@@ -9,6 +9,7 @@
      <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 </head>
 <body>
+    <div class="top-box">${groupName}</div>
     <div onclick="goToGroupMissionPage(${bgmNo})">미션: ${groupMissionBanner}</div>
 <hr>
 

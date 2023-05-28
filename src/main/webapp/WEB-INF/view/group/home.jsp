@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
@@ -22,43 +22,50 @@
     </div>
 
     <!-- 그룹 홈 페이지 -->
-    <span>
-        <form>
-            <input type="search" id="searchInput">
-        </form>
-    </span>
-    <img id="searchIcon" onclick="goToSearchPage('searchInput')" src="${path}/resources/images/돋보기.svg">
-    <hr>
-
-    <b id="myGroupBar"> 나의 그룹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span id="createButton" onclick="goToGroupCreationPage()">만들기</span>
-    </b>
-    <br><br>
-
-    <c:forEach items="${groupsWithMemberCount}" var="userGroup">
-        <div id="myGroup" onclick="goToGroupFeed(${userGroup.g_no})">
-            <b>${userGroup.g_name}&nbsp;&nbsp;&nbsp;</b>
-            <small id="peopleNum">${userGroup.memberCount}/${userGroup.g_maxpeople}명</small>&nbsp;&nbsp;&nbsp;
-            <small>#${userGroup.g_tag}</small>
+    <div class="container">
+        <div class="header">
+            <div class="time">9:40</div>
+            <div class="data">
+                <img src="${path}/resources/images/data.svg" alt="SVG">
+            </div>
+            <div class="wifi">
+                <img src="${path}/resources/images/wifi.svg" alt="SVG">
+            </div>
+            <div class="battery">
+                <img src="${path}/resources/images/battery.svg" alt="SVG">
+            </div>
+            <h1 class="groupLetter">그룹</h1>
         </div>
-        <br>
-    </c:forEach>
-    <br><br>
 
-    <div>
-        <span id="청소년" onclick="showGroupsByTag('청소년')"> #청소년&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span id="대학생" onclick="showGroupsByTag('대학생')"> #대학생&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span id="취준생" onclick="showGroupsByTag('취준생')"> #취준생&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span id="직장인" onclick="showGroupsByTag('직장인')"> #직장인</span>
-    </div>
-    <br>
+        <div class="main">
+            <div class="search-box">
+                <div class="search"></div>
+                <form><input type="search" id="searchInput"></form>
+                <img class="searchIcon" onclick="goToSearchPage('searchInput')" src="${path}/resources/images/돋보기.svg" alt="SVG">
+            </div>
 
-    <div>
-        <c:forEach items="${groupList}" var="group">
-            <b onclick="openModal(${group.g_no})">
-                ${group.g_name}</b>&nbsp;&nbsp;&nbsp;<small>#${group.g_tag}</small>
-            <br><br>
-        </c:forEach>
+            <div class="myGroup-box">
+                <div class="myGroupLetter">나의 그룹</div>
+                <div class="createBtn"></div>
+                <div class="createLetter" onclick="goToGroupCreationPage()">만들기</div>
+
+                <c:forEach items="${groupsWithMemberCount}" var="userGroup">
+                    <div class="us erGroupBtn-box">
+                        <div class="userGroupBtnRec"></div>
+                        <img class="budgetBucketIcon" src="${path}/resources/images/budgetBucket.svg" alt="SVG">
+                        <div class="userGroupName">${userGroup.g_name}</div>
+                        <div class="userGroupTag">#${userGroup.g_tag}</div>
+                        <div class="userGroupPeopleNum">${userGroup.memberCount}/${userGroup.g_maxpeople}명</div>
+                    </div>
+
+                </c:forEach>
+            </div>
+
+            <div class="groupList-box"></div>
+        </div>
+
+        <div class="footer-nav"></div>
     </div>
+
 </body>
 </html>
