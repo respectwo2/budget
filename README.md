@@ -3,12 +3,17 @@
 KB It's you Life 3기 최종 프로젝트
 
 ## 기획의도
-![기획의도](https://github.com/respectwo2/budget/blob/master/img/기획의도.JPG)
+<img src="https://github.com/respectwo2/budget/raw/master/img/기획의도.JPG" alt="기획의도" width="70%">
+
 
 ## 프로젝트 기간
 2023.05.15 ~ 2023.05.31
 
 ## 주요 기능
+![기획의도](https://github.com/respectwo2/budget/blob/master/img/기획의도.JPG)
+![기획의도](https://github.com/respectwo2/budget/blob/master/img/기획의도.JPG)
+![기획의도](https://github.com/respectwo2/budget/blob/master/img/기획의도.JPG)
+![기획의도](https://github.com/respectwo2/budget/blob/master/img/기획의도.JPG)
 
 ## 기술 스택
 ![기술스택](https://github.com/respectwo2/budget/blob/master/img/기술스택.JPG)
