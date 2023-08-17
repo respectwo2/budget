@@ -12,13 +12,13 @@
 2023.05.15 ~ 2023.05.31
 
 ## 주요 기능
-![기획의도](https://github.com/respectwo2/budget/blob/master/img/기획의도.JPG)
-![기획의도](https://github.com/respectwo2/budget/blob/master/img/기획의도.JPG)
-![기획의도](https://github.com/respectwo2/budget/blob/master/img/기획의도.JPG)
-![기획의도](https://github.com/respectwo2/budget/blob/master/img/기획의도.JPG)
-
+<img src="https://github.com/respectwo2/budget/raw/master/img/개인캘린더.JPG" alt="개인캘린더" width="70%">
+<img src="https://github.com/respectwo2/budget/raw/master/img/그룹탭.JPG" alt="그룹" width="70%">
+<img src="https://github.com/respectwo2/budget/raw/master/img/그룹검색탭.JPG" alt="그룹검색" width="70%">
+<img src="https://github.com/respectwo2/budget/raw/master/img/그룹캘린더탭.JPG" alt="그룹캘린더" width="70%">
+<img src="https://github.com/respectwo2/budget/raw/master/img/버찌.JPG" alt="버찌" width="70%">
 ## 기술 스택
-![기술스택](https://github.com/respectwo2/budget/blob/master/img/기술스택.JPG)
+<img src="https://github.com/respectwo2/budget/raw/master/img/기술스택.JPG" alt="기술스택" width="70%">
 
 ## 팀원
 - 박성욱 (https://github.com/respectwo2) 
