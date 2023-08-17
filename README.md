@@ -3,7 +3,7 @@
 KB It's you Life 3기 최종 프로젝트
 
 ## 기획의도
-![기술스택](https://github.com/respectwo2/budget/raw/budget/img/기술스택.JPG)
+![기술스택](https://github.com/respectwo2/budget/blob/master/img/기술스택.JPG))
 
 ## 프로젝트 기간
 2023.05.15 ~ 2023.05.31
