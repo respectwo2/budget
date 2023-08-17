@@ -25,11 +25,11 @@
 <img src="https://github.com/respectwo2/budget/raw/master/img/그룹캘린더.JPG" alt="그룹캘린더" width="50%">
 
 * 소비절감을 위해 버찌탭에서 미션을 등록하고 수행 내역을 확인
-<img src="https://github.com/respectwo2/budget/raw/master/img/버찌탭.JPG" alt="버찌" width="70%">
+<img src="https://github.com/respectwo2/budget/raw/master/img/버찌탭.JPG" alt="버찌" width="50%">
 
 ## 기술 스택
 
-<img src="https://github.com/respectwo2/budget/raw/master/img/기술스택.JPG" alt="기술스택" width="70%">
+<img src="https://github.com/respectwo2/budget/raw/master/img/기술스택.JPG" alt="기술스택" width="50%">
 
 ## 팀원
 - 박성욱 (https://github.com/respectwo2) 
