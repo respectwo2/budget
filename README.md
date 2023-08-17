@@ -1,6 +1,6 @@
 # budget
 :pushpin:절약 챌린지 서비스 '버찌(Budget)' 
-####KB It's you Life 3기 최종 프로젝트
+#### KB It's you Life 3기 최종 프로젝트
 
 <img src="https://github.com/respectwo2/budget/raw/master/img/로고.JPG" alt="로고" width="30%">
 
