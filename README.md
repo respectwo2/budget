@@ -21,7 +21,7 @@
 * 가입된 그룹에서 그룹원들간의 소비내역을 공유가능
 <img src="https://github.com/respectwo2/budget/raw/master/img/그룹탭.JPG" alt="그룹" width="50%">
 
-* 그룹탭 또한 캘린더로 관리할 수 있고, 그룹원들의 소비내역 또한 확인 가능
+* 그룹탭 또한 캘린더로 관리할 수 있고, 그룹원들의 소비내역 확인 가능
 <img src="https://github.com/respectwo2/budget/raw/master/img/그룹캘린더.JPG" alt="그룹캘린더" width="50%">
 
 * 소비절감을 위해 버찌탭에서 미션을 등록하고 수행 내역을 확인
