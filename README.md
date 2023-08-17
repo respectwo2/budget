@@ -1,4 +1,4 @@
-# budget
+
 :pushpin:절약 챌린지 서비스 '버찌(Budget)' 
 ##### KB It's you Life 3기 최종 프로젝트
 
